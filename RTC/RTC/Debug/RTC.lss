@@ -1,0 +1,2392 @@
+
+RTC.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000b22  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000009c  00800060  00000b22  00000bb6  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          00000002  008000fc  008000fc  00000c52  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000c52  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000c84  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000001b8  00000000  00000000  00000cc0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00001ef8  00000000  00000000  00000e78  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000003a9  00000000  00000000  00002d70  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000828  00000000  00000000  00003119  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  0000051c  00000000  00000000  00003944  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000007e4  00000000  00000000  00003e60  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    000019c8  00000000  00000000  00004644  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000001f0  00000000  00000000  0000600c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   8:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+   c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  10:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  14:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  18:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  1c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  20:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  24:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  28:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  2c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  30:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  34:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  38:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  3c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  40:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  44:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  48:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  4c:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+  50:	0c 94 47 00 	jmp	0x8e	; 0x8e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e2 e2       	ldi	r30, 0x22	; 34
+  68:	fb e0       	ldi	r31, 0x0B	; 11
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	ac 3f       	cpi	r26, 0xFC	; 252
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+
+00000076 <__do_clear_bss>:
+  76:	20 e0       	ldi	r18, 0x00	; 0
+  78:	ac ef       	ldi	r26, 0xFC	; 252
+  7a:	b0 e0       	ldi	r27, 0x00	; 0
+  7c:	01 c0       	rjmp	.+2      	; 0x80 <.do_clear_bss_start>
+
+0000007e <.do_clear_bss_loop>:
+  7e:	1d 92       	st	X+, r1
+
+00000080 <.do_clear_bss_start>:
+  80:	ae 3f       	cpi	r26, 0xFE	; 254
+  82:	b2 07       	cpc	r27, r18
+  84:	e1 f7       	brne	.-8      	; 0x7e <.do_clear_bss_loop>
+  86:	0e 94 11 05 	call	0xa22	; 0xa22 <main>
+  8a:	0c 94 8f 05 	jmp	0xb1e	; 0xb1e <_exit>
+
+0000008e <__bad_interrupt>:
+  8e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000092 <_Z11LCDsendCharh>:
+	keypad_output=0x0a;
+	else if(keypad_input==0xd0)
+	keypad_output=0x00;
+	else if(keypad_input==0xb0)
+	keypad_output=0x0b;
+	else if(keypad_input==0x70)
+  92:	98 2f       	mov	r25, r24
+  94:	90 7f       	andi	r25, 0xF0	; 240
+	keypad_output=0x0f;
+  96:	92 bb       	out	0x12, r25	; 18
+  98:	90 9a       	sbi	0x12, 0	; 18
+	KEYPAD_PORT=0xf7;
+	_delay_us(2);
+	keypad_input=KEYPAD_PIN & 0xf0;
+
+	if(keypad_input==0xe0)
+	keypad_output=0x0a;
+  9a:	92 9a       	sbi	0x12, 2	; 18
+  9c:	e9 ef       	ldi	r30, 0xF9	; 249
+	else if(keypad_input==0xd0)
+	keypad_output=0x00;
+  9e:	f0 e0       	ldi	r31, 0x00	; 0
+  a0:	31 97       	sbiw	r30, 0x01	; 1
+	else if(keypad_input==0xb0)
+	keypad_output=0x0b;
+  a2:	f1 f7       	brne	.-4      	; 0xa0 <_Z11LCDsendCharh+0xe>
+	else if(keypad_input==0x70)
+	keypad_output=0x0f;
+	else
+	;
+	return keypad_output;
+}
+  a4:	00 c0       	rjmp	.+0      	; 0xa6 <_Z11LCDsendCharh+0x14>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+  a6:	00 00       	nop
+	//4 bit part
+	LDP=(ch&0b11110000);
+	LCP|=1<<LCD_RS;
+	LCP|=1<<LCD_E;
+	_delay_ms(1);
+	LCP&=~(1<<LCD_E);
+  a8:	92 98       	cbi	0x12, 2	; 18
+	LCP&=~(1<<LCD_RS);
+  aa:	90 98       	cbi	0x12, 0	; 18
+  ac:	e9 ef       	ldi	r30, 0xF9	; 249
+  ae:	f0 e0       	ldi	r31, 0x00	; 0
+  b0:	31 97       	sbiw	r30, 0x01	; 1
+  b2:	f1 f7       	brne	.-4      	; 0xb0 <_Z11LCDsendCharh+0x1e>
+  b4:	00 c0       	rjmp	.+0      	; 0xb6 <_Z11LCDsendCharh+0x24>
+  b6:	00 00       	nop
+	_delay_ms(1);
+	LDP=((ch&0b00001111)<<4);
+  b8:	f0 e1       	ldi	r31, 0x10	; 16
+  ba:	8f 9f       	mul	r24, r31
+  bc:	c0 01       	movw	r24, r0
+  be:	11 24       	eor	r1, r1
+  c0:	82 bb       	out	0x12, r24	; 18
+	LCP|=1<<LCD_RS;
+  c2:	90 9a       	sbi	0x12, 0	; 18
+	LCP|=1<<LCD_E;
+  c4:	92 9a       	sbi	0x12, 2	; 18
+  c6:	89 ef       	ldi	r24, 0xF9	; 249
+  c8:	90 e0       	ldi	r25, 0x00	; 0
+  ca:	01 97       	sbiw	r24, 0x01	; 1
+  cc:	f1 f7       	brne	.-4      	; 0xca <_Z11LCDsendCharh+0x38>
+  ce:	00 c0       	rjmp	.+0      	; 0xd0 <_Z11LCDsendCharh+0x3e>
+  d0:	00 00       	nop
+	_delay_ms(1);
+	LCP&=~(1<<LCD_E);
+  d2:	92 98       	cbi	0x12, 2	; 18
+	LCP&=~(1<<LCD_RS);
+  d4:	90 98       	cbi	0x12, 0	; 18
+  d6:	e9 ef       	ldi	r30, 0xF9	; 249
+  d8:	f0 e0       	ldi	r31, 0x00	; 0
+  da:	31 97       	sbiw	r30, 0x01	; 1
+  dc:	f1 f7       	brne	.-4      	; 0xda <_Z11LCDsendCharh+0x48>
+  de:	00 c0       	rjmp	.+0      	; 0xe0 <_Z11LCDsendCharh+0x4e>
+  e0:	00 00       	nop
+  e2:	08 95       	ret
+
+000000e4 <_Z14LCDsendCommandh>:
+
+void LCDsendCommand(uint8_t cmd)	//Sends Command to LCD
+{
+	#ifdef LCD_4bit
+	//4 bit part
+	LDP=(cmd&0b11110000);
+  e4:	98 2f       	mov	r25, r24
+  e6:	90 7f       	andi	r25, 0xF0	; 240
+  e8:	92 bb       	out	0x12, r25	; 18
+	LCP|=1<<LCD_E;
+  ea:	92 9a       	sbi	0x12, 2	; 18
+  ec:	e9 ef       	ldi	r30, 0xF9	; 249
+  ee:	f0 e0       	ldi	r31, 0x00	; 0
+  f0:	31 97       	sbiw	r30, 0x01	; 1
+  f2:	f1 f7       	brne	.-4      	; 0xf0 <_Z14LCDsendCommandh+0xc>
+  f4:	00 c0       	rjmp	.+0      	; 0xf6 <_Z14LCDsendCommandh+0x12>
+  f6:	00 00       	nop
+	_delay_ms(1);
+	LCP&=~(1<<LCD_E);
+  f8:	92 98       	cbi	0x12, 2	; 18
+  fa:	e9 ef       	ldi	r30, 0xF9	; 249
+  fc:	f0 e0       	ldi	r31, 0x00	; 0
+  fe:	31 97       	sbiw	r30, 0x01	; 1
+ 100:	f1 f7       	brne	.-4      	; 0xfe <_Z14LCDsendCommandh+0x1a>
+ 102:	00 c0       	rjmp	.+0      	; 0x104 <_Z14LCDsendCommandh+0x20>
+ 104:	00 00       	nop
+	_delay_ms(1);
+	LDP=((cmd&0b00001111)<<4);
+ 106:	f0 e1       	ldi	r31, 0x10	; 16
+ 108:	8f 9f       	mul	r24, r31
+ 10a:	c0 01       	movw	r24, r0
+ 10c:	11 24       	eor	r1, r1
+ 10e:	82 bb       	out	0x12, r24	; 18
+	LCP|=1<<LCD_E;
+ 110:	92 9a       	sbi	0x12, 2	; 18
+ 112:	89 ef       	ldi	r24, 0xF9	; 249
+ 114:	90 e0       	ldi	r25, 0x00	; 0
+ 116:	01 97       	sbiw	r24, 0x01	; 1
+ 118:	f1 f7       	brne	.-4      	; 0x116 <_Z14LCDsendCommandh+0x32>
+ 11a:	00 c0       	rjmp	.+0      	; 0x11c <_Z14LCDsendCommandh+0x38>
+ 11c:	00 00       	nop
+	_delay_ms(1);
+	LCP&=~(1<<LCD_E);
+ 11e:	92 98       	cbi	0x12, 2	; 18
+ 120:	e9 ef       	ldi	r30, 0xF9	; 249
+ 122:	f0 e0       	ldi	r31, 0x00	; 0
+ 124:	31 97       	sbiw	r30, 0x01	; 1
+ 126:	f1 f7       	brne	.-4      	; 0x124 <_Z14LCDsendCommandh+0x40>
+ 128:	00 c0       	rjmp	.+0      	; 0x12a <_Z14LCDsendCommandh+0x46>
+ 12a:	00 00       	nop
+ 12c:	08 95       	ret
+
+0000012e <_Z7LCDinitv>:
+ 12e:	85 ea       	ldi	r24, 0xA5	; 165
+ 130:	9e e0       	ldi	r25, 0x0E	; 14
+ 132:	01 97       	sbiw	r24, 0x01	; 1
+ 134:	f1 f7       	brne	.-4      	; 0x132 <_Z7LCDinitv+0x4>
+ 136:	00 c0       	rjmp	.+0      	; 0x138 <_Z7LCDinitv+0xa>
+ 138:	00 00       	nop
+void LCDinit(void)//Initializes LCD
+{
+	#ifdef LCD_4bit
+	//4 bit part
+	_delay_ms(15);
+	LDP=0x00;
+ 13a:	12 ba       	out	0x12, r1	; 18
+	LCP=0x00;
+ 13c:	12 ba       	out	0x12, r1	; 18
+	LDDR|=1<<LCD_D7|1<<LCD_D6|1<<LCD_D5|1<<LCD_D4;
+ 13e:	81 b3       	in	r24, 0x11	; 17
+ 140:	80 6f       	ori	r24, 0xF0	; 240
+ 142:	81 bb       	out	0x11, r24	; 17
+	LCDR|=1<<LCD_E|1<<LCD_RW|1<<LCD_RS;
+ 144:	81 b3       	in	r24, 0x11	; 17
+ 146:	87 60       	ori	r24, 0x07	; 7
+ 148:	81 bb       	out	0x11, r24	; 17
+	//---------one------
+	LDP=0<<LCD_D7|0<<LCD_D6|1<<LCD_D5|1<<LCD_D4; //4 bit mode
+ 14a:	80 e3       	ldi	r24, 0x30	; 48
+ 14c:	82 bb       	out	0x12, r24	; 18
+	LCP|=1<<LCD_E|0<<LCD_RW|0<<LCD_RS;
+ 14e:	92 9a       	sbi	0x12, 2	; 18
+ 150:	e9 ef       	ldi	r30, 0xF9	; 249
+ 152:	f0 e0       	ldi	r31, 0x00	; 0
+ 154:	31 97       	sbiw	r30, 0x01	; 1
+ 156:	f1 f7       	brne	.-4      	; 0x154 <_Z7LCDinitv+0x26>
+ 158:	00 c0       	rjmp	.+0      	; 0x15a <_Z7LCDinitv+0x2c>
+ 15a:	00 00       	nop
+	_delay_ms(1);
+	LCP&=~(1<<LCD_E);
+ 15c:	92 98       	cbi	0x12, 2	; 18
+ 15e:	e9 ef       	ldi	r30, 0xF9	; 249
+ 160:	f0 e0       	ldi	r31, 0x00	; 0
+ 162:	31 97       	sbiw	r30, 0x01	; 1
+ 164:	f1 f7       	brne	.-4      	; 0x162 <_Z7LCDinitv+0x34>
+ 166:	00 c0       	rjmp	.+0      	; 0x168 <_Z7LCDinitv+0x3a>
+ 168:	00 00       	nop
+	_delay_ms(1);
+	//-----------two-----------
+	LDP=0<<LCD_D7|0<<LCD_D6|1<<LCD_D5|1<<LCD_D4; //4 bit mode
+ 16a:	82 bb       	out	0x12, r24	; 18
+	LCP|=1<<LCD_E|0<<LCD_RW|0<<LCD_RS;
+ 16c:	92 9a       	sbi	0x12, 2	; 18
+ 16e:	89 ef       	ldi	r24, 0xF9	; 249
+ 170:	90 e0       	ldi	r25, 0x00	; 0
+ 172:	01 97       	sbiw	r24, 0x01	; 1
+ 174:	f1 f7       	brne	.-4      	; 0x172 <_Z7LCDinitv+0x44>
+ 176:	00 c0       	rjmp	.+0      	; 0x178 <_Z7LCDinitv+0x4a>
+ 178:	00 00       	nop
+	_delay_ms(1);
+	LCP&=~(1<<LCD_E);
+ 17a:	92 98       	cbi	0x12, 2	; 18
+ 17c:	e9 ef       	ldi	r30, 0xF9	; 249
+ 17e:	f0 e0       	ldi	r31, 0x00	; 0
+ 180:	31 97       	sbiw	r30, 0x01	; 1
+ 182:	f1 f7       	brne	.-4      	; 0x180 <_Z7LCDinitv+0x52>
+ 184:	00 c0       	rjmp	.+0      	; 0x186 <_Z7LCDinitv+0x58>
+ 186:	00 00       	nop
+	_delay_ms(1);
+	//-------three-------------
+	LDP=0<<LCD_D7|0<<LCD_D6|1<<LCD_D5|0<<LCD_D4; //4 bit mode
+ 188:	80 e2       	ldi	r24, 0x20	; 32
+ 18a:	82 bb       	out	0x12, r24	; 18
+	LCP|=1<<LCD_E|0<<LCD_RW|0<<LCD_RS;
+ 18c:	92 9a       	sbi	0x12, 2	; 18
+ 18e:	89 ef       	ldi	r24, 0xF9	; 249
+ 190:	90 e0       	ldi	r25, 0x00	; 0
+ 192:	01 97       	sbiw	r24, 0x01	; 1
+ 194:	f1 f7       	brne	.-4      	; 0x192 <_Z7LCDinitv+0x64>
+ 196:	00 c0       	rjmp	.+0      	; 0x198 <_Z7LCDinitv+0x6a>
+ 198:	00 00       	nop
+	_delay_ms(1);
+	LCP&=~(1<<LCD_E);
+ 19a:	92 98       	cbi	0x12, 2	; 18
+ 19c:	e9 ef       	ldi	r30, 0xF9	; 249
+ 19e:	f0 e0       	ldi	r31, 0x00	; 0
+ 1a0:	31 97       	sbiw	r30, 0x01	; 1
+ 1a2:	f1 f7       	brne	.-4      	; 0x1a0 <_Z7LCDinitv+0x72>
+ 1a4:	00 c0       	rjmp	.+0      	; 0x1a6 <_Z7LCDinitv+0x78>
+ 1a6:	00 00       	nop
+	_delay_ms(1);
+	//--------4 bit--dual line---------------
+	LCDsendCommand(0b00101000);
+ 1a8:	88 e2       	ldi	r24, 0x28	; 40
+ 1aa:	0e 94 72 00 	call	0xe4	; 0xe4 <_Z14LCDsendCommandh>
+	//-----increment address, invisible cursor shift------
+	LCDsendCommand(0b00001100);
+ 1ae:	8c e0       	ldi	r24, 0x0C	; 12
+ 1b0:	0e 94 72 00 	call	0xe4	; 0xe4 <_Z14LCDsendCommandh>
+ 1b4:	08 95       	ret
+
+000001b6 <_Z6LCDclrv>:
+}
+
+
+void LCDclr(void)				//Clears LCD
+{
+	LCDsendCommand(1<<LCD_CLR);
+ 1b6:	81 e0       	ldi	r24, 0x01	; 1
+ 1b8:	0e 94 72 00 	call	0xe4	; 0xe4 <_Z14LCDsendCommandh>
+ 1bc:	08 95       	ret
+
+000001be <_Z9LCDGotoXYhh>:
+}
+void LCDGotoXY(uint8_t x, uint8_t y)	//Cursor to X Y position
+{
+	register uint8_t DDRAMAddr;
+	// remap lines into proper order
+	switch(y)
+ 1be:	62 30       	cpi	r22, 0x02	; 2
+ 1c0:	31 f0       	breq	.+12     	; 0x1ce <_Z9LCDGotoXYhh+0x10>
+ 1c2:	63 30       	cpi	r22, 0x03	; 3
+ 1c4:	31 f0       	breq	.+12     	; 0x1d2 <_Z9LCDGotoXYhh+0x14>
+ 1c6:	61 30       	cpi	r22, 0x01	; 1
+ 1c8:	29 f4       	brne	.+10     	; 0x1d4 <_Z9LCDGotoXYhh+0x16>
+	{
+		case 0: DDRAMAddr = LCD_LINE0_DDRAMADDR+x; break;
+		case 1: DDRAMAddr = LCD_LINE1_DDRAMADDR+x; break;
+ 1ca:	80 5c       	subi	r24, 0xC0	; 192
+ 1cc:	03 c0       	rjmp	.+6      	; 0x1d4 <_Z9LCDGotoXYhh+0x16>
+		case 2: DDRAMAddr = LCD_LINE2_DDRAMADDR+x; break;
+ 1ce:	8c 5e       	subi	r24, 0xEC	; 236
+ 1d0:	01 c0       	rjmp	.+2      	; 0x1d4 <_Z9LCDGotoXYhh+0x16>
+		case 3: DDRAMAddr = LCD_LINE3_DDRAMADDR+x; break;
+ 1d2:	8c 5a       	subi	r24, 0xAC	; 172
+		default: DDRAMAddr = LCD_LINE0_DDRAMADDR+x;
+	}
+	// set data address
+	LCDsendCommand(1<<LCD_DDRAM | DDRAMAddr);
+ 1d4:	80 68       	ori	r24, 0x80	; 128
+ 1d6:	0e 94 72 00 	call	0xe4	; 0xe4 <_Z14LCDsendCommandh>
+ 1da:	08 95       	ret
+
+000001dc <_Z15LCD_PrintStringPKchh>:
+	}
+}
+
+void LCD_PrintString(const char *s,uint8_t x,uint8_t y)
+/* print string on lcd) */
+{
+ 1dc:	cf 92       	push	r12
+ 1de:	df 92       	push	r13
+ 1e0:	ef 92       	push	r14
+ 1e2:	ff 92       	push	r15
+ 1e4:	0f 93       	push	r16
+ 1e6:	1f 93       	push	r17
+ 1e8:	cf 93       	push	r28
+ 1ea:	df 93       	push	r29
+ 1ec:	6c 01       	movw	r12, r24
+ 1ee:	86 2f       	mov	r24, r22
+	uint8_t i;
+	LCDGotoXY(x,y);
+ 1f0:	64 2f       	mov	r22, r20
+ 1f2:	0e 94 df 00 	call	0x1be	; 0x1be <_Z9LCDGotoXYhh>
+	register char c;
+    uint8_t n;
+	n=strlen(s);
+ 1f6:	f6 01       	movw	r30, r12
+ 1f8:	01 90       	ld	r0, Z+
+ 1fa:	00 20       	and	r0, r0
+ 1fc:	e9 f7       	brne	.-6      	; 0x1f8 <_Z15LCD_PrintStringPKchh+0x1c>
+ 1fe:	31 97       	sbiw	r30, 0x01	; 1
+ 200:	8f 01       	movw	r16, r30
+ 202:	0c 19       	sub	r16, r12
+ 204:	1d 09       	sbc	r17, r13
+ 206:	f0 2e       	mov	r15, r16
+	if (n<9)
+ 208:	88 e0       	ldi	r24, 0x08	; 8
+ 20a:	80 17       	cp	r24, r16
+ 20c:	18 f4       	brcc	.+6      	; 0x214 <_Z15LCD_PrintStringPKchh+0x38>
+			LCDsendChar(c);
+		}
+	} 
+	else
+	{
+		for(i=0;i<n;i++)
+ 20e:	01 11       	cpse	r16, r1
+ 210:	0e c0       	rjmp	.+28     	; 0x22e <_Z15LCD_PrintStringPKchh+0x52>
+ 212:	2c c0       	rjmp	.+88     	; 0x26c <_Z15LCD_PrintStringPKchh+0x90>
+	register char c;
+    uint8_t n;
+	n=strlen(s);
+	if (n<9)
+	{
+		for(i=0;i<n;i++)
+ 214:	00 23       	and	r16, r16
+ 216:	69 f1       	breq	.+90     	; 0x272 <_Z15LCD_PrintStringPKchh+0x96>
+ 218:	ec 2c       	mov	r14, r12
+ 21a:	cc 2d       	mov	r28, r12
+ 21c:	dd 2d       	mov	r29, r13
+		{
+			c=*s++;
+			LCDsendChar(c);
+ 21e:	89 91       	ld	r24, Y+
+ 220:	0e 94 49 00 	call	0x92	; 0x92 <_Z11LCDsendCharh>
+ 224:	8c 2f       	mov	r24, r28
+ 226:	8e 19       	sub	r24, r14
+	register char c;
+    uint8_t n;
+	n=strlen(s);
+	if (n<9)
+	{
+		for(i=0;i<n;i++)
+ 228:	8f 15       	cp	r24, r15
+ 22a:	c8 f3       	brcs	.-14     	; 0x21e <_Z15LCD_PrintStringPKchh+0x42>
+ 22c:	22 c0       	rjmp	.+68     	; 0x272 <_Z15LCD_PrintStringPKchh+0x96>
+ 22e:	ec 2c       	mov	r14, r12
+			LCDsendChar(c);
+		}
+	} 
+	else
+	{
+		for(i=0;i<n;i++)
+ 230:	cc 2d       	mov	r28, r12
+ 232:	dd 2d       	mov	r29, r13
+		{
+			c=*s++;
+			LCDsendChar(c);
+ 234:	89 91       	ld	r24, Y+
+ 236:	0e 94 49 00 	call	0x92	; 0x92 <_Z11LCDsendCharh>
+ 23a:	8c 2f       	mov	r24, r28
+ 23c:	8e 19       	sub	r24, r14
+			LCDsendChar(c);
+		}
+	} 
+	else
+	{
+		for(i=0;i<n;i++)
+ 23e:	8f 15       	cp	r24, r15
+ 240:	c8 f3       	brcs	.-14     	; 0x234 <_Z15LCD_PrintStringPKchh+0x58>
+ 242:	ef ef       	ldi	r30, 0xFF	; 255
+ 244:	e0 0f       	add	r30, r16
+ 246:	f0 e0       	ldi	r31, 0x00	; 0
+ 248:	31 96       	adiw	r30, 0x01	; 1
+ 24a:	e6 01       	movw	r28, r12
+ 24c:	ce 0f       	add	r28, r30
+ 24e:	df 1f       	adc	r29, r31
+		{
+			c=*s++;
+			LCDsendChar(c);
+		}
+		// Wrap to the next line
+		LCDsendCommand(1<<LCD_DDRAM | LCD_LINE1_DDRAMADDR);
+ 250:	80 ec       	ldi	r24, 0xC0	; 192
+ 252:	0e 94 72 00 	call	0xe4	; 0xe4 <_Z14LCDsendCommandh>
+		for(i=16;i<n;i++)
+ 256:	80 e1       	ldi	r24, 0x10	; 16
+ 258:	8f 15       	cp	r24, r15
+ 25a:	58 f4       	brcc	.+22     	; 0x272 <_Z15LCD_PrintStringPKchh+0x96>
+ 25c:	10 e1       	ldi	r17, 0x10	; 16
+		{
+			c = *s++;
+			LCDsendChar(c);
+ 25e:	89 91       	ld	r24, Y+
+ 260:	0e 94 49 00 	call	0x92	; 0x92 <_Z11LCDsendCharh>
+			c=*s++;
+			LCDsendChar(c);
+		}
+		// Wrap to the next line
+		LCDsendCommand(1<<LCD_DDRAM | LCD_LINE1_DDRAMADDR);
+		for(i=16;i<n;i++)
+ 264:	1f 5f       	subi	r17, 0xFF	; 255
+ 266:	f1 12       	cpse	r15, r17
+ 268:	fa cf       	rjmp	.-12     	; 0x25e <_Z15LCD_PrintStringPKchh+0x82>
+ 26a:	03 c0       	rjmp	.+6      	; 0x272 <_Z15LCD_PrintStringPKchh+0x96>
+		{
+			c=*s++;
+			LCDsendChar(c);
+		}
+		// Wrap to the next line
+		LCDsendCommand(1<<LCD_DDRAM | LCD_LINE1_DDRAMADDR);
+ 26c:	80 ec       	ldi	r24, 0xC0	; 192
+ 26e:	0e 94 72 00 	call	0xe4	; 0xe4 <_Z14LCDsendCommandh>
+			c = *s++;
+			LCDsendChar(c);
+		}
+	}
+
+}/* PrintString */
+ 272:	df 91       	pop	r29
+ 274:	cf 91       	pop	r28
+ 276:	1f 91       	pop	r17
+ 278:	0f 91       	pop	r16
+ 27a:	ff 90       	pop	r15
+ 27c:	ef 90       	pop	r14
+ 27e:	df 90       	pop	r13
+ 280:	cf 90       	pop	r12
+ 282:	08 95       	ret
+
+00000284 <_Z7I2CInitv>:
+
+
+void I2CInit()
+{
+	//Set up TWI Module
+	TWBR = 2;
+ 284:	82 e0       	ldi	r24, 0x02	; 2
+ 286:	80 b9       	out	0x00, r24	; 0
+	TWSR |=((1<<TWPS1)|(1<<TWPS0));
+ 288:	81 b1       	in	r24, 0x01	; 1
+ 28a:	83 60       	ori	r24, 0x03	; 3
+ 28c:	81 b9       	out	0x01, r24	; 1
+
+	//Enable the TWI Module
+	TWCR|=(1<<TWEN);
+ 28e:	86 b7       	in	r24, 0x36	; 54
+ 290:	84 60       	ori	r24, 0x04	; 4
+ 292:	86 bf       	out	0x36, r24	; 54
+ 294:	08 95       	ret
+
+00000296 <_Z8I2CStartv>:
+
+
+void I2CStart()
+{
+	//Put Start Condition on Bus
+	TWCR=(1<<TWINT)|(1<<TWEN)|(1<<TWSTA);
+ 296:	84 ea       	ldi	r24, 0xA4	; 164
+ 298:	86 bf       	out	0x36, r24	; 54
+
+	//Poll Till Done
+	while(!(TWCR & (1<<TWINT)));
+ 29a:	06 b6       	in	r0, 0x36	; 54
+ 29c:	07 fe       	sbrs	r0, 7
+ 29e:	fd cf       	rjmp	.-6      	; 0x29a <_Z8I2CStartv+0x4>
+}
+ 2a0:	08 95       	ret
+
+000002a2 <_Z7I2CStopv>:
+
+void I2CStop()
+{
+	//Put Stop Condition on bus
+	TWCR=(1<<TWINT)|(1<<TWEN)|(1<<TWSTO);
+ 2a2:	84 e9       	ldi	r24, 0x94	; 148
+ 2a4:	86 bf       	out	0x36, r24	; 54
+	
+	//Wait for STOP to finish
+	while(TWCR & (1<<TWSTO));
+ 2a6:	06 b6       	in	r0, 0x36	; 54
+ 2a8:	04 fc       	sbrc	r0, 4
+ 2aa:	fd cf       	rjmp	.-6      	; 0x2a6 <_Z7I2CStopv+0x4>
+	//_delay_loop_2(250);
+}
+ 2ac:	08 95       	ret
+
+000002ae <_Z12I2CWriteByteh>:
+
+uint8_t I2CWriteByte(uint8_t data)
+{
+	
+	TWDR=data;
+ 2ae:	83 b9       	out	0x03, r24	; 3
+
+	//Initiate Transfer
+	TWCR=(1<<TWEN)|(1<<TWINT);
+ 2b0:	84 e8       	ldi	r24, 0x84	; 132
+ 2b2:	86 bf       	out	0x36, r24	; 54
+
+	//Poll Till Done
+	while(!(TWCR & (1<<TWINT)));
+ 2b4:	06 b6       	in	r0, 0x36	; 54
+ 2b6:	07 fe       	sbrs	r0, 7
+ 2b8:	fd cf       	rjmp	.-6      	; 0x2b4 <_Z12I2CWriteByteh+0x6>
+
+	//Check Status
+	if((TWSR & 0xF8) == 0x18 || (TWSR & 0xF8) == 0x28 || (TWSR & 0xF8) == 0x40)
+ 2ba:	81 b1       	in	r24, 0x01	; 1
+ 2bc:	88 7f       	andi	r24, 0xF8	; 248
+ 2be:	88 31       	cpi	r24, 0x18	; 24
+ 2c0:	59 f0       	breq	.+22     	; 0x2d8 <_Z12I2CWriteByteh+0x2a>
+ 2c2:	81 b1       	in	r24, 0x01	; 1
+ 2c4:	88 7f       	andi	r24, 0xF8	; 248
+ 2c6:	88 32       	cpi	r24, 0x28	; 40
+ 2c8:	49 f0       	breq	.+18     	; 0x2dc <_Z12I2CWriteByteh+0x2e>
+ 2ca:	91 b1       	in	r25, 0x01	; 1
+ 2cc:	98 7f       	andi	r25, 0xF8	; 248
+ 2ce:	81 e0       	ldi	r24, 0x01	; 1
+ 2d0:	90 34       	cpi	r25, 0x40	; 64
+ 2d2:	29 f0       	breq	.+10     	; 0x2de <_Z12I2CWriteByteh+0x30>
+ 2d4:	80 e0       	ldi	r24, 0x00	; 0
+ 2d6:	08 95       	ret
+ 2d8:	81 e0       	ldi	r24, 0x01	; 1
+ 2da:	08 95       	ret
+ 2dc:	81 e0       	ldi	r24, 0x01	; 1
+
+		return 1;
+	}
+	else
+	return 0;	//Error
+}
+ 2de:	08 95       	ret
+
+000002e0 <_Z11I2CReadBytePhh>:
+
+uint8_t I2CReadByte(uint8_t *data,uint8_t ack)
+{
+ 2e0:	fc 01       	movw	r30, r24
+	//Set up ACK
+	if(ack)
+ 2e2:	66 23       	and	r22, r22
+ 2e4:	21 f0       	breq	.+8      	; 0x2ee <_Z11I2CReadBytePhh+0xe>
+	{
+		//return ACK after reception
+		TWCR|=(1<<TWEA);
+ 2e6:	96 b7       	in	r25, 0x36	; 54
+ 2e8:	90 64       	ori	r25, 0x40	; 64
+ 2ea:	96 bf       	out	0x36, r25	; 54
+ 2ec:	03 c0       	rjmp	.+6      	; 0x2f4 <_Z11I2CReadBytePhh+0x14>
+	else
+	{
+		//return NACK after reception
+		//Signals slave to stop giving more data
+		//usually used for last byte read.
+		TWCR&=(~(1<<TWEA));
+ 2ee:	96 b7       	in	r25, 0x36	; 54
+ 2f0:	9f 7b       	andi	r25, 0xBF	; 191
+ 2f2:	96 bf       	out	0x36, r25	; 54
+	}
+
+	//Now enable Reception of data by clearing TWINT
+	TWCR|=(1<<TWINT);
+ 2f4:	96 b7       	in	r25, 0x36	; 54
+ 2f6:	90 68       	ori	r25, 0x80	; 128
+ 2f8:	96 bf       	out	0x36, r25	; 54
+
+	//Wait till done
+	while(!(TWCR & (1<<TWINT)));
+ 2fa:	06 b6       	in	r0, 0x36	; 54
+ 2fc:	07 fe       	sbrs	r0, 7
+ 2fe:	fd cf       	rjmp	.-6      	; 0x2fa <_Z11I2CReadBytePhh+0x1a>
+
+	//Check status
+	if((TWSR & 0xF8) == 0x58 || (TWSR & 0xF8) == 0x50)
+ 300:	91 b1       	in	r25, 0x01	; 1
+ 302:	98 7f       	andi	r25, 0xF8	; 248
+ 304:	98 35       	cpi	r25, 0x58	; 88
+ 306:	21 f0       	breq	.+8      	; 0x310 <_Z11I2CReadBytePhh+0x30>
+ 308:	91 b1       	in	r25, 0x01	; 1
+ 30a:	98 7f       	andi	r25, 0xF8	; 248
+ 30c:	90 35       	cpi	r25, 0x50	; 80
+ 30e:	21 f4       	brne	.+8      	; 0x318 <_Z11I2CReadBytePhh+0x38>
+		//	or
+		//Data received and NACK returned
+
+		//Read the data
+
+		*data=TWDR;
+ 310:	83 b1       	in	r24, 0x03	; 3
+ 312:	80 83       	st	Z, r24
+		return 1;
+ 314:	81 e0       	ldi	r24, 0x01	; 1
+ 316:	08 95       	ret
+	}
+	else
+	return 0;	//Error
+ 318:	80 e0       	ldi	r24, 0x00	; 0
+	
+ 31a:	08 95       	ret
+
+0000031c <_Z10DS1307ReadhPh>:
+
+Returns: 0= Failure 1= Success
+***************************************************/
+
+uint8_t DS1307Read(uint8_t address,uint8_t *data)
+{
+ 31c:	0f 93       	push	r16
+ 31e:	1f 93       	push	r17
+ 320:	cf 93       	push	r28
+ 322:	c8 2f       	mov	r28, r24
+ 324:	8b 01       	movw	r16, r22
+	uint8_t res;	//result
+	
+	//Start
+	I2CStart();
+ 326:	0e 94 4b 01 	call	0x296	; 0x296 <_Z8I2CStartv>
+	
+	//SLA+W (for dummy write to set register pointer)
+	res=I2CWriteByte(0b11010000);	//DS1307 address + W
+ 32a:	80 ed       	ldi	r24, 0xD0	; 208
+ 32c:	0e 94 57 01 	call	0x2ae	; 0x2ae <_Z12I2CWriteByteh>
+	
+	//Error
+	if(!res)	return 0;
+ 330:	88 23       	and	r24, r24
+ 332:	b1 f0       	breq	.+44     	; 0x360 <_Z10DS1307ReadhPh+0x44>
+	
+	//Now send the address of required register
+	res=I2CWriteByte(address);
+ 334:	8c 2f       	mov	r24, r28
+ 336:	0e 94 57 01 	call	0x2ae	; 0x2ae <_Z12I2CWriteByteh>
+	
+	//Error
+	if(!res)	return 0;
+ 33a:	88 23       	and	r24, r24
+ 33c:	99 f0       	breq	.+38     	; 0x364 <_Z10DS1307ReadhPh+0x48>
+	
+	//Repeat Start
+	I2CStart();	
+ 33e:	0e 94 4b 01 	call	0x296	; 0x296 <_Z8I2CStartv>
+	//SLA + R
+	res=I2CWriteByte(0b11010001);	//DS1307 Address + R	
+ 342:	81 ed       	ldi	r24, 0xD1	; 209
+ 344:	0e 94 57 01 	call	0x2ae	; 0x2ae <_Z12I2CWriteByteh>
+	//Error
+	if(!res)	return 0;	
+ 348:	88 23       	and	r24, r24
+ 34a:	71 f0       	breq	.+28     	; 0x368 <_Z10DS1307ReadhPh+0x4c>
+	//Now read the value with NACK
+	res=I2CReadByte(data,0);	
+ 34c:	60 e0       	ldi	r22, 0x00	; 0
+ 34e:	c8 01       	movw	r24, r16
+ 350:	0e 94 70 01 	call	0x2e0	; 0x2e0 <_Z11I2CReadBytePhh>
+	//Error
+	if(!res)	return 0;	
+ 354:	88 23       	and	r24, r24
+ 356:	51 f0       	breq	.+20     	; 0x36c <_Z10DS1307ReadhPh+0x50>
+	//STOP
+	I2CStop();
+ 358:	0e 94 51 01 	call	0x2a2	; 0x2a2 <_Z7I2CStopv>
+	
+	return 1;
+ 35c:	81 e0       	ldi	r24, 0x01	; 1
+ 35e:	07 c0       	rjmp	.+14     	; 0x36e <_Z10DS1307ReadhPh+0x52>
+	
+	//SLA+W (for dummy write to set register pointer)
+	res=I2CWriteByte(0b11010000);	//DS1307 address + W
+	
+	//Error
+	if(!res)	return 0;
+ 360:	80 e0       	ldi	r24, 0x00	; 0
+ 362:	05 c0       	rjmp	.+10     	; 0x36e <_Z10DS1307ReadhPh+0x52>
+	
+	//Now send the address of required register
+	res=I2CWriteByte(address);
+	
+	//Error
+	if(!res)	return 0;
+ 364:	80 e0       	ldi	r24, 0x00	; 0
+ 366:	03 c0       	rjmp	.+6      	; 0x36e <_Z10DS1307ReadhPh+0x52>
+	//Repeat Start
+	I2CStart();	
+	//SLA + R
+	res=I2CWriteByte(0b11010001);	//DS1307 Address + R	
+	//Error
+	if(!res)	return 0;	
+ 368:	80 e0       	ldi	r24, 0x00	; 0
+ 36a:	01 c0       	rjmp	.+2      	; 0x36e <_Z10DS1307ReadhPh+0x52>
+	//Now read the value with NACK
+	res=I2CReadByte(data,0);	
+	//Error
+	if(!res)	return 0;	
+ 36c:	80 e0       	ldi	r24, 0x00	; 0
+	//STOP
+	I2CStop();
+	
+	return 1;
+}
+ 36e:	cf 91       	pop	r28
+ 370:	1f 91       	pop	r17
+ 372:	0f 91       	pop	r16
+ 374:	08 95       	ret
+
+00000376 <_Z11DS1307Writehh>:
+data: value to write.
+Returns: 0= Failure 1= Success
+***************************************************/
+
+uint8_t DS1307Write(uint8_t address,uint8_t data)
+{
+ 376:	cf 93       	push	r28
+ 378:	df 93       	push	r29
+ 37a:	c8 2f       	mov	r28, r24
+ 37c:	d6 2f       	mov	r29, r22
+	uint8_t res;	//result
+	
+	//Start
+	I2CStart();
+ 37e:	0e 94 4b 01 	call	0x296	; 0x296 <_Z8I2CStartv>
+	
+	//SLA+W
+	res=I2CWriteByte(0b11010000);	//DS1307 address + W
+ 382:	80 ed       	ldi	r24, 0xD0	; 208
+ 384:	0e 94 57 01 	call	0x2ae	; 0x2ae <_Z12I2CWriteByteh>
+	
+	//Error
+	if(!res)	return 0;
+ 388:	88 23       	and	r24, r24
+ 38a:	71 f0       	breq	.+28     	; 0x3a8 <_Z11DS1307Writehh+0x32>
+	
+	//Now send the address of required register
+	res=I2CWriteByte(address);
+ 38c:	8c 2f       	mov	r24, r28
+ 38e:	0e 94 57 01 	call	0x2ae	; 0x2ae <_Z12I2CWriteByteh>
+	
+	//Error
+	if(!res)	return 0;
+ 392:	88 23       	and	r24, r24
+ 394:	59 f0       	breq	.+22     	; 0x3ac <_Z11DS1307Writehh+0x36>
+	
+	//Now write the value
+	res=I2CWriteByte(data);
+ 396:	8d 2f       	mov	r24, r29
+ 398:	0e 94 57 01 	call	0x2ae	; 0x2ae <_Z12I2CWriteByteh>
+	
+	//Error
+	if(!res)	return 0;
+ 39c:	88 23       	and	r24, r24
+ 39e:	41 f0       	breq	.+16     	; 0x3b0 <_Z11DS1307Writehh+0x3a>
+	
+	//STOP
+	I2CStop();
+ 3a0:	0e 94 51 01 	call	0x2a2	; 0x2a2 <_Z7I2CStopv>
+	
+	return 1;
+ 3a4:	81 e0       	ldi	r24, 0x01	; 1
+ 3a6:	05 c0       	rjmp	.+10     	; 0x3b2 <_Z11DS1307Writehh+0x3c>
+	
+	//SLA+W
+	res=I2CWriteByte(0b11010000);	//DS1307 address + W
+	
+	//Error
+	if(!res)	return 0;
+ 3a8:	80 e0       	ldi	r24, 0x00	; 0
+ 3aa:	03 c0       	rjmp	.+6      	; 0x3b2 <_Z11DS1307Writehh+0x3c>
+	
+	//Now send the address of required register
+	res=I2CWriteByte(address);
+	
+	//Error
+	if(!res)	return 0;
+ 3ac:	80 e0       	ldi	r24, 0x00	; 0
+ 3ae:	01 c0       	rjmp	.+2      	; 0x3b2 <_Z11DS1307Writehh+0x3c>
+	
+	//Now write the value
+	res=I2CWriteByte(data);
+	
+	//Error
+	if(!res)	return 0;
+ 3b0:	80 e0       	ldi	r24, 0x00	; 0
+	
+	//STOP
+	I2CStop();
+	
+	return 1;
+}
+ 3b2:	df 91       	pop	r29
+ 3b4:	cf 91       	pop	r28
+ 3b6:	08 95       	ret
+
+000003b8 <_Z9ClockInitv>:
+
+uint8_t ClockInit()
+{
+ 3b8:	cf 93       	push	r28
+ 3ba:	df 93       	push	r29
+ 3bc:	1f 92       	push	r1
+ 3be:	cd b7       	in	r28, 0x3d	; 61
+ 3c0:	de b7       	in	r29, 0x3e	; 62
+	//Initialize I2C Bus
+	I2CInit();
+ 3c2:	0e 94 42 01 	call	0x284	; 0x284 <_Z7I2CInitv>
+
+	//Clear CH bit of RTC
+	#define CH 7
+
+	uint8_t temp;
+	if(!DS1307Read(0x00,&temp)) return 0;
+ 3c6:	be 01       	movw	r22, r28
+ 3c8:	6f 5f       	subi	r22, 0xFF	; 255
+ 3ca:	7f 4f       	sbci	r23, 0xFF	; 255
+ 3cc:	80 e0       	ldi	r24, 0x00	; 0
+ 3ce:	0e 94 8e 01 	call	0x31c	; 0x31c <_Z10DS1307ReadhPh>
+ 3d2:	98 2f       	mov	r25, r24
+ 3d4:	88 23       	and	r24, r24
+ 3d6:	e1 f0       	breq	.+56     	; 0x410 <_Z9ClockInitv+0x58>
+
+	//Clear CH Bit
+	temp&=(~(1<<CH));
+ 3d8:	69 81       	ldd	r22, Y+1	; 0x01
+ 3da:	6f 77       	andi	r22, 0x7F	; 127
+ 3dc:	69 83       	std	Y+1, r22	; 0x01
+
+	if(!DS1307Write(0x00,temp)) return 0;
+ 3de:	80 e0       	ldi	r24, 0x00	; 0
+ 3e0:	0e 94 bb 01 	call	0x376	; 0x376 <_Z11DS1307Writehh>
+ 3e4:	98 2f       	mov	r25, r24
+ 3e6:	88 23       	and	r24, r24
+ 3e8:	99 f0       	breq	.+38     	; 0x410 <_Z9ClockInitv+0x58>
+
+	//Set 12 Hour Mode
+	if(!DS1307Read(0x02,&temp)) return 0;
+ 3ea:	be 01       	movw	r22, r28
+ 3ec:	6f 5f       	subi	r22, 0xFF	; 255
+ 3ee:	7f 4f       	sbci	r23, 0xFF	; 255
+ 3f0:	82 e0       	ldi	r24, 0x02	; 2
+ 3f2:	0e 94 8e 01 	call	0x31c	; 0x31c <_Z10DS1307ReadhPh>
+ 3f6:	98 2f       	mov	r25, r24
+ 3f8:	88 23       	and	r24, r24
+ 3fa:	51 f0       	breq	.+20     	; 0x410 <_Z9ClockInitv+0x58>
+
+	//Set 12Hour BIT
+	temp|=(0b01000000);
+ 3fc:	69 81       	ldd	r22, Y+1	; 0x01
+ 3fe:	60 64       	ori	r22, 0x40	; 64
+ 400:	69 83       	std	Y+1, r22	; 0x01
+
+	//Write Back to DS1307
+	if(!DS1307Write(0x02,temp)) return 0;
+ 402:	82 e0       	ldi	r24, 0x02	; 2
+ 404:	0e 94 bb 01 	call	0x376	; 0x376 <_Z11DS1307Writehh>
+ 408:	91 e0       	ldi	r25, 0x01	; 1
+ 40a:	81 11       	cpse	r24, r1
+ 40c:	01 c0       	rjmp	.+2      	; 0x410 <_Z9ClockInitv+0x58>
+ 40e:	90 e0       	ldi	r25, 0x00	; 0
+
+	return 1;
+
+}
+ 410:	89 2f       	mov	r24, r25
+ 412:	0f 90       	pop	r0
+ 414:	df 91       	pop	r29
+ 416:	cf 91       	pop	r28
+ 418:	08 95       	ret
+
+0000041a <_Z9GetMinutev>:
+----------
+Return Value: the "minute" part of time.
+****************************************/
+
+uint8_t GetMinute()
+{
+ 41a:	cf 93       	push	r28
+ 41c:	df 93       	push	r29
+ 41e:	1f 92       	push	r1
+ 420:	cd b7       	in	r28, 0x3d	; 61
+ 422:	de b7       	in	r29, 0x3e	; 62
+	uint8_t min,temp;
+
+	//Read the Minute Register
+	DS1307Read(0x01,&temp);
+ 424:	be 01       	movw	r22, r28
+ 426:	6f 5f       	subi	r22, 0xFF	; 255
+ 428:	7f 4f       	sbci	r23, 0xFF	; 255
+ 42a:	81 e0       	ldi	r24, 0x01	; 1
+ 42c:	0e 94 8e 01 	call	0x31c	; 0x31c <_Z10DS1307ReadhPh>
+	min=(((temp & 0b01110000)>>4)*10)+(temp & 0b00001111);
+ 430:	99 81       	ldd	r25, Y+1	; 0x01
+ 432:	89 2f       	mov	r24, r25
+ 434:	80 77       	andi	r24, 0x70	; 112
+ 436:	86 95       	lsr	r24
+ 438:	86 95       	lsr	r24
+ 43a:	86 95       	lsr	r24
+ 43c:	28 2f       	mov	r18, r24
+ 43e:	22 0f       	add	r18, r18
+ 440:	22 0f       	add	r18, r18
+ 442:	82 0f       	add	r24, r18
+ 444:	9f 70       	andi	r25, 0x0F	; 15
+
+	return min;
+	
+}
+ 446:	89 0f       	add	r24, r25
+ 448:	0f 90       	pop	r0
+ 44a:	df 91       	pop	r29
+ 44c:	cf 91       	pop	r28
+ 44e:	08 95       	ret
+
+00000450 <_Z7GetHourv>:
+----------
+Return Value :the "hour" part of time.
+****************************************/
+
+uint8_t GetHour()
+{
+ 450:	cf 93       	push	r28
+ 452:	df 93       	push	r29
+ 454:	1f 92       	push	r1
+ 456:	cd b7       	in	r28, 0x3d	; 61
+ 458:	de b7       	in	r29, 0x3e	; 62
+	uint8_t hr,temp;
+
+	//Read the Hour Register
+	DS1307Read(0x02,&temp);
+ 45a:	be 01       	movw	r22, r28
+ 45c:	6f 5f       	subi	r22, 0xFF	; 255
+ 45e:	7f 4f       	sbci	r23, 0xFF	; 255
+ 460:	82 e0       	ldi	r24, 0x02	; 2
+ 462:	0e 94 8e 01 	call	0x31c	; 0x31c <_Z10DS1307ReadhPh>
+	hr=(((temp & 0b00010000)>>4)*10)+(temp & 0b00001111);
+ 466:	99 81       	ldd	r25, Y+1	; 0x01
+ 468:	94 fb       	bst	r25, 4
+ 46a:	88 27       	eor	r24, r24
+ 46c:	80 f9       	bld	r24, 0
+ 46e:	88 0f       	add	r24, r24
+ 470:	28 2f       	mov	r18, r24
+ 472:	22 0f       	add	r18, r18
+ 474:	22 0f       	add	r18, r18
+ 476:	82 0f       	add	r24, r18
+ 478:	9f 70       	andi	r25, 0x0F	; 15
+
+	return hr;
+}
+ 47a:	89 0f       	add	r24, r25
+ 47c:	0f 90       	pop	r0
+ 47e:	df 91       	pop	r29
+ 480:	cf 91       	pop	r28
+ 482:	08 95       	ret
+
+00000484 <_Z7GetAmPmv>:
+----------
+Return Value:0=am 1=pm
+****************************************/
+
+uint8_t GetAmPm()
+{
+ 484:	cf 93       	push	r28
+ 486:	df 93       	push	r29
+ 488:	1f 92       	push	r1
+ 48a:	cd b7       	in	r28, 0x3d	; 61
+ 48c:	de b7       	in	r29, 0x3e	; 62
+	uint8_t am_pm,temp;
+
+	//Read the Hour Register
+	DS1307Read(0x02,&temp);
+ 48e:	be 01       	movw	r22, r28
+ 490:	6f 5f       	subi	r22, 0xFF	; 255
+ 492:	7f 4f       	sbci	r23, 0xFF	; 255
+ 494:	82 e0       	ldi	r24, 0x02	; 2
+ 496:	0e 94 8e 01 	call	0x31c	; 0x31c <_Z10DS1307ReadhPh>
+
+	am_pm=(temp & 0b00100000)>>4;
+ 49a:	89 81       	ldd	r24, Y+1	; 0x01
+ 49c:	80 72       	andi	r24, 0x20	; 32
+ 49e:	90 e0       	ldi	r25, 0x00	; 0
+ 4a0:	95 95       	asr	r25
+ 4a2:	87 95       	ror	r24
+ 4a4:	95 95       	asr	r25
+ 4a6:	87 95       	ror	r24
+ 4a8:	95 95       	asr	r25
+ 4aa:	87 95       	ror	r24
+ 4ac:	95 95       	asr	r25
+ 4ae:	87 95       	ror	r24
+
+	return am_pm;
+
+}
+ 4b0:	0f 90       	pop	r0
+ 4b2:	df 91       	pop	r29
+ 4b4:	cf 91       	pop	r28
+ 4b6:	08 95       	ret
+
+000004b8 <_Z9SetMinuteh>:
+
+uint8_t SetMinute(uint8_t min)
+{
+	uint8_t temp,result;
+
+	temp=((min/10)<<4)|(min%10);
+ 4b8:	9d ec       	ldi	r25, 0xCD	; 205
+ 4ba:	89 9f       	mul	r24, r25
+ 4bc:	91 2d       	mov	r25, r1
+ 4be:	11 24       	eor	r1, r1
+ 4c0:	96 95       	lsr	r25
+ 4c2:	96 95       	lsr	r25
+ 4c4:	96 95       	lsr	r25
+ 4c6:	20 e1       	ldi	r18, 0x10	; 16
+ 4c8:	92 9f       	mul	r25, r18
+ 4ca:	b0 01       	movw	r22, r0
+ 4cc:	11 24       	eor	r1, r1
+ 4ce:	99 0f       	add	r25, r25
+ 4d0:	29 2f       	mov	r18, r25
+ 4d2:	22 0f       	add	r18, r18
+ 4d4:	22 0f       	add	r18, r18
+ 4d6:	92 0f       	add	r25, r18
+ 4d8:	89 1b       	sub	r24, r25
+ 4da:	68 2b       	or	r22, r24
+	result=DS1307Write(0x01,temp);
+ 4dc:	81 e0       	ldi	r24, 0x01	; 1
+ 4de:	0e 94 bb 01 	call	0x376	; 0x376 <_Z11DS1307Writehh>
+
+	return result;
+	
+}
+ 4e2:	08 95       	ret
+
+000004e4 <_Z7SetHourh>:
+Set the hour Parameters:hour
+Return Value: 0=failure 1=success
+****************************************/
+
+uint8_t SetHour(uint8_t hr)
+{
+ 4e4:	cf 93       	push	r28
+ 4e6:	c8 2f       	mov	r28, r24
+	uint8_t temp,result,am_pm;
+
+	am_pm=GetAmPm();
+ 4e8:	0e 94 42 02 	call	0x484	; 0x484 <_Z7GetAmPmv>
+
+	temp=((hr/10)<<4)|(hr%10);
+ 4ec:	9d ec       	ldi	r25, 0xCD	; 205
+ 4ee:	c9 9f       	mul	r28, r25
+ 4f0:	91 2d       	mov	r25, r1
+ 4f2:	11 24       	eor	r1, r1
+ 4f4:	96 95       	lsr	r25
+ 4f6:	96 95       	lsr	r25
+ 4f8:	96 95       	lsr	r25
+ 4fa:	40 e1       	ldi	r20, 0x10	; 16
+ 4fc:	94 9f       	mul	r25, r20
+ 4fe:	90 01       	movw	r18, r0
+ 500:	11 24       	eor	r1, r1
+ 502:	99 0f       	add	r25, r25
+ 504:	39 2f       	mov	r19, r25
+ 506:	33 0f       	add	r19, r19
+ 508:	33 0f       	add	r19, r19
+ 50a:	93 0f       	add	r25, r19
+ 50c:	c9 1b       	sub	r28, r25
+ 50e:	2c 2b       	or	r18, r28
+	temp|=0b01000000; //12 Hr Mode
+	
+	if(am_pm)
+ 510:	81 11       	cpse	r24, r1
+ 512:	03 c0       	rjmp	.+6      	; 0x51a <_Z7SetHourh+0x36>
+	uint8_t temp,result,am_pm;
+
+	am_pm=GetAmPm();
+
+	temp=((hr/10)<<4)|(hr%10);
+	temp|=0b01000000; //12 Hr Mode
+ 514:	62 2f       	mov	r22, r18
+ 516:	60 64       	ori	r22, 0x40	; 64
+ 518:	02 c0       	rjmp	.+4      	; 0x51e <_Z7SetHourh+0x3a>
+	
+	if(am_pm)
+	{
+		temp|=0b00100000;
+ 51a:	62 2f       	mov	r22, r18
+ 51c:	60 66       	ori	r22, 0x60	; 96
+	}
+	result=DS1307Write(0x02,temp);
+ 51e:	82 e0       	ldi	r24, 0x02	; 2
+ 520:	0e 94 bb 01 	call	0x376	; 0x376 <_Z11DS1307Writehh>
+
+	return result;
+}
+ 524:	cf 91       	pop	r28
+ 526:	08 95       	ret
+
+00000528 <_Z7SetAmPmh>:
+Set the second Parameters:0=am,1=pm
+Return Value: 0=failure 1=success
+****************************************/
+
+uint8_t SetAmPm(uint8_t pm)
+{
+ 528:	1f 93       	push	r17
+ 52a:	cf 93       	push	r28
+ 52c:	df 93       	push	r29
+ 52e:	1f 92       	push	r1
+ 530:	cd b7       	in	r28, 0x3d	; 61
+ 532:	de b7       	in	r29, 0x3e	; 62
+ 534:	18 2f       	mov	r17, r24
+	uint8_t temp,result;
+
+	DS1307Read(0x02,&temp);
+ 536:	be 01       	movw	r22, r28
+ 538:	6f 5f       	subi	r22, 0xFF	; 255
+ 53a:	7f 4f       	sbci	r23, 0xFF	; 255
+ 53c:	82 e0       	ldi	r24, 0x02	; 2
+ 53e:	0e 94 8e 01 	call	0x31c	; 0x31c <_Z10DS1307ReadhPh>
+
+	if(pm)
+ 542:	11 23       	and	r17, r17
+ 544:	21 f0       	breq	.+8      	; 0x54e <_Z7SetAmPmh+0x26>
+	temp|=0b00100000;//SET
+ 546:	89 81       	ldd	r24, Y+1	; 0x01
+ 548:	80 62       	ori	r24, 0x20	; 32
+ 54a:	89 83       	std	Y+1, r24	; 0x01
+ 54c:	03 c0       	rjmp	.+6      	; 0x554 <_Z7SetAmPmh+0x2c>
+	else
+	temp&=0b11011111;//CLEAR
+ 54e:	89 81       	ldd	r24, Y+1	; 0x01
+ 550:	8f 7d       	andi	r24, 0xDF	; 223
+ 552:	89 83       	std	Y+1, r24	; 0x01
+
+	result=DS1307Write(0x02,temp);
+ 554:	69 81       	ldd	r22, Y+1	; 0x01
+ 556:	82 e0       	ldi	r24, 0x02	; 2
+ 558:	0e 94 bb 01 	call	0x376	; 0x376 <_Z11DS1307Writehh>
+
+	return result;
+	
+}
+ 55c:	0f 90       	pop	r0
+ 55e:	df 91       	pop	r29
+ 560:	cf 91       	pop	r28
+ 562:	1f 91       	pop	r17
+ 564:	08 95       	ret
+
+00000566 <_Z13GetTimeStringPc>:
+char time[12];			//The string must be at least 12bytes long
+GetTimeString(time);	//Now the string time contains the current time
+****************************************/
+
+uint8_t GetTimeString(char *Time)
+{
+ 566:	0f 93       	push	r16
+ 568:	1f 93       	push	r17
+ 56a:	cf 93       	push	r28
+ 56c:	df 93       	push	r29
+ 56e:	1f 92       	push	r1
+ 570:	cd b7       	in	r28, 0x3d	; 61
+ 572:	de b7       	in	r29, 0x3e	; 62
+ 574:	8c 01       	movw	r16, r24
+	uint8_t data;
+
+	if(!DS1307Read(0x00,&data))
+ 576:	be 01       	movw	r22, r28
+ 578:	6f 5f       	subi	r22, 0xFF	; 255
+ 57a:	7f 4f       	sbci	r23, 0xFF	; 255
+ 57c:	80 e0       	ldi	r24, 0x00	; 0
+ 57e:	0e 94 8e 01 	call	0x31c	; 0x31c <_Z10DS1307ReadhPh>
+ 582:	88 23       	and	r24, r24
+ 584:	09 f4       	brne	.+2      	; 0x588 <_Z13GetTimeStringPc+0x22>
+ 586:	44 c0       	rjmp	.+136    	; 0x610 <_Z13GetTimeStringPc+0xaa>
+	{
+		//I/O Error
+		return 0;
+	}
+
+	Time[11]='\0';
+ 588:	f8 01       	movw	r30, r16
+ 58a:	13 86       	std	Z+11, r1	; 0x0b
+	Time[10]='M';
+ 58c:	8d e4       	ldi	r24, 0x4D	; 77
+ 58e:	82 87       	std	Z+10, r24	; 0x0a
+	Time[8]=' ';
+ 590:	80 e2       	ldi	r24, 0x20	; 32
+ 592:	80 87       	std	Z+8, r24	; 0x08
+
+	Time[7]=48+(data & 0b00001111);
+ 594:	89 81       	ldd	r24, Y+1	; 0x01
+ 596:	98 2f       	mov	r25, r24
+ 598:	9f 70       	andi	r25, 0x0F	; 15
+ 59a:	90 5d       	subi	r25, 0xD0	; 208
+ 59c:	97 83       	std	Z+7, r25	; 0x07
+	Time[6]=48+((data & 0b01110000)>>4);
+ 59e:	80 77       	andi	r24, 0x70	; 112
+ 5a0:	82 95       	swap	r24
+ 5a2:	8f 70       	andi	r24, 0x0F	; 15
+ 5a4:	80 5d       	subi	r24, 0xD0	; 208
+ 5a6:	86 83       	std	Z+6, r24	; 0x06
+	Time[5]=':';
+ 5a8:	8a e3       	ldi	r24, 0x3A	; 58
+ 5aa:	85 83       	std	Z+5, r24	; 0x05
+
+	if(!DS1307Read(0x01,&data))
+ 5ac:	be 01       	movw	r22, r28
+ 5ae:	6f 5f       	subi	r22, 0xFF	; 255
+ 5b0:	7f 4f       	sbci	r23, 0xFF	; 255
+ 5b2:	81 e0       	ldi	r24, 0x01	; 1
+ 5b4:	0e 94 8e 01 	call	0x31c	; 0x31c <_Z10DS1307ReadhPh>
+ 5b8:	88 23       	and	r24, r24
+ 5ba:	51 f1       	breq	.+84     	; 0x610 <_Z13GetTimeStringPc+0xaa>
+	{
+		//I/O Error
+		return 0;
+	}
+	
+	Time[4]=48+(data & 0b00001111);
+ 5bc:	89 81       	ldd	r24, Y+1	; 0x01
+ 5be:	98 2f       	mov	r25, r24
+ 5c0:	9f 70       	andi	r25, 0x0F	; 15
+ 5c2:	90 5d       	subi	r25, 0xD0	; 208
+ 5c4:	f8 01       	movw	r30, r16
+ 5c6:	94 83       	std	Z+4, r25	; 0x04
+	Time[3]=48+((data & 0b01110000)>>4);
+ 5c8:	80 77       	andi	r24, 0x70	; 112
+ 5ca:	82 95       	swap	r24
+ 5cc:	8f 70       	andi	r24, 0x0F	; 15
+ 5ce:	80 5d       	subi	r24, 0xD0	; 208
+ 5d0:	83 83       	std	Z+3, r24	; 0x03
+	Time[2]=':';
+ 5d2:	8a e3       	ldi	r24, 0x3A	; 58
+ 5d4:	82 83       	std	Z+2, r24	; 0x02
+	
+	if(!DS1307Read(0x02,&data))
+ 5d6:	be 01       	movw	r22, r28
+ 5d8:	6f 5f       	subi	r22, 0xFF	; 255
+ 5da:	7f 4f       	sbci	r23, 0xFF	; 255
+ 5dc:	82 e0       	ldi	r24, 0x02	; 2
+ 5de:	0e 94 8e 01 	call	0x31c	; 0x31c <_Z10DS1307ReadhPh>
+ 5e2:	88 23       	and	r24, r24
+ 5e4:	a9 f0       	breq	.+42     	; 0x610 <_Z13GetTimeStringPc+0xaa>
+	{
+		//I/O Error
+		return 0;
+	}
+	
+	Time[1]=48+(data & 0b00001111);
+ 5e6:	89 81       	ldd	r24, Y+1	; 0x01
+ 5e8:	98 2f       	mov	r25, r24
+ 5ea:	9f 70       	andi	r25, 0x0F	; 15
+ 5ec:	90 5d       	subi	r25, 0xD0	; 208
+ 5ee:	f8 01       	movw	r30, r16
+ 5f0:	91 83       	std	Z+1, r25	; 0x01
+	Time[0]=48+((data & 0b00010000)>>4);
+ 5f2:	84 fb       	bst	r24, 4
+ 5f4:	99 27       	eor	r25, r25
+ 5f6:	90 f9       	bld	r25, 0
+ 5f8:	90 5d       	subi	r25, 0xD0	; 208
+ 5fa:	90 83       	st	Z, r25
+
+	//AM/PM
+	if(data & 0b00100000)
+ 5fc:	85 ff       	sbrs	r24, 5
+ 5fe:	04 c0       	rjmp	.+8      	; 0x608 <_Z13GetTimeStringPc+0xa2>
+	{
+		Time[9]='P';
+ 600:	80 e5       	ldi	r24, 0x50	; 80
+ 602:	81 87       	std	Z+9, r24	; 0x09
+	else
+	{
+		Time[9]='A';
+	}
+
+	return 1;//Success
+ 604:	81 e0       	ldi	r24, 0x01	; 1
+ 606:	04 c0       	rjmp	.+8      	; 0x610 <_Z13GetTimeStringPc+0xaa>
+	{
+		Time[9]='P';
+	}
+	else
+	{
+		Time[9]='A';
+ 608:	81 e4       	ldi	r24, 0x41	; 65
+ 60a:	f8 01       	movw	r30, r16
+ 60c:	81 87       	std	Z+9, r24	; 0x09
+	}
+
+	return 1;//Success
+ 60e:	81 e0       	ldi	r24, 0x01	; 1
+
+}
+ 610:	0f 90       	pop	r0
+ 612:	df 91       	pop	r29
+ 614:	cf 91       	pop	r28
+ 616:	1f 91       	pop	r17
+ 618:	0f 91       	pop	r16
+ 61a:	08 95       	ret
+
+0000061c <_Z7SetDateh>:
+}
+uint8_t SetDate(uint8_t date)
+{
+	uint8_t temp,result;
+
+	temp=((date/10)<<4)|(date%10);
+ 61c:	9d ec       	ldi	r25, 0xCD	; 205
+ 61e:	89 9f       	mul	r24, r25
+ 620:	91 2d       	mov	r25, r1
+ 622:	11 24       	eor	r1, r1
+ 624:	96 95       	lsr	r25
+ 626:	96 95       	lsr	r25
+ 628:	96 95       	lsr	r25
+ 62a:	20 e1       	ldi	r18, 0x10	; 16
+ 62c:	92 9f       	mul	r25, r18
+ 62e:	b0 01       	movw	r22, r0
+ 630:	11 24       	eor	r1, r1
+ 632:	99 0f       	add	r25, r25
+ 634:	29 2f       	mov	r18, r25
+ 636:	22 0f       	add	r18, r18
+ 638:	22 0f       	add	r18, r18
+ 63a:	92 0f       	add	r25, r18
+ 63c:	89 1b       	sub	r24, r25
+ 63e:	68 2b       	or	r22, r24
+	result=DS1307Write(0x04,temp);
+ 640:	84 e0       	ldi	r24, 0x04	; 4
+ 642:	0e 94 bb 01 	call	0x376	; 0x376 <_Z11DS1307Writehh>
+
+	return result;
+	
+}
+ 646:	08 95       	ret
+
+00000648 <_Z8SetMonthh>:
+uint8_t SetMonth(uint8_t month)
+{
+	uint8_t temp,result;
+
+	temp=((month/10)<<4)|(month%10);
+ 648:	9d ec       	ldi	r25, 0xCD	; 205
+ 64a:	89 9f       	mul	r24, r25
+ 64c:	91 2d       	mov	r25, r1
+ 64e:	11 24       	eor	r1, r1
+ 650:	96 95       	lsr	r25
+ 652:	96 95       	lsr	r25
+ 654:	96 95       	lsr	r25
+ 656:	20 e1       	ldi	r18, 0x10	; 16
+ 658:	92 9f       	mul	r25, r18
+ 65a:	b0 01       	movw	r22, r0
+ 65c:	11 24       	eor	r1, r1
+ 65e:	99 0f       	add	r25, r25
+ 660:	29 2f       	mov	r18, r25
+ 662:	22 0f       	add	r18, r18
+ 664:	22 0f       	add	r18, r18
+ 666:	92 0f       	add	r25, r18
+ 668:	89 1b       	sub	r24, r25
+ 66a:	68 2b       	or	r22, r24
+	result=DS1307Write(0x05,temp);
+ 66c:	85 e0       	ldi	r24, 0x05	; 5
+ 66e:	0e 94 bb 01 	call	0x376	; 0x376 <_Z11DS1307Writehh>
+
+	return result;
+	
+}
+ 672:	08 95       	ret
+
+00000674 <_Z7SetYearh>:
+uint8_t SetYear(uint8_t year)
+{
+	uint8_t temp,result;
+
+	temp=((year/10)<<4)|(year%10);
+ 674:	9d ec       	ldi	r25, 0xCD	; 205
+ 676:	89 9f       	mul	r24, r25
+ 678:	91 2d       	mov	r25, r1
+ 67a:	11 24       	eor	r1, r1
+ 67c:	96 95       	lsr	r25
+ 67e:	96 95       	lsr	r25
+ 680:	96 95       	lsr	r25
+ 682:	20 e1       	ldi	r18, 0x10	; 16
+ 684:	92 9f       	mul	r25, r18
+ 686:	b0 01       	movw	r22, r0
+ 688:	11 24       	eor	r1, r1
+ 68a:	99 0f       	add	r25, r25
+ 68c:	29 2f       	mov	r18, r25
+ 68e:	22 0f       	add	r18, r18
+ 690:	22 0f       	add	r18, r18
+ 692:	92 0f       	add	r25, r18
+ 694:	89 1b       	sub	r24, r25
+ 696:	68 2b       	or	r22, r24
+	result=DS1307Write(0x06,temp);
+ 698:	86 e0       	ldi	r24, 0x06	; 6
+ 69a:	0e 94 bb 01 	call	0x376	; 0x376 <_Z11DS1307Writehh>
+
+	return result;
+	
+}
+ 69e:	08 95       	ret
+
+000006a0 <_Z15read_keypad_intv>:
+
+int read_keypad_int(void)
+{
+	unsigned char keypad_input=0xff;
+	int keypad_output=0xff;
+	KEYPAD_PORT=0xfe;
+ 6a0:	8e ef       	ldi	r24, 0xFE	; 254
+ 6a2:	8b bb       	out	0x1b, r24	; 27
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 6a4:	00 c0       	rjmp	.+0      	; 0x6a6 <_Z15read_keypad_intv+0x6>
+	_delay_us(2);
+	keypad_input=KEYPAD_PIN & 0xf0;
+ 6a6:	89 b3       	in	r24, 0x19	; 25
+ 6a8:	80 7f       	andi	r24, 0xF0	; 240
+
+	if(keypad_input==0xe0)
+ 6aa:	80 3e       	cpi	r24, 0xE0	; 224
+ 6ac:	49 f0       	breq	.+18     	; 0x6c0 <_Z15read_keypad_intv+0x20>
+	keypad_output=1;
+	else if(keypad_input==0xd0)
+ 6ae:	80 3d       	cpi	r24, 0xD0	; 208
+ 6b0:	51 f0       	breq	.+20     	; 0x6c6 <_Z15read_keypad_intv+0x26>
+	keypad_output=12;
+	else if(keypad_input==0xb0)
+ 6b2:	80 3b       	cpi	r24, 0xB0	; 176
+ 6b4:	59 f0       	breq	.+22     	; 0x6cc <_Z15read_keypad_intv+0x2c>
+	keypad_output=3;
+	else if(keypad_input==0x70)
+ 6b6:	80 37       	cpi	r24, 0x70	; 112
+ 6b8:	61 f4       	brne	.+24     	; 0x6d2 <_Z15read_keypad_intv+0x32>
+	keypad_output=2;
+ 6ba:	22 e0       	ldi	r18, 0x02	; 2
+ 6bc:	30 e0       	ldi	r19, 0x00	; 0
+ 6be:	0b c0       	rjmp	.+22     	; 0x6d6 <_Z15read_keypad_intv+0x36>
+	KEYPAD_PORT=0xfe;
+	_delay_us(2);
+	keypad_input=KEYPAD_PIN & 0xf0;
+
+	if(keypad_input==0xe0)
+	keypad_output=1;
+ 6c0:	21 e0       	ldi	r18, 0x01	; 1
+ 6c2:	30 e0       	ldi	r19, 0x00	; 0
+ 6c4:	08 c0       	rjmp	.+16     	; 0x6d6 <_Z15read_keypad_intv+0x36>
+	else if(keypad_input==0xd0)
+	keypad_output=12;
+ 6c6:	2c e0       	ldi	r18, 0x0C	; 12
+ 6c8:	30 e0       	ldi	r19, 0x00	; 0
+ 6ca:	05 c0       	rjmp	.+10     	; 0x6d6 <_Z15read_keypad_intv+0x36>
+	else if(keypad_input==0xb0)
+	keypad_output=3;
+ 6cc:	23 e0       	ldi	r18, 0x03	; 3
+ 6ce:	30 e0       	ldi	r19, 0x00	; 0
+ 6d0:	02 c0       	rjmp	.+4      	; 0x6d6 <_Z15read_keypad_intv+0x36>
+}
+
+int read_keypad_int(void)
+{
+	unsigned char keypad_input=0xff;
+	int keypad_output=0xff;
+ 6d2:	2f ef       	ldi	r18, 0xFF	; 255
+ 6d4:	30 e0       	ldi	r19, 0x00	; 0
+	else if(keypad_input==0x70)
+	keypad_output=2;
+	else
+	;
+
+	KEYPAD_PORT=0xfd;
+ 6d6:	8d ef       	ldi	r24, 0xFD	; 253
+ 6d8:	8b bb       	out	0x1b, r24	; 27
+ 6da:	00 c0       	rjmp	.+0      	; 0x6dc <_Z15read_keypad_intv+0x3c>
+	_delay_us(2);
+	keypad_input=KEYPAD_PIN & 0xf0;
+ 6dc:	99 b3       	in	r25, 0x19	; 25
+ 6de:	90 7f       	andi	r25, 0xF0	; 240
+
+	if(keypad_input==0xe0)
+ 6e0:	90 3e       	cpi	r25, 0xE0	; 224
+ 6e2:	49 f0       	breq	.+18     	; 0x6f6 <_Z15read_keypad_intv+0x56>
+	keypad_output=4;
+	else if(keypad_input==0xd0)
+ 6e4:	90 3d       	cpi	r25, 0xD0	; 208
+ 6e6:	51 f0       	breq	.+20     	; 0x6fc <_Z15read_keypad_intv+0x5c>
+	keypad_output=13;
+	else if(keypad_input==0xb0)
+ 6e8:	90 3b       	cpi	r25, 0xB0	; 176
+ 6ea:	59 f0       	breq	.+22     	; 0x702 <_Z15read_keypad_intv+0x62>
+	keypad_output=6;
+	else if(keypad_input==0x70)
+ 6ec:	90 37       	cpi	r25, 0x70	; 112
+ 6ee:	59 f4       	brne	.+22     	; 0x706 <_Z15read_keypad_intv+0x66>
+	keypad_output=5;
+ 6f0:	25 e0       	ldi	r18, 0x05	; 5
+ 6f2:	30 e0       	ldi	r19, 0x00	; 0
+ 6f4:	08 c0       	rjmp	.+16     	; 0x706 <_Z15read_keypad_intv+0x66>
+	KEYPAD_PORT=0xfd;
+	_delay_us(2);
+	keypad_input=KEYPAD_PIN & 0xf0;
+
+	if(keypad_input==0xe0)
+	keypad_output=4;
+ 6f6:	24 e0       	ldi	r18, 0x04	; 4
+ 6f8:	30 e0       	ldi	r19, 0x00	; 0
+ 6fa:	05 c0       	rjmp	.+10     	; 0x706 <_Z15read_keypad_intv+0x66>
+	else if(keypad_input==0xd0)
+	keypad_output=13;
+ 6fc:	2d e0       	ldi	r18, 0x0D	; 13
+ 6fe:	30 e0       	ldi	r19, 0x00	; 0
+ 700:	02 c0       	rjmp	.+4      	; 0x706 <_Z15read_keypad_intv+0x66>
+	else if(keypad_input==0xb0)
+	keypad_output=6;
+ 702:	26 e0       	ldi	r18, 0x06	; 6
+ 704:	30 e0       	ldi	r19, 0x00	; 0
+	else if(keypad_input==0x70)
+	keypad_output=5;
+	else
+	;
+
+	KEYPAD_PORT=0xfb;
+ 706:	8b ef       	ldi	r24, 0xFB	; 251
+ 708:	8b bb       	out	0x1b, r24	; 27
+ 70a:	00 c0       	rjmp	.+0      	; 0x70c <_Z15read_keypad_intv+0x6c>
+	_delay_us(2);
+	keypad_input=KEYPAD_PIN & 0xf0;
+ 70c:	99 b3       	in	r25, 0x19	; 25
+ 70e:	90 7f       	andi	r25, 0xF0	; 240
+
+	if(keypad_input==0xe0)
+ 710:	90 3e       	cpi	r25, 0xE0	; 224
+ 712:	49 f0       	breq	.+18     	; 0x726 <_Z15read_keypad_intv+0x86>
+	keypad_output=7;
+	else if(keypad_input==0xd0)
+ 714:	90 3d       	cpi	r25, 0xD0	; 208
+ 716:	51 f0       	breq	.+20     	; 0x72c <_Z15read_keypad_intv+0x8c>
+	keypad_output=14;
+	else if(keypad_input==0xb0)
+ 718:	90 3b       	cpi	r25, 0xB0	; 176
+ 71a:	59 f0       	breq	.+22     	; 0x732 <_Z15read_keypad_intv+0x92>
+	keypad_output=9;
+	else if(keypad_input==0x70)
+ 71c:	90 37       	cpi	r25, 0x70	; 112
+ 71e:	59 f4       	brne	.+22     	; 0x736 <_Z15read_keypad_intv+0x96>
+	keypad_output=8;
+ 720:	28 e0       	ldi	r18, 0x08	; 8
+ 722:	30 e0       	ldi	r19, 0x00	; 0
+ 724:	08 c0       	rjmp	.+16     	; 0x736 <_Z15read_keypad_intv+0x96>
+	KEYPAD_PORT=0xfb;
+	_delay_us(2);
+	keypad_input=KEYPAD_PIN & 0xf0;
+
+	if(keypad_input==0xe0)
+	keypad_output=7;
+ 726:	27 e0       	ldi	r18, 0x07	; 7
+ 728:	30 e0       	ldi	r19, 0x00	; 0
+ 72a:	05 c0       	rjmp	.+10     	; 0x736 <_Z15read_keypad_intv+0x96>
+	else if(keypad_input==0xd0)
+	keypad_output=14;
+ 72c:	2e e0       	ldi	r18, 0x0E	; 14
+ 72e:	30 e0       	ldi	r19, 0x00	; 0
+ 730:	02 c0       	rjmp	.+4      	; 0x736 <_Z15read_keypad_intv+0x96>
+	else if(keypad_input==0xb0)
+	keypad_output=9;
+ 732:	29 e0       	ldi	r18, 0x09	; 9
+ 734:	30 e0       	ldi	r19, 0x00	; 0
+	else if(keypad_input==0x70)
+	keypad_output=8;
+	else
+	;
+	
+	KEYPAD_PORT=0xf7;
+ 736:	87 ef       	ldi	r24, 0xF7	; 247
+ 738:	8b bb       	out	0x1b, r24	; 27
+ 73a:	00 c0       	rjmp	.+0      	; 0x73c <_Z15read_keypad_intv+0x9c>
+	_delay_us(2);
+	keypad_input=KEYPAD_PIN & 0xf0;
+ 73c:	99 b3       	in	r25, 0x19	; 25
+ 73e:	90 7f       	andi	r25, 0xF0	; 240
+
+	if(keypad_input==0xe0)
+ 740:	90 3e       	cpi	r25, 0xE0	; 224
+ 742:	49 f0       	breq	.+18     	; 0x756 <_Z15read_keypad_intv+0xb6>
+	keypad_output=10; //*
+	else if(keypad_input==0xd0)
+ 744:	90 3d       	cpi	r25, 0xD0	; 208
+ 746:	51 f0       	breq	.+20     	; 0x75c <_Z15read_keypad_intv+0xbc>
+	keypad_output=15; //D
+	else if(keypad_input==0xb0)
+ 748:	90 3b       	cpi	r25, 0xB0	; 176
+ 74a:	59 f0       	breq	.+22     	; 0x762 <_Z15read_keypad_intv+0xc2>
+	keypad_output=11; //#
+	else if(keypad_input==0x70)
+ 74c:	90 37       	cpi	r25, 0x70	; 112
+ 74e:	59 f4       	brne	.+22     	; 0x766 <_Z15read_keypad_intv+0xc6>
+	keypad_output=0;
+ 750:	20 e0       	ldi	r18, 0x00	; 0
+ 752:	30 e0       	ldi	r19, 0x00	; 0
+ 754:	08 c0       	rjmp	.+16     	; 0x766 <_Z15read_keypad_intv+0xc6>
+	KEYPAD_PORT=0xf7;
+	_delay_us(2);
+	keypad_input=KEYPAD_PIN & 0xf0;
+
+	if(keypad_input==0xe0)
+	keypad_output=10; //*
+ 756:	2a e0       	ldi	r18, 0x0A	; 10
+ 758:	30 e0       	ldi	r19, 0x00	; 0
+ 75a:	05 c0       	rjmp	.+10     	; 0x766 <_Z15read_keypad_intv+0xc6>
+	else if(keypad_input==0xd0)
+	keypad_output=15; //D
+ 75c:	2f e0       	ldi	r18, 0x0F	; 15
+ 75e:	30 e0       	ldi	r19, 0x00	; 0
+ 760:	02 c0       	rjmp	.+4      	; 0x766 <_Z15read_keypad_intv+0xc6>
+	else if(keypad_input==0xb0)
+	keypad_output=11; //#
+ 762:	2b e0       	ldi	r18, 0x0B	; 11
+ 764:	30 e0       	ldi	r19, 0x00	; 0
+	else if(keypad_input==0x70)
+	keypad_output=0;
+	else
+	;
+	return keypad_output;
+}
+ 766:	c9 01       	movw	r24, r18
+ 768:	08 95       	ret
+
+0000076a <_Z12intFrmKeypadi>:
+	LCD_PrintString("OK: Time set.",0,0);
+	_delay_ms(2000);
+	LCDclr();
+}
+int intFrmKeypad(int digits)  //gives up to 4 digits for now
+{
+ 76a:	cf 92       	push	r12
+ 76c:	df 92       	push	r13
+ 76e:	ef 92       	push	r14
+ 770:	ff 92       	push	r15
+ 772:	0f 93       	push	r16
+ 774:	1f 93       	push	r17
+ 776:	cf 93       	push	r28
+ 778:	df 93       	push	r29
+ 77a:	00 d0       	rcall	.+0      	; 0x77c <_Z12intFrmKeypadi+0x12>
+ 77c:	00 d0       	rcall	.+0      	; 0x77e <_Z12intFrmKeypadi+0x14>
+ 77e:	cd b7       	in	r28, 0x3d	; 61
+ 780:	de b7       	in	r29, 0x3e	; 62
+ 782:	6c 01       	movw	r12, r24
+	int i=0, num=0;
+ 784:	e1 2c       	mov	r14, r1
+ 786:	f1 2c       	mov	r15, r1
+ 788:	00 e0       	ldi	r16, 0x00	; 0
+ 78a:	10 e0       	ldi	r17, 0x00	; 0
+	char s[4];
+	 
+	while ( i < digits)
+ 78c:	53 c0       	rjmp	.+166    	; 0x834 <_Z12intFrmKeypadi+0xca>
+	{
+		int key =read_keypad_int();
+ 78e:	0e 94 50 03 	call	0x6a0	; 0x6a0 <_Z15read_keypad_intv>
+		if (key != 0xff)
+ 792:	8f 3f       	cpi	r24, 0xFF	; 255
+ 794:	91 05       	cpc	r25, r1
+ 796:	d9 f3       	breq	.-10     	; 0x78e <_Z12intFrmKeypadi+0x24>
+		{
+			switch (i)
+ 798:	01 30       	cpi	r16, 0x01	; 1
+ 79a:	11 05       	cpc	r17, r1
+ 79c:	71 f0       	breq	.+28     	; 0x7ba <_Z12intFrmKeypadi+0x50>
+ 79e:	24 f4       	brge	.+8      	; 0x7a8 <_Z12intFrmKeypadi+0x3e>
+ 7a0:	01 15       	cp	r16, r1
+ 7a2:	11 05       	cpc	r17, r1
+ 7a4:	41 f0       	breq	.+16     	; 0x7b6 <_Z12intFrmKeypadi+0x4c>
+ 7a6:	32 c0       	rjmp	.+100    	; 0x80c <_Z12intFrmKeypadi+0xa2>
+ 7a8:	02 30       	cpi	r16, 0x02	; 2
+ 7aa:	11 05       	cpc	r17, r1
+ 7ac:	a1 f0       	breq	.+40     	; 0x7d6 <_Z12intFrmKeypadi+0x6c>
+ 7ae:	03 30       	cpi	r16, 0x03	; 3
+ 7b0:	11 05       	cpc	r17, r1
+ 7b2:	f9 f0       	breq	.+62     	; 0x7f2 <_Z12intFrmKeypadi+0x88>
+ 7b4:	2b c0       	rjmp	.+86     	; 0x80c <_Z12intFrmKeypadi+0xa2>
+	int i=0, num=0;
+	char s[4];
+	 
+	while ( i < digits)
+	{
+		int key =read_keypad_int();
+ 7b6:	7c 01       	movw	r14, r24
+ 7b8:	29 c0       	rjmp	.+82     	; 0x80c <_Z12intFrmKeypadi+0xa2>
+			{
+				case 0:
+					num=key; //one digit
+				break;
+				case 1:
+					num = (num*10)+(key); //2 digit
+ 7ba:	97 01       	movw	r18, r14
+ 7bc:	22 0f       	add	r18, r18
+ 7be:	33 1f       	adc	r19, r19
+ 7c0:	ee 0c       	add	r14, r14
+ 7c2:	ff 1c       	adc	r15, r15
+ 7c4:	ee 0c       	add	r14, r14
+ 7c6:	ff 1c       	adc	r15, r15
+ 7c8:	ee 0c       	add	r14, r14
+ 7ca:	ff 1c       	adc	r15, r15
+ 7cc:	e2 0e       	add	r14, r18
+ 7ce:	f3 1e       	adc	r15, r19
+ 7d0:	e8 0e       	add	r14, r24
+ 7d2:	f9 1e       	adc	r15, r25
+				break;
+ 7d4:	1b c0       	rjmp	.+54     	; 0x80c <_Z12intFrmKeypadi+0xa2>
+				case 2:
+					num = (num*10)+(key);// 3 digit
+ 7d6:	97 01       	movw	r18, r14
+ 7d8:	22 0f       	add	r18, r18
+ 7da:	33 1f       	adc	r19, r19
+ 7dc:	ee 0c       	add	r14, r14
+ 7de:	ff 1c       	adc	r15, r15
+ 7e0:	ee 0c       	add	r14, r14
+ 7e2:	ff 1c       	adc	r15, r15
+ 7e4:	ee 0c       	add	r14, r14
+ 7e6:	ff 1c       	adc	r15, r15
+ 7e8:	e2 0e       	add	r14, r18
+ 7ea:	f3 1e       	adc	r15, r19
+ 7ec:	e8 0e       	add	r14, r24
+ 7ee:	f9 1e       	adc	r15, r25
+				break;
+ 7f0:	0d c0       	rjmp	.+26     	; 0x80c <_Z12intFrmKeypadi+0xa2>
+				case 3:
+					num = (num*10)+(key);
+ 7f2:	97 01       	movw	r18, r14
+ 7f4:	22 0f       	add	r18, r18
+ 7f6:	33 1f       	adc	r19, r19
+ 7f8:	ee 0c       	add	r14, r14
+ 7fa:	ff 1c       	adc	r15, r15
+ 7fc:	ee 0c       	add	r14, r14
+ 7fe:	ff 1c       	adc	r15, r15
+ 800:	ee 0c       	add	r14, r14
+ 802:	ff 1c       	adc	r15, r15
+ 804:	e2 0e       	add	r14, r18
+ 806:	f3 1e       	adc	r15, r19
+ 808:	e8 0e       	add	r14, r24
+ 80a:	f9 1e       	adc	r15, r25
+    } else if (__radix < 2 || __radix > 36) {
+	*__s = 0;
+	return __s;
+    } else {
+	extern char *__itoa_ncheck (int, char *, unsigned char);
+	return __itoa_ncheck (__val, __s, __radix);
+ 80c:	4a e0       	ldi	r20, 0x0A	; 10
+ 80e:	be 01       	movw	r22, r28
+ 810:	6f 5f       	subi	r22, 0xFF	; 255
+ 812:	7f 4f       	sbci	r23, 0xFF	; 255
+ 814:	0e 94 5a 05 	call	0xab4	; 0xab4 <__itoa_ncheck>
+				default:
+				break;
+			 }
+			int k = key;
+			itoa(k,s,10);
+			LCD_PrintString(s,i,1);
+ 818:	41 e0       	ldi	r20, 0x01	; 1
+ 81a:	60 2f       	mov	r22, r16
+ 81c:	ce 01       	movw	r24, r28
+ 81e:	01 96       	adiw	r24, 0x01	; 1
+ 820:	0e 94 ee 00 	call	0x1dc	; 0x1dc <_Z15LCD_PrintStringPKchh>
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 824:	8f e4       	ldi	r24, 0x4F	; 79
+ 826:	93 ec       	ldi	r25, 0xC3	; 195
+ 828:	01 97       	sbiw	r24, 0x01	; 1
+ 82a:	f1 f7       	brne	.-4      	; 0x828 <_Z12intFrmKeypadi+0xbe>
+ 82c:	00 c0       	rjmp	.+0      	; 0x82e <_Z12intFrmKeypadi+0xc4>
+ 82e:	00 00       	nop
+			_delay_ms(200);	
+			i++;		
+ 830:	0f 5f       	subi	r16, 0xFF	; 255
+ 832:	1f 4f       	sbci	r17, 0xFF	; 255
+int intFrmKeypad(int digits)  //gives up to 4 digits for now
+{
+	int i=0, num=0;
+	char s[4];
+	 
+	while ( i < digits)
+ 834:	0c 15       	cp	r16, r12
+ 836:	1d 05       	cpc	r17, r13
+ 838:	0c f4       	brge	.+2      	; 0x83c <_Z12intFrmKeypadi+0xd2>
+ 83a:	a9 cf       	rjmp	.-174    	; 0x78e <_Z12intFrmKeypadi+0x24>
+			_delay_ms(200);	
+			i++;		
+		}		
+	}
+	return num;
+}
+ 83c:	c7 01       	movw	r24, r14
+ 83e:	0f 90       	pop	r0
+ 840:	0f 90       	pop	r0
+ 842:	0f 90       	pop	r0
+ 844:	0f 90       	pop	r0
+ 846:	df 91       	pop	r29
+ 848:	cf 91       	pop	r28
+ 84a:	1f 91       	pop	r17
+ 84c:	0f 91       	pop	r16
+ 84e:	ff 90       	pop	r15
+ 850:	ef 90       	pop	r14
+ 852:	df 90       	pop	r13
+ 854:	cf 90       	pop	r12
+ 856:	08 95       	ret
+
+00000858 <_Z9setMyDatev>:
+		menu_item = 0;
+	}
+	
+}
+void setMyDate()
+{
+ 858:	cf 93       	push	r28
+ 85a:	df 93       	push	r29
+ 85c:	c1 e0       	ldi	r28, 0x01	; 1
+ 85e:	d0 e0       	ldi	r29, 0x00	; 0
+ 860:	01 c0       	rjmp	.+2      	; 0x864 <__stack+0x5>
+ 862:	21 96       	adiw	r28, 0x01	; 1
+ 864:	ce 01       	movw	r24, r28
+ 866:	01 97       	sbiw	r24, 0x01	; 1
+	int date=0,month=0,year=0;
+	int loop=0;
+			
+	while (loop<3)
+	{
+		switch (loop)
+ 868:	81 30       	cpi	r24, 0x01	; 1
+ 86a:	91 05       	cpc	r25, r1
+ 86c:	a1 f0       	breq	.+40     	; 0x896 <__stack+0x37>
+ 86e:	82 30       	cpi	r24, 0x02	; 2
+ 870:	91 05       	cpc	r25, r1
+ 872:	01 f1       	breq	.+64     	; 0x8b4 <__stack+0x55>
+ 874:	89 2b       	or	r24, r25
+ 876:	69 f5       	brne	.+90     	; 0x8d2 <__stack+0x73>
+		{
+			case 0:
+				LCDclr();
+ 878:	0e 94 db 00 	call	0x1b6	; 0x1b6 <_Z6LCDclrv>
+				LCD_PrintString("Enter Date:",0,0);
+ 87c:	40 e0       	ldi	r20, 0x00	; 0
+ 87e:	60 e0       	ldi	r22, 0x00	; 0
+ 880:	80 e6       	ldi	r24, 0x60	; 96
+ 882:	90 e0       	ldi	r25, 0x00	; 0
+ 884:	0e 94 ee 00 	call	0x1dc	; 0x1dc <_Z15LCD_PrintStringPKchh>
+				date = intFrmKeypad(2);
+ 888:	82 e0       	ldi	r24, 0x02	; 2
+ 88a:	90 e0       	ldi	r25, 0x00	; 0
+ 88c:	0e 94 b5 03 	call	0x76a	; 0x76a <_Z12intFrmKeypadi>
+				SetDate(date);
+ 890:	0e 94 0e 03 	call	0x61c	; 0x61c <_Z7SetDateh>
+						
+			break;
+ 894:	e6 cf       	rjmp	.-52     	; 0x862 <__stack+0x3>
+			case 1:
+				LCDclr();
+ 896:	0e 94 db 00 	call	0x1b6	; 0x1b6 <_Z6LCDclrv>
+				LCD_PrintString("Enter Month:",0,0);
+ 89a:	40 e0       	ldi	r20, 0x00	; 0
+ 89c:	60 e0       	ldi	r22, 0x00	; 0
+ 89e:	8c e6       	ldi	r24, 0x6C	; 108
+ 8a0:	90 e0       	ldi	r25, 0x00	; 0
+ 8a2:	0e 94 ee 00 	call	0x1dc	; 0x1dc <_Z15LCD_PrintStringPKchh>
+				month = intFrmKeypad(2);
+ 8a6:	82 e0       	ldi	r24, 0x02	; 2
+ 8a8:	90 e0       	ldi	r25, 0x00	; 0
+ 8aa:	0e 94 b5 03 	call	0x76a	; 0x76a <_Z12intFrmKeypadi>
+				SetMonth(month);
+ 8ae:	0e 94 24 03 	call	0x648	; 0x648 <_Z8SetMonthh>
+			break;
+ 8b2:	d7 cf       	rjmp	.-82     	; 0x862 <__stack+0x3>
+			case 2:
+				LCDclr();
+ 8b4:	0e 94 db 00 	call	0x1b6	; 0x1b6 <_Z6LCDclrv>
+				LCD_PrintString("Enter Year(17):",0,0);
+ 8b8:	40 e0       	ldi	r20, 0x00	; 0
+ 8ba:	60 e0       	ldi	r22, 0x00	; 0
+ 8bc:	89 e7       	ldi	r24, 0x79	; 121
+ 8be:	90 e0       	ldi	r25, 0x00	; 0
+ 8c0:	0e 94 ee 00 	call	0x1dc	; 0x1dc <_Z15LCD_PrintStringPKchh>
+				year = intFrmKeypad(2);
+ 8c4:	82 e0       	ldi	r24, 0x02	; 2
+ 8c6:	90 e0       	ldi	r25, 0x00	; 0
+ 8c8:	0e 94 b5 03 	call	0x76a	; 0x76a <_Z12intFrmKeypadi>
+				SetYear(year);
+ 8cc:	0e 94 3a 03 	call	0x674	; 0x674 <_Z7SetYearh>
+ 8d0:	03 c0       	rjmp	.+6      	; 0x8d8 <__stack+0x79>
+	//set date, month and year
+	//Use keypad input
+	int date=0,month=0,year=0;
+	int loop=0;
+			
+	while (loop<3)
+ 8d2:	c3 30       	cpi	r28, 0x03	; 3
+ 8d4:	d1 05       	cpc	r29, r1
+ 8d6:	2c f2       	brlt	.-118    	; 0x862 <__stack+0x3>
+			default:
+			break;
+		}		
+		loop++;
+	}	
+	LCDclr();
+ 8d8:	0e 94 db 00 	call	0x1b6	; 0x1b6 <_Z6LCDclrv>
+	LCD_PrintString("OK: Date set.",0,0);
+ 8dc:	40 e0       	ldi	r20, 0x00	; 0
+ 8de:	60 e0       	ldi	r22, 0x00	; 0
+ 8e0:	89 e8       	ldi	r24, 0x89	; 137
+ 8e2:	90 e0       	ldi	r25, 0x00	; 0
+ 8e4:	0e 94 ee 00 	call	0x1dc	; 0x1dc <_Z15LCD_PrintStringPKchh>
+ 8e8:	2f e7       	ldi	r18, 0x7F	; 127
+ 8ea:	8a e1       	ldi	r24, 0x1A	; 26
+ 8ec:	96 e0       	ldi	r25, 0x06	; 6
+ 8ee:	21 50       	subi	r18, 0x01	; 1
+ 8f0:	80 40       	sbci	r24, 0x00	; 0
+ 8f2:	90 40       	sbci	r25, 0x00	; 0
+ 8f4:	e1 f7       	brne	.-8      	; 0x8ee <__stack+0x8f>
+ 8f6:	00 c0       	rjmp	.+0      	; 0x8f8 <__stack+0x99>
+ 8f8:	00 00       	nop
+	_delay_ms(2000);
+	LCDclr();
+ 8fa:	0e 94 db 00 	call	0x1b6	; 0x1b6 <_Z6LCDclrv>
+	menu_item =0;
+ 8fe:	10 92 fd 00 	sts	0x00FD, r1
+ 902:	10 92 fc 00 	sts	0x00FC, r1
+}
+ 906:	df 91       	pop	r29
+ 908:	cf 91       	pop	r28
+ 90a:	08 95       	ret
+
+0000090c <_Z9setMyTimev>:
+void setMyTime()
+{
+ 90c:	cf 93       	push	r28
+ 90e:	df 93       	push	r29
+ 910:	c1 e0       	ldi	r28, 0x01	; 1
+ 912:	d0 e0       	ldi	r29, 0x00	; 0
+ 914:	01 c0       	rjmp	.+2      	; 0x918 <_Z9setMyTimev+0xc>
+ 916:	21 96       	adiw	r28, 0x01	; 1
+ 918:	ce 01       	movw	r24, r28
+ 91a:	01 97       	sbiw	r24, 0x01	; 1
+	int hour=0,minute=0,AM_PM=0;
+	int loop=0;
+	
+	while (loop<3)
+	{
+		switch (loop)
+ 91c:	81 30       	cpi	r24, 0x01	; 1
+ 91e:	91 05       	cpc	r25, r1
+ 920:	a1 f0       	breq	.+40     	; 0x94a <_Z9setMyTimev+0x3e>
+ 922:	82 30       	cpi	r24, 0x02	; 2
+ 924:	91 05       	cpc	r25, r1
+ 926:	01 f1       	breq	.+64     	; 0x968 <_Z9setMyTimev+0x5c>
+ 928:	89 2b       	or	r24, r25
+ 92a:	69 f5       	brne	.+90     	; 0x986 <_Z9setMyTimev+0x7a>
+		{
+			case 0:
+			LCDclr();
+ 92c:	0e 94 db 00 	call	0x1b6	; 0x1b6 <_Z6LCDclrv>
+			LCD_PrintString("Enter Hour:",0,0);
+ 930:	40 e0       	ldi	r20, 0x00	; 0
+ 932:	60 e0       	ldi	r22, 0x00	; 0
+ 934:	87 e9       	ldi	r24, 0x97	; 151
+ 936:	90 e0       	ldi	r25, 0x00	; 0
+ 938:	0e 94 ee 00 	call	0x1dc	; 0x1dc <_Z15LCD_PrintStringPKchh>
+			hour = intFrmKeypad(2);
+ 93c:	82 e0       	ldi	r24, 0x02	; 2
+ 93e:	90 e0       	ldi	r25, 0x00	; 0
+ 940:	0e 94 b5 03 	call	0x76a	; 0x76a <_Z12intFrmKeypadi>
+			SetHour(hour);
+ 944:	0e 94 72 02 	call	0x4e4	; 0x4e4 <_Z7SetHourh>
+			
+			break;
+ 948:	e6 cf       	rjmp	.-52     	; 0x916 <_Z9setMyTimev+0xa>
+			case 1:
+			LCDclr();
+ 94a:	0e 94 db 00 	call	0x1b6	; 0x1b6 <_Z6LCDclrv>
+			LCD_PrintString("Enter Minute:",0,0);
+ 94e:	40 e0       	ldi	r20, 0x00	; 0
+ 950:	60 e0       	ldi	r22, 0x00	; 0
+ 952:	83 ea       	ldi	r24, 0xA3	; 163
+ 954:	90 e0       	ldi	r25, 0x00	; 0
+ 956:	0e 94 ee 00 	call	0x1dc	; 0x1dc <_Z15LCD_PrintStringPKchh>
+			minute = intFrmKeypad(2);
+ 95a:	82 e0       	ldi	r24, 0x02	; 2
+ 95c:	90 e0       	ldi	r25, 0x00	; 0
+ 95e:	0e 94 b5 03 	call	0x76a	; 0x76a <_Z12intFrmKeypadi>
+			SetMinute(minute);
+ 962:	0e 94 5c 02 	call	0x4b8	; 0x4b8 <_Z9SetMinuteh>
+			break;
+ 966:	d7 cf       	rjmp	.-82     	; 0x916 <_Z9setMyTimev+0xa>
+			case 2:
+			LCDclr();
+ 968:	0e 94 db 00 	call	0x1b6	; 0x1b6 <_Z6LCDclrv>
+			LCD_PrintString("Select 0:AM, 1:PM",0,0);
+ 96c:	40 e0       	ldi	r20, 0x00	; 0
+ 96e:	60 e0       	ldi	r22, 0x00	; 0
+ 970:	81 eb       	ldi	r24, 0xB1	; 177
+ 972:	90 e0       	ldi	r25, 0x00	; 0
+ 974:	0e 94 ee 00 	call	0x1dc	; 0x1dc <_Z15LCD_PrintStringPKchh>
+			AM_PM = intFrmKeypad(1);
+ 978:	81 e0       	ldi	r24, 0x01	; 1
+ 97a:	90 e0       	ldi	r25, 0x00	; 0
+ 97c:	0e 94 b5 03 	call	0x76a	; 0x76a <_Z12intFrmKeypadi>
+			SetAmPm(AM_PM);
+ 980:	0e 94 94 02 	call	0x528	; 0x528 <_Z7SetAmPmh>
+ 984:	03 c0       	rjmp	.+6      	; 0x98c <_Z9setMyTimev+0x80>
+	//set hour, minute and AM/PM
+	//Use keypad input
+	int hour=0,minute=0,AM_PM=0;
+	int loop=0;
+	
+	while (loop<3)
+ 986:	c3 30       	cpi	r28, 0x03	; 3
+ 988:	d1 05       	cpc	r29, r1
+ 98a:	2c f2       	brlt	.-118    	; 0x916 <_Z9setMyTimev+0xa>
+			default:
+			break;
+		}
+		loop++;
+	}
+	LCDclr();
+ 98c:	0e 94 db 00 	call	0x1b6	; 0x1b6 <_Z6LCDclrv>
+	LCD_PrintString("OK: Time set.",0,0);
+ 990:	40 e0       	ldi	r20, 0x00	; 0
+ 992:	60 e0       	ldi	r22, 0x00	; 0
+ 994:	83 ec       	ldi	r24, 0xC3	; 195
+ 996:	90 e0       	ldi	r25, 0x00	; 0
+ 998:	0e 94 ee 00 	call	0x1dc	; 0x1dc <_Z15LCD_PrintStringPKchh>
+ 99c:	2f e7       	ldi	r18, 0x7F	; 127
+ 99e:	8a e1       	ldi	r24, 0x1A	; 26
+ 9a0:	96 e0       	ldi	r25, 0x06	; 6
+ 9a2:	21 50       	subi	r18, 0x01	; 1
+ 9a4:	80 40       	sbci	r24, 0x00	; 0
+ 9a6:	90 40       	sbci	r25, 0x00	; 0
+ 9a8:	e1 f7       	brne	.-8      	; 0x9a2 <_Z9setMyTimev+0x96>
+ 9aa:	00 c0       	rjmp	.+0      	; 0x9ac <_Z9setMyTimev+0xa0>
+ 9ac:	00 00       	nop
+	_delay_ms(2000);
+	LCDclr();
+ 9ae:	0e 94 db 00 	call	0x1b6	; 0x1b6 <_Z6LCDclrv>
+}
+ 9b2:	df 91       	pop	r29
+ 9b4:	cf 91       	pop	r28
+ 9b6:	08 95       	ret
+
+000009b8 <_Z12menu_controlv>:
+	return 0;
+}
+
+void menu_control()
+{
+	menu_item =read_keypad_int();
+ 9b8:	0e 94 50 03 	call	0x6a0	; 0x6a0 <_Z15read_keypad_intv>
+ 9bc:	90 93 fd 00 	sts	0x00FD, r25
+ 9c0:	80 93 fc 00 	sts	0x00FC, r24
+	
+	LCDclr();
+ 9c4:	0e 94 db 00 	call	0x1b6	; 0x1b6 <_Z6LCDclrv>
+	LCD_PrintString("MENU: 1-SetDate,",0,0);
+ 9c8:	40 e0       	ldi	r20, 0x00	; 0
+ 9ca:	60 e0       	ldi	r22, 0x00	; 0
+ 9cc:	81 ed       	ldi	r24, 0xD1	; 209
+ 9ce:	90 e0       	ldi	r25, 0x00	; 0
+ 9d0:	0e 94 ee 00 	call	0x1dc	; 0x1dc <_Z15LCD_PrintStringPKchh>
+	LCD_PrintString("2-tTime 3-setAlam",0,1);
+ 9d4:	41 e0       	ldi	r20, 0x01	; 1
+ 9d6:	60 e0       	ldi	r22, 0x00	; 0
+ 9d8:	82 ee       	ldi	r24, 0xE2	; 226
+ 9da:	90 e0       	ldi	r25, 0x00	; 0
+ 9dc:	0e 94 ee 00 	call	0x1dc	; 0x1dc <_Z15LCD_PrintStringPKchh>
+	
+	
+	while (menu_item>0) //Menu Driver
+ 9e0:	80 91 fc 00 	lds	r24, 0x00FC
+ 9e4:	90 91 fd 00 	lds	r25, 0x00FD
+ 9e8:	18 16       	cp	r1, r24
+ 9ea:	19 06       	cpc	r1, r25
+ 9ec:	7c f4       	brge	.+30     	; 0xa0c <_Z12menu_controlv+0x54>
+	{
+		switch(menu_item)
+ 9ee:	81 30       	cpi	r24, 0x01	; 1
+ 9f0:	91 05       	cpc	r25, r1
+ 9f2:	19 f0       	breq	.+6      	; 0x9fa <_Z12menu_controlv+0x42>
+ 9f4:	02 97       	sbiw	r24, 0x02	; 2
+ 9f6:	31 f4       	brne	.+12     	; 0xa04 <_Z12menu_controlv+0x4c>
+ 9f8:	03 c0       	rjmp	.+6      	; 0xa00 <_Z12menu_controlv+0x48>
+		{
+			case 1: //set date
+			setMyDate();
+ 9fa:	0e 94 2c 04 	call	0x858	; 0x858 <_Z9setMyDatev>
+			break;
+ 9fe:	02 c0       	rjmp	.+4      	; 0xa04 <_Z12menu_controlv+0x4c>
+			case 2:
+			setMyTime();
+ a00:	0e 94 86 04 	call	0x90c	; 0x90c <_Z9setMyTimev>
+			break;
+			default:
+			menu_item = 0;
+			break;
+		}
+		menu_item = 0;
+ a04:	10 92 fd 00 	sts	0x00FD, r1
+ a08:	10 92 fc 00 	sts	0x00FC, r1
+ a0c:	08 95       	ret
+
+00000a0e <_Z7myalarmv>:
+
+void myalarm()
+{
+	uint8_t hh=5,mm=04,ampm=1;
+			
+	if ((hh==GetHour()) && (mm==GetMinute()))
+ a0e:	0e 94 28 02 	call	0x450	; 0x450 <_Z7GetHourv>
+ a12:	85 30       	cpi	r24, 0x05	; 5
+ a14:	29 f4       	brne	.+10     	; 0xa20 <_Z7myalarmv+0x12>
+ a16:	0e 94 0d 02 	call	0x41a	; 0x41a <_Z9GetMinutev>
+ a1a:	84 30       	cpi	r24, 0x04	; 4
+ a1c:	09 f4       	brne	.+2      	; 0xa20 <_Z7myalarmv+0x12>
+	{
+		PORTB &=~1<<PINB0; // Close the relay. ON SWITCH
+ a1e:	c0 98       	cbi	0x18, 0	; 24
+ a20:	08 95       	ret
+
+00000a22 <main>:
+		_delay_ms(10);
+	}
+}
+
+int main(void)
+{
+ a22:	cf 93       	push	r28
+ a24:	df 93       	push	r29
+ a26:	cd b7       	in	r28, 0x3d	; 61
+ a28:	de b7       	in	r29, 0x3e	; 62
+ a2a:	65 97       	sbiw	r28, 0x15	; 21
+ a2c:	0f b6       	in	r0, 0x3f	; 63
+ a2e:	f8 94       	cli
+ a30:	de bf       	out	0x3e, r29	; 62
+ a32:	0f be       	out	0x3f, r0	; 63
+ a34:	cd bf       	out	0x3d, r28	; 61
+	LCDinit();
+ a36:	0e 94 97 00 	call	0x12e	; 0x12e <_Z7LCDinitv>
+	LCDclr();
+ a3a:	0e 94 db 00 	call	0x1b6	; 0x1b6 <_Z6LCDclrv>
+	I2CInit();	
+ a3e:	0e 94 42 01 	call	0x284	; 0x284 <_Z7I2CInitv>
+	ClockInit();	
+ a42:	0e 94 dc 01 	call	0x3b8	; 0x3b8 <_Z9ClockInitv>
+	DDRA = 0x0f;  //Initialize Keypad Port
+ a46:	8f e0       	ldi	r24, 0x0F	; 15
+ a48:	8a bb       	out	0x1a, r24	; 26
+	PORTA = 0xff;
+ a4a:	8f ef       	ldi	r24, 0xFF	; 255
+ a4c:	8b bb       	out	0x1b, r24	; 27
+	
+	DDRB |=1<<PINB0;  // Relay/switch pin
+ a4e:	b8 9a       	sbi	0x17, 0	; 23
+	PORTB |=1<<PINB0;
+ a50:	c0 9a       	sbi	0x18, 0	; 24
+	char time_buffer[11];
+	char buffer1[10];
+				
+	while(1)
+	{
+		menu_item =read_keypad_int();
+ a52:	0e 94 50 03 	call	0x6a0	; 0x6a0 <_Z15read_keypad_intv>
+ a56:	90 93 fd 00 	sts	0x00FD, r25
+ a5a:	80 93 fc 00 	sts	0x00FC, r24
+ a5e:	4a e0       	ldi	r20, 0x0A	; 10
+ a60:	be 01       	movw	r22, r28
+ a62:	64 5f       	subi	r22, 0xF4	; 244
+ a64:	7f 4f       	sbci	r23, 0xFF	; 255
+ a66:	0e 94 5a 05 	call	0xab4	; 0xab4 <__itoa_ncheck>
+		itoa(menu_item,buffer1,10);
+		//LCD_PrintString(buffer1,0,1);
+		while (menu_item ==255)
+ a6a:	80 91 fc 00 	lds	r24, 0x00FC
+ a6e:	90 91 fd 00 	lds	r25, 0x00FD
+ a72:	8f 3f       	cpi	r24, 0xFF	; 255
+ a74:	91 05       	cpc	r25, r1
+ a76:	c9 f4       	brne	.+50     	; 0xaaa <main+0x88>
+		{
+			GetTimeString(time_buffer);
+ a78:	ce 01       	movw	r24, r28
+ a7a:	01 96       	adiw	r24, 0x01	; 1
+ a7c:	0e 94 b3 02 	call	0x566	; 0x566 <_Z13GetTimeStringPc>
+			//itoa(m,buffer1,10);
+			LCD_PrintString("CLOCK++",0,0);
+ a80:	40 e0       	ldi	r20, 0x00	; 0
+ a82:	60 e0       	ldi	r22, 0x00	; 0
+ a84:	84 ef       	ldi	r24, 0xF4	; 244
+ a86:	90 e0       	ldi	r25, 0x00	; 0
+ a88:	0e 94 ee 00 	call	0x1dc	; 0x1dc <_Z15LCD_PrintStringPKchh>
+			LCD_PrintString(time_buffer,0,1);
+ a8c:	41 e0       	ldi	r20, 0x01	; 1
+ a8e:	60 e0       	ldi	r22, 0x00	; 0
+ a90:	ce 01       	movw	r24, r28
+ a92:	01 96       	adiw	r24, 0x01	; 1
+ a94:	0e 94 ee 00 	call	0x1dc	; 0x1dc <_Z15LCD_PrintStringPKchh>
+			myalarm();
+ a98:	0e 94 07 05 	call	0xa0e	; 0xa0e <_Z7myalarmv>
+	while(1)
+	{
+		menu_item =read_keypad_int();
+		itoa(menu_item,buffer1,10);
+		//LCD_PrintString(buffer1,0,1);
+		while (menu_item ==255)
+ a9c:	80 91 fc 00 	lds	r24, 0x00FC
+ aa0:	90 91 fd 00 	lds	r25, 0x00FD
+ aa4:	8f 3f       	cpi	r24, 0xFF	; 255
+ aa6:	91 05       	cpc	r25, r1
+ aa8:	39 f3       	breq	.-50     	; 0xa78 <main+0x56>
+			//itoa(m,buffer1,10);
+			LCD_PrintString("CLOCK++",0,0);
+			LCD_PrintString(time_buffer,0,1);
+			myalarm();
+		}
+		menu_control();
+ aaa:	0e 94 dc 04 	call	0x9b8	; 0x9b8 <_Z12menu_controlv>
+		myalarm();
+ aae:	0e 94 07 05 	call	0xa0e	; 0xa0e <_Z7myalarmv>
+	}
+	return 0;
+ ab2:	cf cf       	rjmp	.-98     	; 0xa52 <main+0x30>
+
+00000ab4 <__itoa_ncheck>:
+ ab4:	bb 27       	eor	r27, r27
+ ab6:	4a 30       	cpi	r20, 0x0A	; 10
+ ab8:	31 f4       	brne	.+12     	; 0xac6 <__itoa_ncheck+0x12>
+ aba:	99 23       	and	r25, r25
+ abc:	22 f4       	brpl	.+8      	; 0xac6 <__itoa_ncheck+0x12>
+ abe:	bd e2       	ldi	r27, 0x2D	; 45
+ ac0:	90 95       	com	r25
+ ac2:	81 95       	neg	r24
+ ac4:	9f 4f       	sbci	r25, 0xFF	; 255
+ ac6:	0c 94 66 05 	jmp	0xacc	; 0xacc <__utoa_common>
+
+00000aca <__utoa_ncheck>:
+ aca:	bb 27       	eor	r27, r27
+
+00000acc <__utoa_common>:
+ acc:	fb 01       	movw	r30, r22
+ ace:	55 27       	eor	r21, r21
+ ad0:	aa 27       	eor	r26, r26
+ ad2:	88 0f       	add	r24, r24
+ ad4:	99 1f       	adc	r25, r25
+ ad6:	aa 1f       	adc	r26, r26
+ ad8:	a4 17       	cp	r26, r20
+ ada:	10 f0       	brcs	.+4      	; 0xae0 <__utoa_common+0x14>
+ adc:	a4 1b       	sub	r26, r20
+ ade:	83 95       	inc	r24
+ ae0:	50 51       	subi	r21, 0x10	; 16
+ ae2:	b9 f7       	brne	.-18     	; 0xad2 <__utoa_common+0x6>
+ ae4:	a0 5d       	subi	r26, 0xD0	; 208
+ ae6:	aa 33       	cpi	r26, 0x3A	; 58
+ ae8:	08 f0       	brcs	.+2      	; 0xaec <__utoa_common+0x20>
+ aea:	a9 5d       	subi	r26, 0xD9	; 217
+ aec:	a1 93       	st	Z+, r26
+ aee:	00 97       	sbiw	r24, 0x00	; 0
+ af0:	79 f7       	brne	.-34     	; 0xad0 <__utoa_common+0x4>
+ af2:	b1 11       	cpse	r27, r1
+ af4:	b1 93       	st	Z+, r27
+ af6:	11 92       	st	Z+, r1
+ af8:	cb 01       	movw	r24, r22
+ afa:	0c 94 7f 05 	jmp	0xafe	; 0xafe <strrev>
+
+00000afe <strrev>:
+ afe:	dc 01       	movw	r26, r24
+ b00:	fc 01       	movw	r30, r24
+ b02:	67 2f       	mov	r22, r23
+ b04:	71 91       	ld	r23, Z+
+ b06:	77 23       	and	r23, r23
+ b08:	e1 f7       	brne	.-8      	; 0xb02 <strrev+0x4>
+ b0a:	32 97       	sbiw	r30, 0x02	; 2
+ b0c:	04 c0       	rjmp	.+8      	; 0xb16 <strrev+0x18>
+ b0e:	7c 91       	ld	r23, X
+ b10:	6d 93       	st	X+, r22
+ b12:	70 83       	st	Z, r23
+ b14:	62 91       	ld	r22, -Z
+ b16:	ae 17       	cp	r26, r30
+ b18:	bf 07       	cpc	r27, r31
+ b1a:	c8 f3       	brcs	.-14     	; 0xb0e <strrev+0x10>
+ b1c:	08 95       	ret
+
+00000b1e <_exit>:
+ b1e:	f8 94       	cli
+
+00000b20 <__stop_program>:
+ b20:	ff cf       	rjmp	.-2      	; 0xb20 <__stop_program>
