@@ -1,0 +1,2532 @@
+
+SPI_GLCD_Controller.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000008a  00800100  00001692  00001726  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00001692  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          0000040a  0080018a  0080018a  000017b0  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000017b0  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000017e0  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000128  00000000  00000000  00001820  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00002476  00000000  00000000  00001948  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000597  00000000  00000000  00003dbe  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000818  00000000  00000000  00004355  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  0000046c  00000000  00000000  00004b70  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000004fd  00000000  00000000  00004fdc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000231b  00000000  00000000  000054d9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000001c8  00000000  00000000  000077f4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+       0:	0c 94 48 05 	jmp	0xa90	; 0xa90 <__ctors_end>
+       4:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+       8:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+       c:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      10:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      14:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      18:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      1c:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      20:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      24:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      28:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      2c:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      30:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      34:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      38:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      3c:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      40:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      44:	0c 94 7f 07 	jmp	0xefe	; 0xefe <__vector_17>
+      48:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      4c:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      50:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      54:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      58:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      5c:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      60:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      64:	0c 94 65 05 	jmp	0xaca	; 0xaca <__bad_interrupt>
+      68:	c8 07       	cpc	r28, r24
+      6a:	56 08       	sbc	r5, r6
+      6c:	56 08       	sbc	r5, r6
+      6e:	56 08       	sbc	r5, r6
+      70:	b4 07       	cpc	r27, r20
+      72:	b9 07       	cpc	r27, r25
+      74:	be 07       	cpc	r27, r30
+      76:	a0 07       	cpc	r26, r16
+      78:	c3 07       	cpc	r28, r19
+      7a:	56 08       	sbc	r5, r6
+      7c:	56 08       	sbc	r5, r6
+      7e:	56 08       	sbc	r5, r6
+      80:	a5 07       	cpc	r26, r21
+      82:	56 08       	sbc	r5, r6
+      84:	56 08       	sbc	r5, r6
+      86:	af 07       	cpc	r26, r31
+      88:	56 08       	sbc	r5, r6
+      8a:	56 08       	sbc	r5, r6
+      8c:	aa 07       	cpc	r26, r26
+      8e:	2f 08       	sbc	r2, r15
+      90:	54 08       	sbc	r5, r4
+      92:	2b 08       	sbc	r2, r11
+      94:	27 08       	sbc	r2, r7
+      96:	39 08       	sbc	r3, r9
+      98:	40 08       	sbc	r4, r0
+      9a:	47 08       	sbc	r4, r7
+      9c:	0b 08       	sbc	r0, r11
+      9e:	4e 08       	sbc	r4, r14
+      a0:	54 08       	sbc	r5, r4
+      a2:	54 08       	sbc	r5, r4
+      a4:	54 08       	sbc	r5, r4
+      a6:	12 08       	sbc	r1, r2
+      a8:	54 08       	sbc	r5, r4
+      aa:	54 08       	sbc	r5, r4
+      ac:	20 08       	sbc	r2, r0
+      ae:	54 08       	sbc	r5, r4
+      b0:	54 08       	sbc	r5, r4
+      b2:	19 08       	sbc	r1, r9
+
+000000b4 <__trampolines_end>:
+	...
+      e4:	06 00       	.word	0x0006	; ????
+	...
+      f2:	00 00       	nop
+      f4:	0f 00       	.word	0x000f	; ????
+	...
+     102:	00 00       	nop
+     104:	09 fc       	.word	0xfc09	; ????
+	...
+     112:	00 00       	nop
+     114:	0b fe       	.word	0xfe0b	; ????
+	...
+     122:	00 00       	nop
+     124:	0d ff       	.word	0xff0d	; ????
+	...
+     132:	00 00       	nop
+     134:	0c ff       	.word	0xff0c	; ????
+	...
+     142:	00 00       	nop
+     144:	1c 7f       	andi	r17, 0xFC	; 252
+     146:	80 00       	.word	0x0080	; ????
+	...
+     154:	1e 7f       	andi	r17, 0xFE	; 254
+     156:	c0 00       	.word	0x00c0	; ????
+	...
+     164:	3e 3f       	cpi	r19, 0xFE	; 254
+     166:	e0 00       	.word	0x00e0	; ????
+	...
+     174:	3f 1f       	adc	r19, r31
+     176:	f0 00       	.word	0x00f0	; ????
+	...
+     184:	3f 1f       	adc	r19, r31
+     186:	ff 00       	.word	0x00ff	; ????
+	...
+     194:	1f 9f       	mul	r17, r31
+     196:	ff e0       	ldi	r31, 0x0F	; 15
+	...
+     1a4:	1f 9f       	mul	r17, r31
+     1a6:	ff f0       	brie	.+62     	; 0x1e6 <__trampolines_end+0x132>
+	...
+     1b4:	1f ff       	.word	0xff1f	; ????
+     1b6:	ff f8       	.word	0xf8ff	; ????
+	...
+     1c4:	0f ff       	.word	0xff0f	; ????
+     1c6:	ff f8       	.word	0xf8ff	; ????
+	...
+     1d4:	0f ff       	.word	0xff0f	; ????
+     1d6:	ff f0       	brie	.+62     	; 0x216 <__trampolines_end+0x162>
+	...
+     1e4:	07 f1       	brie	.+64     	; 0x226 <__trampolines_end+0x172>
+     1e6:	ff e0       	ldi	r31, 0x0F	; 15
+	...
+     1f4:	07 e0       	ldi	r16, 0x07	; 7
+     1f6:	ff c0       	rjmp	.+510    	; 0x3f6 <__trampolines_end+0x342>
+	...
+     204:	07 e0       	ldi	r16, 0x07	; 7
+     206:	ff 80       	ldd	r15, Y+7	; 0x07
+	...
+     214:	07 f0       	brie	.+0      	; 0x216 <__trampolines_end+0x162>
+     216:	ff 00       	.word	0x00ff	; ????
+	...
+     224:	07 fb       	bst	r16, 7
+     226:	fe 00       	.word	0x00fe	; ????
+	...
+     234:	07 ff       	sbrs	r16, 7
+     236:	f8 00       	.word	0x00f8	; ????
+	...
+     244:	0f ff       	.word	0xff0f	; ????
+     246:	f0 00       	.word	0x00f0	; ????
+	...
+     254:	0f ff       	.word	0xff0f	; ????
+     256:	e0 00       	.word	0x00e0	; ????
+	...
+     264:	0f ff       	.word	0xff0f	; ????
+     266:	80 00       	.word	0x0080	; ????
+	...
+     274:	0f fe       	.word	0xfe0f	; ????
+	...
+     282:	00 00       	nop
+     284:	0f fc       	.word	0xfc0f	; ????
+	...
+     292:	00 00       	nop
+     294:	0f f0       	brie	.+2      	; 0x298 <__trampolines_end+0x1e4>
+	...
+     2a2:	00 00       	nop
+     2a4:	0f c0       	rjmp	.+30     	; 0x2c4 <__trampolines_end+0x210>
+	...
+     2b2:	00 00       	nop
+     2b4:	0e 00       	.word	0x000e	; ????
+	...
+     2d6:	00 3f       	cpi	r16, 0xF0	; 240
+     2d8:	ff ff       	.word	0xffff	; ????
+     2da:	ff ff       	.word	0xffff	; ????
+     2dc:	ff ff       	.word	0xffff	; ????
+     2de:	ff ff       	.word	0xffff	; ????
+     2e0:	ff ff       	.word	0xffff	; ????
+     2e2:	fc 00       	.word	0x00fc	; ????
+     2e4:	00 00       	nop
+     2e6:	00 7f       	andi	r16, 0xF0	; 240
+     2e8:	ff ff       	.word	0xffff	; ????
+     2ea:	ff ff       	.word	0xffff	; ????
+     2ec:	ff ff       	.word	0xffff	; ????
+     2ee:	ff ff       	.word	0xffff	; ????
+     2f0:	ff ff       	.word	0xffff	; ????
+     2f2:	fe 00       	.word	0x00fe	; ????
+     2f4:	00 38       	cpi	r16, 0x80	; 128
+     2f6:	00 e0       	ldi	r16, 0x00	; 0
+	...
+     300:	00 00       	nop
+     302:	07 00       	.word	0x0007	; ????
+     304:	00 78       	andi	r16, 0x80	; 128
+     306:	00 c0       	rjmp	.+0      	; 0x308 <__trampolines_end+0x254>
+	...
+     310:	00 00       	nop
+     312:	03 00       	.word	0x0003	; ????
+     314:	00 c6       	rjmp	.+3072   	; 0xf16 <__vector_17+0x18>
+     316:	01 80       	ldd	r0, Z+1	; 0x01
+	...
+     320:	00 00       	nop
+     322:	01 80       	ldd	r0, Z+1	; 0x01
+     324:	01 02       	muls	r16, r17
+     326:	01 80       	ldd	r0, Z+1	; 0x01
+	...
+     330:	00 00       	nop
+     332:	01 80       	ldd	r0, Z+1	; 0x01
+     334:	01 01       	movw	r0, r2
+     336:	01 80       	ldd	r0, Z+1	; 0x01
+	...
+     340:	00 00       	nop
+     342:	01 80       	ldd	r0, Z+1	; 0x01
+     344:	01 01       	movw	r0, r2
+     346:	01 80       	ldd	r0, Z+1	; 0x01
+	...
+     350:	00 00       	nop
+     352:	01 80       	ldd	r0, Z+1	; 0x01
+     354:	01 01       	movw	r0, r2
+     356:	01 80       	ldd	r0, Z+1	; 0x01
+	...
+     360:	00 00       	nop
+     362:	01 80       	ldd	r0, Z+1	; 0x01
+     364:	01 01       	movw	r0, r2
+     366:	01 80       	ldd	r0, Z+1	; 0x01
+	...
+     370:	00 00       	nop
+     372:	01 80       	ldd	r0, Z+1	; 0x01
+     374:	01 01       	movw	r0, r2
+     376:	01 80       	ldd	r0, Z+1	; 0x01
+	...
+     380:	00 00       	nop
+     382:	01 80       	ldd	r0, Z+1	; 0x01
+     384:	01 01       	movw	r0, r2
+     386:	01 80       	ldd	r0, Z+1	; 0x01
+	...
+     390:	00 00       	nop
+     392:	01 80       	ldd	r0, Z+1	; 0x01
+     394:	02 01       	movw	r0, r4
+     396:	01 80       	ldd	r0, Z+1	; 0x01
+	...
+     3a0:	00 00       	nop
+     3a2:	01 80       	ldd	r0, Z+1	; 0x01
+     3a4:	02 00       	.word	0x0002	; ????
+     3a6:	81 80       	ldd	r8, Z+1	; 0x01
+	...
+     3b0:	00 00       	nop
+     3b2:	01 80       	ldd	r0, Z+1	; 0x01
+     3b4:	04 00       	.word	0x0004	; ????
+     3b6:	c1 80       	ldd	r12, Z+1	; 0x01
+	...
+     3c0:	00 00       	nop
+     3c2:	01 80       	ldd	r0, Z+1	; 0x01
+     3c4:	08 00       	.word	0x0008	; ????
+     3c6:	61 80       	ldd	r6, Z+1	; 0x01
+	...
+     3d0:	00 00       	nop
+     3d2:	01 80       	ldd	r0, Z+1	; 0x01
+     3d4:	10 00       	.word	0x0010	; ????
+     3d6:	31 80       	ldd	r3, Z+1	; 0x01
+	...
+     3e0:	00 00       	nop
+     3e2:	01 80       	ldd	r0, Z+1	; 0x01
+     3e4:	18 00       	.word	0x0018	; ????
+     3e6:	31 80       	ldd	r3, Z+1	; 0x01
+	...
+     3f0:	00 00       	nop
+     3f2:	01 80       	ldd	r0, Z+1	; 0x01
+     3f4:	0f ff       	.word	0xff0f	; ????
+     3f6:	c1 80       	ldd	r12, Z+1	; 0x01
+	...
+     400:	00 00       	nop
+     402:	01 80       	ldd	r0, Z+1	; 0x01
+     404:	00 78       	andi	r16, 0x80	; 128
+     406:	01 80       	ldd	r0, Z+1	; 0x01
+	...
+     410:	00 00       	nop
+     412:	01 80       	ldd	r0, Z+1	; 0x01
+     414:	00 30       	cpi	r16, 0x00	; 0
+     416:	01 c0       	rjmp	.+2      	; 0x41a <__trampolines_end+0x366>
+	...
+     420:	00 00       	nop
+     422:	03 00       	.word	0x0003	; ????
+     424:	00 00       	nop
+     426:	00 c0       	rjmp	.+0      	; 0x428 <__trampolines_end+0x374>
+	...
+     430:	00 00       	nop
+     432:	03 00       	.word	0x0003	; ????
+     434:	00 00       	nop
+     436:	00 ff       	sbrs	r16, 0
+     438:	ff ff       	.word	0xffff	; ????
+     43a:	ff ff       	.word	0xffff	; ????
+     43c:	ff ff       	.word	0xffff	; ????
+     43e:	ff ff       	.word	0xffff	; ????
+     440:	ff ff       	.word	0xffff	; ????
+     442:	fe 00       	.word	0x00fe	; ????
+     444:	00 00       	nop
+     446:	00 3f       	cpi	r16, 0xF0	; 240
+     448:	ff ff       	.word	0xffff	; ????
+     44a:	ff ff       	.word	0xffff	; ????
+     44c:	ff ff       	.word	0xffff	; ????
+     44e:	ff ff       	.word	0xffff	; ????
+     450:	ff ff       	.word	0xffff	; ????
+     452:	fc 00       	.word	0x00fc	; ????
+	...
+
+000004b4 <ABELL1>:
+	...
+     560:	00 00 0e 00 00 00 00 00 00 00 00 00 00 00 00 00     ................
+     570:	00 00 1f 00 00 00 00 00 00 00 00 00 00 00 00 00     ................
+     580:	00 00 3f 00 00 00 00 00 00 00 00 00 00 00 00 00     ..?.............
+     590:	00 00 3f 00 00 00 00 00 00 00 00 00 00 00 00 00     ..?.............
+     5a0:	00 03 ff 00 00 00 00 00 00 00 00 00 00 00 00 00     ................
+     5b0:	00 07 3e 00 00 00 00 00 00 00 00 00 00 00 00 00     ..>.............
+     5c0:	00 0c 0e 00 00 00 00 00 00 00 00 00 00 00 00 00     ................
+     5d0:	00 18 06 00 00 00 00 00 00 00 00 00 00 00 00 00     ................
+     5e0:	00 30 03 00 00 00 00 07 f0 00 00 00 00 00 00 00     .0..............
+     5f0:	00 20 03 00 00 00 00 0f f8 00 00 00 00 00 00 00     . ..............
+     600:	00 40 03 00 00 00 00 0f f8 00 00 00 00 00 00 00     .@..............
+     610:	00 40 01 00 00 00 00 0f f8 0f fe 00 00 1c 1c 00     .@..............
+     620:	00 80 01 80 00 00 00 0f fc 0f ff 80 00 fc fc 00     ................
+     630:	01 00 01 00 00 00 00 1f fc 0f ff 80 01 f9 f8 00     ................
+     640:	03 00 01 00 00 00 00 1f fc 0f cf 80 01 f9 f8 0e     ................
+     650:	06 00 01 00 00 00 00 3f fc 0f 8f 80 01 f9 f8 6c     .......?.......l
+     660:	1c 00 03 00 00 00 00 7f f8 0f 9f 03 c1 f1 f0 50     ...............P
+     670:	70 00 02 00 00 00 00 ff f8 0f 9f 0f e1 f1 f0 71     p..............q
+     680:	e0 00 02 00 00 00 00 ff f8 0f be 1f f1 f1 f0 53     ...............S
+     690:	e0 00 06 00 00 00 01 ff f8 1f fc 3c f1 e1 e0 03     ...........<....
+     6a0:	f8 00 04 00 00 00 03 ff f8 1f fe 3c f1 e1 e0 03     ...........<....
+     6b0:	fe 00 0c 00 00 00 07 ef f8 1f 7f 7f f3 e3 e0 01     ................
+     6c0:	ff 80 0c 00 00 00 07 ef f8 3e 3f 7f f3 e3 e0 00     .........>?.....
+     6d0:	ff c0 08 00 00 00 0f cf f8 3e 3f f8 03 c3 c0 00     .........>?.....
+     6e0:	ff f0 08 00 00 00 1f 8f f8 3e 3e f8 07 c7 c0 00     .........>>.....
+     6f0:	7f f8 08 00 00 00 1f 8f f0 7e 7e f8 07 c7 c0 00     .........~~.....
+     700:	3f fc 08 00 00 00 3f 1f f0 7e 7c fc c7 c7 c0 00     ?.....?..~|.....
+     710:	0f ff 08 00 00 00 7e 1f f0 ff fc 7f cf cf c0 00     ......~.........
+     720:	07 ff 88 00 00 00 fe 1f f1 ff f0 7f 9f df c0 00     ................
+     730:	21 ff ec 00 00 00 fc 1f f0 ff c0 3e 1f 9f 80 00     !..........>....
+     740:	38 ff fc 80 00 01 f8 1f f0 00 00 00 00 00 00 00     8...............
+     750:	0c 3f fc 80 00 07 f8 1f f0 00 00 00 00 00 00 00     .?..............
+     760:	07 1f fc 80 00 3f ff ff f0 00 00 00 00 00 00 18     .....?..........
+     770:	0f c7 fc c0 00 7f ff ff f0 00 00 00 00 00 00 18     ................
+     780:	0e 01 fc e0 00 ff ff ff f0 00 00 00 00 00 01 18     ................
+     790:	04 00 fc b0 01 ff ff ff f0 00 08 00 00 00 01 00     ................
+     7a0:	00 00 01 20 03 ff ff ff f0 00 18 00 00 00 03 00     ... ............
+     7b0:	00 00 00 00 03 ff ff ff f0 3b 9e 68 fe e3 e7 98     .........;.h....
+     7c0:	f0 00 00 00 03 ff ff ff f0 3b 98 4c 66 62 63 18     .........;.Lfbc.
+     7d0:	98 00 00 00 00 ff ff 1f f0 3b 98 cc 66 62 63 19     .........;..fbc.
+     7e0:	90 00 00 00 01 fe 00 1f f0 3b 98 ce 66 60 63 19     .........;..f`c.
+     7f0:	80 00 00 00 03 fc 00 1f f0 3b 98 ce 66 61 63 19     .........;..fac.
+     800:	80 00 00 00 07 f8 00 1f f8 3b 98 ce 66 63 63 19     .........;..fcc.
+     810:	80 00 00 00 07 f8 00 1f f8 3b 98 cc 66 66 63 19     .........;..ffc.
+     820:	c3 00 00 00 0f f0 00 1f f8 1b 9c 4c 66 67 63 18     ...........Lfgc.
+     830:	c3 00 00 00 1f e0 00 1f f8 19 8c 38 e6 63 73 98     ...........8.cs.
+     840:	61 00 00 00 3f c0 00 1f e0 00 00 00 00 00 00 00     a...?...........
+     850:	00 00 00 00 3f 00 00 0f 80 00 00 00 00 00 00 00     ....?...........
+     860:	00 00 00 00 18 00 00 00 00 00 00 00 00 00 00 00     ................
+	...
+
+000008b4 <font5x7>:
+     8b4:	00 00 00 00 00 00 00 5f 00 00 00 07 00 07 00 14     ......._........
+     8c4:	7f 14 7f 14 24 2a 7f 2a 12 23 13 08 64 62 36 49     ....$*.*.#..db6I
+     8d4:	55 22 50 00 05 03 00 00 00 1c 22 41 00 00 41 22     U"P......."A..A"
+     8e4:	1c 00 08 2a 1c 2a 08 08 08 3e 08 08 00 50 30 00     ...*.*...>...P0.
+     8f4:	00 08 08 08 08 08 00 60 60 00 00 20 10 08 04 02     .......``.. ....
+     904:	3e 51 49 45 3e 00 42 7f 40 00 42 61 51 49 46 21     >QIE>.B.@.BaQIF!
+     914:	41 45 4b 31 18 14 12 7f 10 27 45 45 45 39 3c 4a     AEK1.....'EEE9<J
+     924:	49 49 30 01 71 09 05 03 36 49 49 49 36 06 49 49     II0.q...6III6.II
+     934:	29 1e 00 36 36 00 00 00 56 36 00 00 00 08 14 22     )..66...V6....."
+     944:	41 14 14 14 14 14 41 22 14 08 00 02 01 51 09 06     A.....A".....Q..
+     954:	32 49 79 41 3e 7e 11 11 11 7e 7f 49 49 49 36 3e     2IyA>~...~.III6>
+     964:	41 41 41 22 7f 41 41 22 1c 7f 49 49 49 41 7f 09     AAA".AA"..IIIA..
+     974:	09 01 01 3e 41 41 51 32 7f 08 08 08 7f 00 41 7f     ...>AAQ2......A.
+     984:	41 00 20 40 41 3f 01 7f 08 14 22 41 7f 40 40 40     A. @A?...."A.@@@
+     994:	40 7f 02 04 02 7f 7f 04 08 10 7f 3e 41 41 41 3e     @..........>AAA>
+     9a4:	7f 09 09 09 06 3e 41 51 21 5e 7f 09 19 29 46 46     .....>AQ!^...)FF
+     9b4:	49 49 49 31 01 01 7f 01 01 3f 40 40 40 3f 1f 20     III1.....?@@@?. 
+     9c4:	40 20 1f 7f 20 18 20 7f 63 14 08 14 63 03 04 78     @ .. . .c...c..x
+     9d4:	04 03 61 51 49 45 43 00 00 7f 41 41 02 04 08 10     ..aQIEC...AA....
+     9e4:	20 41 41 7f 00 00 04 02 01 02 04 40 40 40 40 40      AA........@@@@@
+     9f4:	00 01 02 04 00 20 54 54 54 78 7f 48 44 44 38 38     ..... TTTx.HDD88
+     a04:	44 44 44 20 38 44 44 48 7f 38 54 54 54 18 08 7e     DDD 8DDH.8TTT..~
+     a14:	09 01 02 08 54 54 54 3c 7f 08 04 04 78 00 44 7d     ....TTT<....x.D}
+     a24:	40 00 20 40 44 3d 00 00 7f 10 28 44 00 41 7f 40     @. @D=....(D.A.@
+     a34:	00 7c 04 18 04 78 7c 08 04 04 78 38 44 44 44 38     .|...x|...x8DDD8
+     a44:	7c 14 14 14 08 08 14 14 18 7c 7c 08 04 04 08 48     |........||....H
+     a54:	54 54 54 20 04 3f 44 40 20 3c 40 40 20 7c 1c 20     TTT .?D@ <@@ |. 
+     a64:	40 20 1c 3c 40 30 40 3c 44 28 10 28 44 0c 50 50     @ .<@0@<D(.(D.PP
+     a74:	50 3c 44 64 54 4c 44 00 08 36 41 00 00 00 7f 00     P<DdTLD..6A.....
+     a84:	00 00 41 36 08 00 00 30 08 10 0c 00                 ..A6...0....
+
+00000a90 <__ctors_end>:
+     a90:	11 24       	eor	r1, r1
+     a92:	1f be       	out	0x3f, r1	; 63
+     a94:	cf ef       	ldi	r28, 0xFF	; 255
+     a96:	d8 e0       	ldi	r29, 0x08	; 8
+     a98:	de bf       	out	0x3e, r29	; 62
+     a9a:	cd bf       	out	0x3d, r28	; 61
+
+00000a9c <__do_copy_data>:
+     a9c:	11 e0       	ldi	r17, 0x01	; 1
+     a9e:	a0 e0       	ldi	r26, 0x00	; 0
+     aa0:	b1 e0       	ldi	r27, 0x01	; 1
+     aa2:	e2 e9       	ldi	r30, 0x92	; 146
+     aa4:	f6 e1       	ldi	r31, 0x16	; 22
+     aa6:	02 c0       	rjmp	.+4      	; 0xaac <__do_copy_data+0x10>
+     aa8:	05 90       	lpm	r0, Z+
+     aaa:	0d 92       	st	X+, r0
+     aac:	aa 38       	cpi	r26, 0x8A	; 138
+     aae:	b1 07       	cpc	r27, r17
+     ab0:	d9 f7       	brne	.-10     	; 0xaa8 <__do_copy_data+0xc>
+
+00000ab2 <__do_clear_bss>:
+     ab2:	25 e0       	ldi	r18, 0x05	; 5
+     ab4:	aa e8       	ldi	r26, 0x8A	; 138
+     ab6:	b1 e0       	ldi	r27, 0x01	; 1
+     ab8:	01 c0       	rjmp	.+2      	; 0xabc <.do_clear_bss_start>
+
+00000aba <.do_clear_bss_loop>:
+     aba:	1d 92       	st	X+, r1
+
+00000abc <.do_clear_bss_start>:
+     abc:	a4 39       	cpi	r26, 0x94	; 148
+     abe:	b2 07       	cpc	r27, r18
+     ac0:	e1 f7       	brne	.-8      	; 0xaba <.do_clear_bss_loop>
+     ac2:	0e 94 54 07 	call	0xea8	; 0xea8 <main>
+     ac6:	0c 94 47 0b 	jmp	0x168e	; 0x168e <_exit>
+
+00000aca <__bad_interrupt>:
+     aca:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000ace <SPI_Init>:
+void SPI_Transmit(char);						/* SPI transmit data function */
+char SPI_Receive();								/* SPI Receive data function */
+
+void SPI_Init()									/* SPI Initialize function */
+{
+	DDRB &=~(1<<MOSI);
+     ace:	23 98       	cbi	0x04, 3	; 4
+	DDRB &=~(1<<SCK);
+     ad0:	25 98       	cbi	0x04, 5	; 4
+	DDRB &=~(1<<SS);		/* Make MOSI, SCK, SS pin direction as input pins */
+     ad2:	22 98       	cbi	0x04, 2	; 4
+	
+	DDRB |=(1<<MISO);							/* Make MISO pin as output pin */
+     ad4:	24 9a       	sbi	0x04, 4	; 4
+	SPCR = (1<<SPE);	/* Enable SPI in slave mode*/
+     ad6:	80 e4       	ldi	r24, 0x40	; 64
+     ad8:	8c bd       	out	0x2c, r24	; 44
+	SPSR |=(1<<SPIF);
+     ada:	8d b5       	in	r24, 0x2d	; 45
+     adc:	80 68       	ori	r24, 0x80	; 128
+     ade:	8d bd       	out	0x2d, r24	; 45
+	sei();  //Enable global interrupts
+     ae0:	78 94       	sei
+	SPCR |=(1<<SPIE);  //turn on interrupts 
+     ae2:	8c b5       	in	r24, 0x2c	; 44
+     ae4:	80 68       	ori	r24, 0x80	; 128
+     ae6:	8c bd       	out	0x2c, r24	; 44
+     ae8:	08 95       	ret
+
+00000aea <clock_display>:
+void pop_up_window();
+void draw_pointer(unsigned char draw);
+void draw_cursor(unsigned char x,unsigned char y, unsigned char color);
+
+void clock_display()
+{
+     aea:	cf 93       	push	r28
+     aec:	df 93       	push	r29
+     aee:	00 d0       	rcall	.+0      	; 0xaf0 <clock_display+0x6>
+     af0:	00 d0       	rcall	.+0      	; 0xaf2 <clock_display+0x8>
+     af2:	00 d0       	rcall	.+0      	; 0xaf4 <clock_display+0xa>
+     af4:	cd b7       	in	r28, 0x3d	; 61
+     af6:	de b7       	in	r29, 0x3e	; 62
+	char h[2],m[2],s[2],ampm[2];
+	h[0]=0;m[0]=0;s[0]=0;ampm[0]=0;
+     af8:	19 82       	std	Y+1, r1	; 0x01
+     afa:	1b 82       	std	Y+3, r1	; 0x03
+     afc:	1d 82       	std	Y+5, r1	; 0x05
+	
+	 itoa(hour,h,10); itoa(min,m,10); itoa(sec,s,10);
+     afe:	80 91 8d 01 	lds	r24, 0x018D
+    } else if (__radix < 2 || __radix > 36) {
+	*__s = 0;
+	return __s;
+    } else {
+	extern char *__itoa_ncheck (int, char *, unsigned char);
+	return __itoa_ncheck (__val, __s, __radix);
+     b02:	4a e0       	ldi	r20, 0x0A	; 10
+     b04:	be 01       	movw	r22, r28
+     b06:	6f 5f       	subi	r22, 0xFF	; 255
+     b08:	7f 4f       	sbci	r23, 0xFF	; 255
+     b0a:	90 e0       	ldi	r25, 0x00	; 0
+     b0c:	0e 94 12 0b 	call	0x1624	; 0x1624 <__itoa_ncheck>
+     b10:	80 91 8c 01 	lds	r24, 0x018C
+     b14:	4a e0       	ldi	r20, 0x0A	; 10
+     b16:	be 01       	movw	r22, r28
+     b18:	6d 5f       	subi	r22, 0xFD	; 253
+     b1a:	7f 4f       	sbci	r23, 0xFF	; 255
+     b1c:	90 e0       	ldi	r25, 0x00	; 0
+     b1e:	0e 94 12 0b 	call	0x1624	; 0x1624 <__itoa_ncheck>
+     b22:	80 91 8b 01 	lds	r24, 0x018B
+     b26:	4a e0       	ldi	r20, 0x0A	; 10
+     b28:	be 01       	movw	r22, r28
+     b2a:	6b 5f       	subi	r22, 0xFB	; 251
+     b2c:	7f 4f       	sbci	r23, 0xFF	; 255
+     b2e:	90 e0       	ldi	r25, 0x00	; 0
+     b30:	0e 94 12 0b 	call	0x1624	; 0x1624 <__itoa_ncheck>
+	 
+	GLCD_ScreenGraphics(abell);
+     b34:	84 eb       	ldi	r24, 0xB4	; 180
+     b36:	90 e0       	ldi	r25, 0x00	; 0
+     b38:	0e 94 13 09 	call	0x1226	; 0x1226 <GLCD_ScreenGraphics>
+	GLCD_Draw_String(5,18,"TIME NOW:",BLACK);
+     b3c:	2f ef       	ldi	r18, 0xFF	; 255
+     b3e:	40 e4       	ldi	r20, 0x40	; 64
+     b40:	51 e0       	ldi	r21, 0x01	; 1
+     b42:	62 e1       	ldi	r22, 0x12	; 18
+     b44:	85 e0       	ldi	r24, 0x05	; 5
+     b46:	0e 94 e6 09 	call	0x13cc	; 0x13cc <GLCD_Draw_String>
+	if (hour<10) {GLCD_Draw_String(5,43,h,BLACK);	} 
+     b4a:	80 91 8d 01 	lds	r24, 0x018D
+     b4e:	8a 30       	cpi	r24, 0x0A	; 10
+     b50:	48 f4       	brcc	.+18     	; 0xb64 <clock_display+0x7a>
+     b52:	2f ef       	ldi	r18, 0xFF	; 255
+     b54:	ae 01       	movw	r20, r28
+     b56:	4f 5f       	subi	r20, 0xFF	; 255
+     b58:	5f 4f       	sbci	r21, 0xFF	; 255
+     b5a:	6b e2       	ldi	r22, 0x2B	; 43
+     b5c:	85 e0       	ldi	r24, 0x05	; 5
+     b5e:	0e 94 e6 09 	call	0x13cc	; 0x13cc <GLCD_Draw_String>
+     b62:	08 c0       	rjmp	.+16     	; 0xb74 <clock_display+0x8a>
+	else{ GLCD_Draw_String(4,43,h,BLACK);}
+     b64:	2f ef       	ldi	r18, 0xFF	; 255
+     b66:	ae 01       	movw	r20, r28
+     b68:	4f 5f       	subi	r20, 0xFF	; 255
+     b6a:	5f 4f       	sbci	r21, 0xFF	; 255
+     b6c:	6b e2       	ldi	r22, 0x2B	; 43
+     b6e:	84 e0       	ldi	r24, 0x04	; 4
+     b70:	0e 94 e6 09 	call	0x13cc	; 0x13cc <GLCD_Draw_String>
+	GLCD_Draw_String(6,43,":",BLACK);
+     b74:	2f ef       	ldi	r18, 0xFF	; 255
+     b76:	48 e4       	ldi	r20, 0x48	; 72
+     b78:	51 e0       	ldi	r21, 0x01	; 1
+     b7a:	6b e2       	ldi	r22, 0x2B	; 43
+     b7c:	86 e0       	ldi	r24, 0x06	; 6
+     b7e:	0e 94 e6 09 	call	0x13cc	; 0x13cc <GLCD_Draw_String>
+	if (min<10) {GLCD_Draw_String(7,43,"0",BLACK);GLCD_Draw_String(8,43,m,BLACK);	}
+     b82:	80 91 8c 01 	lds	r24, 0x018C
+     b86:	8a 30       	cpi	r24, 0x0A	; 10
+     b88:	80 f4       	brcc	.+32     	; 0xbaa <clock_display+0xc0>
+     b8a:	2f ef       	ldi	r18, 0xFF	; 255
+     b8c:	4a e4       	ldi	r20, 0x4A	; 74
+     b8e:	51 e0       	ldi	r21, 0x01	; 1
+     b90:	6b e2       	ldi	r22, 0x2B	; 43
+     b92:	87 e0       	ldi	r24, 0x07	; 7
+     b94:	0e 94 e6 09 	call	0x13cc	; 0x13cc <GLCD_Draw_String>
+     b98:	2f ef       	ldi	r18, 0xFF	; 255
+     b9a:	ae 01       	movw	r20, r28
+     b9c:	4d 5f       	subi	r20, 0xFD	; 253
+     b9e:	5f 4f       	sbci	r21, 0xFF	; 255
+     ba0:	6b e2       	ldi	r22, 0x2B	; 43
+     ba2:	88 e0       	ldi	r24, 0x08	; 8
+     ba4:	0e 94 e6 09 	call	0x13cc	; 0x13cc <GLCD_Draw_String>
+     ba8:	08 c0       	rjmp	.+16     	; 0xbba <clock_display+0xd0>
+	else{ GLCD_Draw_String(7,43,m,BLACK);}
+     baa:	2f ef       	ldi	r18, 0xFF	; 255
+     bac:	ae 01       	movw	r20, r28
+     bae:	4d 5f       	subi	r20, 0xFD	; 253
+     bb0:	5f 4f       	sbci	r21, 0xFF	; 255
+     bb2:	6b e2       	ldi	r22, 0x2B	; 43
+     bb4:	87 e0       	ldi	r24, 0x07	; 7
+     bb6:	0e 94 e6 09 	call	0x13cc	; 0x13cc <GLCD_Draw_String>
+	GLCD_Draw_String(9,43,":",BLACK);
+     bba:	2f ef       	ldi	r18, 0xFF	; 255
+     bbc:	48 e4       	ldi	r20, 0x48	; 72
+     bbe:	51 e0       	ldi	r21, 0x01	; 1
+     bc0:	6b e2       	ldi	r22, 0x2B	; 43
+     bc2:	89 e0       	ldi	r24, 0x09	; 9
+     bc4:	0e 94 e6 09 	call	0x13cc	; 0x13cc <GLCD_Draw_String>
+	if (sec<10) {GLCD_Draw_String(10,43,"0",BLACK);GLCD_Draw_String(11,43,s,BLACK);	}
+     bc8:	80 91 8b 01 	lds	r24, 0x018B
+     bcc:	8a 30       	cpi	r24, 0x0A	; 10
+     bce:	80 f4       	brcc	.+32     	; 0xbf0 <clock_display+0x106>
+     bd0:	2f ef       	ldi	r18, 0xFF	; 255
+     bd2:	4a e4       	ldi	r20, 0x4A	; 74
+     bd4:	51 e0       	ldi	r21, 0x01	; 1
+     bd6:	6b e2       	ldi	r22, 0x2B	; 43
+     bd8:	8a e0       	ldi	r24, 0x0A	; 10
+     bda:	0e 94 e6 09 	call	0x13cc	; 0x13cc <GLCD_Draw_String>
+     bde:	2f ef       	ldi	r18, 0xFF	; 255
+     be0:	ae 01       	movw	r20, r28
+     be2:	4b 5f       	subi	r20, 0xFB	; 251
+     be4:	5f 4f       	sbci	r21, 0xFF	; 255
+     be6:	6b e2       	ldi	r22, 0x2B	; 43
+     be8:	8b e0       	ldi	r24, 0x0B	; 11
+     bea:	0e 94 e6 09 	call	0x13cc	; 0x13cc <GLCD_Draw_String>
+     bee:	08 c0       	rjmp	.+16     	; 0xc00 <clock_display+0x116>
+	else{ GLCD_Draw_String(10,43,s,BLACK);}
+     bf0:	2f ef       	ldi	r18, 0xFF	; 255
+     bf2:	ae 01       	movw	r20, r28
+     bf4:	4b 5f       	subi	r20, 0xFB	; 251
+     bf6:	5f 4f       	sbci	r21, 0xFF	; 255
+     bf8:	6b e2       	ldi	r22, 0x2B	; 43
+     bfa:	8a e0       	ldi	r24, 0x0A	; 10
+     bfc:	0e 94 e6 09 	call	0x13cc	; 0x13cc <GLCD_Draw_String>
+	
+	if ( ampm ==0)
+	{GLCD_Draw_String(12,43,"AM",BLACK);} 
+	else
+	{GLCD_Draw_String(12,43,"PM",BLACK);}
+     c00:	2f ef       	ldi	r18, 0xFF	; 255
+     c02:	4c e4       	ldi	r20, 0x4C	; 76
+     c04:	51 e0       	ldi	r21, 0x01	; 1
+     c06:	6b e2       	ldi	r22, 0x2B	; 43
+     c08:	8c e0       	ldi	r24, 0x0C	; 12
+     c0a:	0e 94 e6 09 	call	0x13cc	; 0x13cc <GLCD_Draw_String>
+		
+}
+     c0e:	26 96       	adiw	r28, 0x06	; 6
+     c10:	0f b6       	in	r0, 0x3f	; 63
+     c12:	f8 94       	cli
+     c14:	de bf       	out	0x3e, r29	; 62
+     c16:	0f be       	out	0x3f, r0	; 63
+     c18:	cd bf       	out	0x3d, r28	; 61
+     c1a:	df 91       	pop	r29
+     c1c:	cf 91       	pop	r28
+     c1e:	08 95       	ret
+
+00000c20 <draw_splash>:
+
+void draw_splash()
+{
+	GLCD_ScreenGraphics(ABELL1);
+     c20:	84 eb       	ldi	r24, 0xB4	; 180
+     c22:	94 e0       	ldi	r25, 0x04	; 4
+     c24:	0e 94 13 09 	call	0x1226	; 0x1226 <GLCD_ScreenGraphics>
+     c28:	08 95       	ret
+
+00000c2a <draw_frame>:
+		}
+		draw_pointer(TRUE);
+}
+void draw_frame()
+{
+	GLCD_ClearBuffer(WHITE);
+     c2a:	80 e0       	ldi	r24, 0x00	; 0
+     c2c:	0e 94 0a 0a 	call	0x1414	; 0x1414 <GLCD_ClearBuffer>
+	GLCD_Draw_HorizLine(0,128,0,BLACK);
+     c30:	2f ef       	ldi	r18, 0xFF	; 255
+     c32:	40 e0       	ldi	r20, 0x00	; 0
+     c34:	60 e8       	ldi	r22, 0x80	; 128
+     c36:	80 e0       	ldi	r24, 0x00	; 0
+     c38:	0e 94 94 0a 	call	0x1528	; 0x1528 <GLCD_Draw_HorizLine>
+	GLCD_Draw_HorizLine(0,128,63,BLACK);
+     c3c:	2f ef       	ldi	r18, 0xFF	; 255
+     c3e:	4f e3       	ldi	r20, 0x3F	; 63
+     c40:	60 e8       	ldi	r22, 0x80	; 128
+     c42:	80 e0       	ldi	r24, 0x00	; 0
+     c44:	0e 94 94 0a 	call	0x1528	; 0x1528 <GLCD_Draw_HorizLine>
+	GLCD_Draw_VertcLine(0,0,64,BLACK);
+     c48:	2f ef       	ldi	r18, 0xFF	; 255
+     c4a:	40 e4       	ldi	r20, 0x40	; 64
+     c4c:	60 e0       	ldi	r22, 0x00	; 0
+     c4e:	80 e0       	ldi	r24, 0x00	; 0
+     c50:	0e 94 ad 0a 	call	0x155a	; 0x155a <GLCD_Draw_VertcLine>
+	GLCD_Draw_VertcLine(127,0,64,BLACK);
+     c54:	2f ef       	ldi	r18, 0xFF	; 255
+     c56:	40 e4       	ldi	r20, 0x40	; 64
+     c58:	60 e0       	ldi	r22, 0x00	; 0
+     c5a:	8f e7       	ldi	r24, 0x7F	; 127
+     c5c:	0e 94 ad 0a 	call	0x155a	; 0x155a <GLCD_Draw_VertcLine>
+	GLCD_Clear_Row(1,BLACK);
+     c60:	6f ef       	ldi	r22, 0xFF	; 255
+     c62:	81 e0       	ldi	r24, 0x01	; 1
+     c64:	0e 94 3f 0a 	call	0x147e	; 0x147e <GLCD_Clear_Row>
+     c68:	08 95       	ret
+
+00000c6a <draw_pointer>:
+}
+void draw_pointer(unsigned char draw)
+{
+		if(draw == TRUE){GLCD_Draw_Char(1 ,(pointer*10)+10,'>',BLACK);}
+     c6a:	8f 3f       	cpi	r24, 0xFF	; 255
+     c6c:	71 f4       	brne	.+28     	; 0xc8a <draw_pointer+0x20>
+     c6e:	60 91 90 01 	lds	r22, 0x0190
+     c72:	66 0f       	add	r22, r22
+     c74:	6e 5f       	subi	r22, 0xFE	; 254
+     c76:	86 2f       	mov	r24, r22
+     c78:	88 0f       	add	r24, r24
+     c7a:	88 0f       	add	r24, r24
+     c7c:	68 0f       	add	r22, r24
+     c7e:	2f ef       	ldi	r18, 0xFF	; 255
+     c80:	4e e3       	ldi	r20, 0x3E	; 62
+     c82:	81 e0       	ldi	r24, 0x01	; 1
+     c84:	0e 94 61 09 	call	0x12c2	; 0x12c2 <GLCD_Draw_Char>
+     c88:	08 95       	ret
+		else if(draw == FALSE){GLCD_Draw_Char(1,(pointer*10)+10,' ',BLACK);}
+     c8a:	81 11       	cpse	r24, r1
+     c8c:	0d c0       	rjmp	.+26     	; 0xca8 <draw_pointer+0x3e>
+     c8e:	60 91 90 01 	lds	r22, 0x0190
+     c92:	66 0f       	add	r22, r22
+     c94:	6e 5f       	subi	r22, 0xFE	; 254
+     c96:	86 2f       	mov	r24, r22
+     c98:	88 0f       	add	r24, r24
+     c9a:	88 0f       	add	r24, r24
+     c9c:	68 0f       	add	r22, r24
+     c9e:	2f ef       	ldi	r18, 0xFF	; 255
+     ca0:	40 e2       	ldi	r20, 0x20	; 32
+     ca2:	81 e0       	ldi	r24, 0x01	; 1
+     ca4:	0e 94 61 09 	call	0x12c2	; 0x12c2 <GLCD_Draw_Char>
+     ca8:	08 95       	ret
+
+00000caa <drawSchedule>:
+		default:
+		break;
+	}
+}
+void drawSchedule()
+{
+     caa:	ef 92       	push	r14
+     cac:	ff 92       	push	r15
+     cae:	0f 93       	push	r16
+     cb0:	1f 93       	push	r17
+     cb2:	cf 93       	push	r28
+	GLCD_Draw_String(2,1,"TIME SCHEDULE",WHITE);
+     cb4:	20 e0       	ldi	r18, 0x00	; 0
+     cb6:	4f e4       	ldi	r20, 0x4F	; 79
+     cb8:	51 e0       	ldi	r21, 0x01	; 1
+     cba:	61 e0       	ldi	r22, 0x01	; 1
+     cbc:	82 e0       	ldi	r24, 0x02	; 2
+     cbe:	0e 94 e6 09 	call	0x13cc	; 0x13cc <GLCD_Draw_String>
+	if (pointer < 6)
+     cc2:	80 91 90 01 	lds	r24, 0x0190
+     cc6:	86 30       	cpi	r24, 0x06	; 6
+     cc8:	18 f5       	brcc	.+70     	; 0xd10 <drawSchedule+0x66>
+     cca:	ca e0       	ldi	r28, 0x0A	; 10
+     ccc:	e1 2c       	mov	r14, r1
+     cce:	f1 2c       	mov	r15, r1
+	{
+		for (uint8_t row=0;row<6;row++)
+		{
+				//GLCD_Draw_String(2,10+(row*9),"00:00 AM",BLACK);
+				GLCD_Draw_Char(2,10+(row*9),scheduleTable[row][0],BLACK);//hour
+     cd0:	87 01       	movw	r16, r14
+     cd2:	00 0f       	add	r16, r16
+     cd4:	11 1f       	adc	r17, r17
+     cd6:	00 50       	subi	r16, 0x00	; 0
+     cd8:	1f 4f       	sbci	r17, 0xFF	; 255
+     cda:	f8 01       	movw	r30, r16
+     cdc:	40 81       	ld	r20, Z
+     cde:	2f ef       	ldi	r18, 0xFF	; 255
+     ce0:	6c 2f       	mov	r22, r28
+     ce2:	82 e0       	ldi	r24, 0x02	; 2
+     ce4:	0e 94 61 09 	call	0x12c2	; 0x12c2 <GLCD_Draw_Char>
+				GLCD_Draw_Char(4,10+(row*9),':',BLACK);
+     ce8:	2f ef       	ldi	r18, 0xFF	; 255
+     cea:	4a e3       	ldi	r20, 0x3A	; 58
+     cec:	6c 2f       	mov	r22, r28
+     cee:	84 e0       	ldi	r24, 0x04	; 4
+     cf0:	0e 94 61 09 	call	0x12c2	; 0x12c2 <GLCD_Draw_Char>
+				GLCD_Draw_Char(5,10+(row*9),scheduleTable[row][1],BLACK);//min
+     cf4:	f8 01       	movw	r30, r16
+     cf6:	41 81       	ldd	r20, Z+1	; 0x01
+     cf8:	2f ef       	ldi	r18, 0xFF	; 255
+     cfa:	6c 2f       	mov	r22, r28
+     cfc:	85 e0       	ldi	r24, 0x05	; 5
+     cfe:	0e 94 61 09 	call	0x12c2	; 0x12c2 <GLCD_Draw_Char>
+     d02:	ff ef       	ldi	r31, 0xFF	; 255
+     d04:	ef 1a       	sub	r14, r31
+     d06:	ff 0a       	sbc	r15, r31
+     d08:	c7 5f       	subi	r28, 0xF7	; 247
+void drawSchedule()
+{
+	GLCD_Draw_String(2,1,"TIME SCHEDULE",WHITE);
+	if (pointer < 6)
+	{
+		for (uint8_t row=0;row<6;row++)
+     d0a:	c0 34       	cpi	r28, 0x40	; 64
+     d0c:	09 f7       	brne	.-62     	; 0xcd0 <drawSchedule+0x26>
+     d0e:	33 c0       	rjmp	.+102    	; 0xd76 <drawSchedule+0xcc>
+				GLCD_Draw_Char(4,10+(row*9),':',BLACK);
+				GLCD_Draw_Char(5,10+(row*9),scheduleTable[row][1],BLACK);//min
+		}
+	} else //pointer>5
+	{
+		GLCD_Draw_Char(14,10,'^',BLACK);
+     d10:	2f ef       	ldi	r18, 0xFF	; 255
+     d12:	4e e5       	ldi	r20, 0x5E	; 94
+     d14:	6a e0       	ldi	r22, 0x0A	; 10
+     d16:	8e e0       	ldi	r24, 0x0E	; 14
+     d18:	0e 94 61 09 	call	0x12c2	; 0x12c2 <GLCD_Draw_Char>
+     d1c:	ca e0       	ldi	r28, 0x0A	; 10
+     d1e:	00 e0       	ldi	r16, 0x00	; 0
+     d20:	10 e0       	ldi	r17, 0x00	; 0
+		for (uint8_t row=0;row<6;row++)
+		{
+			//GLCD_Draw_String(2,10+(row*9),"00:00 AM",BLACK);
+			GLCD_Draw_Char(2,10+(row*9),scheduleTable[pointer+row][0],BLACK);//hour
+     d22:	80 91 90 01 	lds	r24, 0x0190
+     d26:	f8 01       	movw	r30, r16
+     d28:	e8 0f       	add	r30, r24
+     d2a:	f1 1d       	adc	r31, r1
+     d2c:	ee 0f       	add	r30, r30
+     d2e:	ff 1f       	adc	r31, r31
+     d30:	e0 50       	subi	r30, 0x00	; 0
+     d32:	ff 4f       	sbci	r31, 0xFF	; 255
+     d34:	40 81       	ld	r20, Z
+     d36:	2f ef       	ldi	r18, 0xFF	; 255
+     d38:	6c 2f       	mov	r22, r28
+     d3a:	82 e0       	ldi	r24, 0x02	; 2
+     d3c:	0e 94 61 09 	call	0x12c2	; 0x12c2 <GLCD_Draw_Char>
+			GLCD_Draw_Char(4,10+(row*9),':',BLACK);
+     d40:	2f ef       	ldi	r18, 0xFF	; 255
+     d42:	4a e3       	ldi	r20, 0x3A	; 58
+     d44:	6c 2f       	mov	r22, r28
+     d46:	84 e0       	ldi	r24, 0x04	; 4
+     d48:	0e 94 61 09 	call	0x12c2	; 0x12c2 <GLCD_Draw_Char>
+			GLCD_Draw_String(5,10+(row*9),scheduleTable[pointer+row][1],BLACK);//min
+     d4c:	80 91 90 01 	lds	r24, 0x0190
+     d50:	f8 01       	movw	r30, r16
+     d52:	e8 0f       	add	r30, r24
+     d54:	f1 1d       	adc	r31, r1
+     d56:	ee 0f       	add	r30, r30
+     d58:	ff 1f       	adc	r31, r31
+     d5a:	e0 50       	subi	r30, 0x00	; 0
+     d5c:	ff 4f       	sbci	r31, 0xFF	; 255
+     d5e:	41 81       	ldd	r20, Z+1	; 0x01
+     d60:	50 e0       	ldi	r21, 0x00	; 0
+     d62:	2f ef       	ldi	r18, 0xFF	; 255
+     d64:	6c 2f       	mov	r22, r28
+     d66:	85 e0       	ldi	r24, 0x05	; 5
+     d68:	0e 94 e6 09 	call	0x13cc	; 0x13cc <GLCD_Draw_String>
+     d6c:	0f 5f       	subi	r16, 0xFF	; 255
+     d6e:	1f 4f       	sbci	r17, 0xFF	; 255
+     d70:	c7 5f       	subi	r28, 0xF7	; 247
+				GLCD_Draw_Char(5,10+(row*9),scheduleTable[row][1],BLACK);//min
+		}
+	} else //pointer>5
+	{
+		GLCD_Draw_Char(14,10,'^',BLACK);
+		for (uint8_t row=0;row<6;row++)
+     d72:	c0 34       	cpi	r28, 0x40	; 64
+     d74:	b1 f6       	brne	.-84     	; 0xd22 <drawSchedule+0x78>
+			GLCD_Draw_Char(2,10+(row*9),scheduleTable[pointer+row][0],BLACK);//hour
+			GLCD_Draw_Char(4,10+(row*9),':',BLACK);
+			GLCD_Draw_String(5,10+(row*9),scheduleTable[pointer+row][1],BLACK);//min
+		}
+	}
+}
+     d76:	cf 91       	pop	r28
+     d78:	1f 91       	pop	r17
+     d7a:	0f 91       	pop	r16
+     d7c:	ff 90       	pop	r15
+     d7e:	ef 90       	pop	r14
+     d80:	08 95       	ret
+
+00000d82 <draw_cursor>:
+void draw_cursor(unsigned char x,unsigned char y, unsigned char color)
+{
+     d82:	24 2f       	mov	r18, r20
+  GLCD_Draw_HorizLine(x,x+5,y,color);
+     d84:	95 e0       	ldi	r25, 0x05	; 5
+     d86:	98 0f       	add	r25, r24
+     d88:	46 2f       	mov	r20, r22
+     d8a:	69 2f       	mov	r22, r25
+     d8c:	0e 94 94 0a 	call	0x1528	; 0x1528 <GLCD_Draw_HorizLine>
+     d90:	08 95       	ret
+
+00000d92 <pop_up_window>:
+		if(draw == TRUE){GLCD_Draw_Char(1 ,(pointer*10)+10,'>',BLACK);}
+		else if(draw == FALSE){GLCD_Draw_Char(1,(pointer*10)+10,' ',BLACK);}
+	return;
+}
+void pop_up_window()
+{
+     d92:	1f 93       	push	r17
+     d94:	cf 93       	push	r28
+     d96:	df 93       	push	r29
+	draw_pointer(FALSE);
+     d98:	80 e0       	ldi	r24, 0x00	; 0
+     d9a:	0e 94 35 06 	call	0xc6a	; 0xc6a <draw_pointer>
+     d9e:	d7 e1       	ldi	r29, 0x17	; 23
+		if(draw == TRUE){GLCD_Draw_Char(1 ,(pointer*10)+10,'>',BLACK);}
+		else if(draw == FALSE){GLCD_Draw_Char(1,(pointer*10)+10,' ',BLACK);}
+	return;
+}
+void pop_up_window()
+{
+     da0:	1a e0       	ldi	r17, 0x0A	; 10
+     da2:	0b c0       	rjmp	.+22     	; 0xdba <pop_up_window+0x28>
+	draw_pointer(FALSE);
+	for (int w=23;w<112;w++)
+	{
+		for (int h=10; h<56;h++)
+		{
+			GLCD_Draw_Pixel(w,h,BLACK);
+     da4:	4f ef       	ldi	r20, 0xFF	; 255
+     da6:	6c 2f       	mov	r22, r28
+     da8:	8d 2f       	mov	r24, r29
+     daa:	0e 94 67 0a 	call	0x14ce	; 0x14ce <GLCD_Draw_Pixel>
+     dae:	cf 5f       	subi	r28, 0xFF	; 255
+void pop_up_window()
+{
+	draw_pointer(FALSE);
+	for (int w=23;w<112;w++)
+	{
+		for (int h=10; h<56;h++)
+     db0:	c8 33       	cpi	r28, 0x38	; 56
+     db2:	c1 f7       	brne	.-16     	; 0xda4 <pop_up_window+0x12>
+     db4:	df 5f       	subi	r29, 0xFF	; 255
+	return;
+}
+void pop_up_window()
+{
+	draw_pointer(FALSE);
+	for (int w=23;w<112;w++)
+     db6:	d0 37       	cpi	r29, 0x70	; 112
+     db8:	11 f0       	breq	.+4      	; 0xdbe <pop_up_window+0x2c>
+		if(draw == TRUE){GLCD_Draw_Char(1 ,(pointer*10)+10,'>',BLACK);}
+		else if(draw == FALSE){GLCD_Draw_Char(1,(pointer*10)+10,' ',BLACK);}
+	return;
+}
+void pop_up_window()
+{
+     dba:	c1 2f       	mov	r28, r17
+     dbc:	f3 cf       	rjmp	.-26     	; 0xda4 <pop_up_window+0x12>
+		for (int h=10; h<56;h++)
+		{
+			GLCD_Draw_Pixel(w,h,BLACK);
+		}
+	}
+	switch (event)
+     dbe:	80 91 8e 01 	lds	r24, 0x018E
+     dc2:	86 33       	cpi	r24, 0x36	; 54
+     dc4:	b9 f5       	brne	.+110    	; 0xe34 <pop_up_window+0xa2>
+	{
+		case SET_TIME:
+		 GLCD_Draw_String(5,25,"HH:MM",WHITE);
+     dc6:	20 e0       	ldi	r18, 0x00	; 0
+     dc8:	4d e5       	ldi	r20, 0x5D	; 93
+     dca:	51 e0       	ldi	r21, 0x01	; 1
+     dcc:	69 e1       	ldi	r22, 0x19	; 25
+     dce:	85 e0       	ldi	r24, 0x05	; 5
+     dd0:	0e 94 e6 09 	call	0x13cc	; 0x13cc <GLCD_Draw_String>
+		 draw_cursor(40,41,WHITE);
+     dd4:	40 e0       	ldi	r20, 0x00	; 0
+     dd6:	69 e2       	ldi	r22, 0x29	; 41
+     dd8:	88 e2       	ldi	r24, 0x28	; 40
+     dda:	0e 94 c1 06 	call	0xd82	; 0xd82 <draw_cursor>
+		 draw_cursor(48,41,WHITE);
+     dde:	40 e0       	ldi	r20, 0x00	; 0
+     de0:	69 e2       	ldi	r22, 0x29	; 41
+     de2:	80 e3       	ldi	r24, 0x30	; 48
+     de4:	0e 94 c1 06 	call	0xd82	; 0xd82 <draw_cursor>
+		 draw_cursor(64,41,WHITE);
+     de8:	40 e0       	ldi	r20, 0x00	; 0
+     dea:	69 e2       	ldi	r22, 0x29	; 41
+     dec:	80 e4       	ldi	r24, 0x40	; 64
+     dee:	0e 94 c1 06 	call	0xd82	; 0xd82 <draw_cursor>
+		 draw_cursor(72,41,WHITE);
+     df2:	40 e0       	ldi	r20, 0x00	; 0
+     df4:	69 e2       	ldi	r22, 0x29	; 41
+     df6:	88 e4       	ldi	r24, 0x48	; 72
+     df8:	0e 94 c1 06 	call	0xd82	; 0xd82 <draw_cursor>
+		 GLCD_Draw_Char(5,33,hour1,WHITE);
+     dfc:	40 91 3f 01 	lds	r20, 0x013F
+     e00:	20 e0       	ldi	r18, 0x00	; 0
+     e02:	61 e2       	ldi	r22, 0x21	; 33
+     e04:	85 e0       	ldi	r24, 0x05	; 5
+     e06:	0e 94 61 09 	call	0x12c2	; 0x12c2 <GLCD_Draw_Char>
+		 GLCD_Draw_Char(6,33,hour2,WHITE);
+     e0a:	40 91 3e 01 	lds	r20, 0x013E
+     e0e:	20 e0       	ldi	r18, 0x00	; 0
+     e10:	61 e2       	ldi	r22, 0x21	; 33
+     e12:	86 e0       	ldi	r24, 0x06	; 6
+     e14:	0e 94 61 09 	call	0x12c2	; 0x12c2 <GLCD_Draw_Char>
+		 GLCD_Draw_Char(8,33,min1,WHITE);
+     e18:	40 91 3d 01 	lds	r20, 0x013D
+     e1c:	20 e0       	ldi	r18, 0x00	; 0
+     e1e:	61 e2       	ldi	r22, 0x21	; 33
+     e20:	88 e0       	ldi	r24, 0x08	; 8
+     e22:	0e 94 61 09 	call	0x12c2	; 0x12c2 <GLCD_Draw_Char>
+		 GLCD_Draw_Char(9,33,min2,WHITE);
+     e26:	40 91 3c 01 	lds	r20, 0x013C
+     e2a:	20 e0       	ldi	r18, 0x00	; 0
+     e2c:	61 e2       	ldi	r22, 0x21	; 33
+     e2e:	89 e0       	ldi	r24, 0x09	; 9
+     e30:	0e 94 61 09 	call	0x12c2	; 0x12c2 <GLCD_Draw_Char>
+		break;
+		
+		default:
+		break;
+	}
+}
+     e34:	df 91       	pop	r29
+     e36:	cf 91       	pop	r28
+     e38:	1f 91       	pop	r17
+     e3a:	08 95       	ret
+
+00000e3c <draw_menu>:
+{
+	GLCD_ScreenGraphics(ABELL1);
+}
+void draw_menu()
+{
+		switch (STATE)
+     e3c:	80 91 8f 01 	lds	r24, 0x018F
+     e40:	84 33       	cpi	r24, 0x34	; 52
+     e42:	19 f0       	breq	.+6      	; 0xe4a <draw_menu+0xe>
+     e44:	85 33       	cpi	r24, 0x35	; 53
+     e46:	51 f1       	breq	.+84     	; 0xe9c <draw_menu+0x60>
+     e48:	2b c0       	rjmp	.+86     	; 0xea0 <draw_menu+0x64>
+		{
+			case MENU:
+				if(pointer < 5)
+     e4a:	80 91 90 01 	lds	r24, 0x0190
+     e4e:	85 30       	cpi	r24, 0x05	; 5
+     e50:	38 f5       	brcc	.+78     	; 0xea0 <draw_menu+0x64>
+				{
+					draw_frame();
+     e52:	0e 94 15 06 	call	0xc2a	; 0xc2a <draw_frame>
+					GLCD_Draw_String(2,1,"MAIN-MENU",WHITE);
+     e56:	20 e0       	ldi	r18, 0x00	; 0
+     e58:	43 e6       	ldi	r20, 0x63	; 99
+     e5a:	51 e0       	ldi	r21, 0x01	; 1
+     e5c:	61 e0       	ldi	r22, 0x01	; 1
+     e5e:	82 e0       	ldi	r24, 0x02	; 2
+     e60:	0e 94 e6 09 	call	0x13cc	; 0x13cc <GLCD_Draw_String>
+					GLCD_Draw_Char(15,1,'0',WHITE);
+     e64:	20 e0       	ldi	r18, 0x00	; 0
+     e66:	40 e3       	ldi	r20, 0x30	; 48
+     e68:	61 e0       	ldi	r22, 0x01	; 1
+     e6a:	8f e0       	ldi	r24, 0x0F	; 15
+     e6c:	0e 94 61 09 	call	0x12c2	; 0x12c2 <GLCD_Draw_Char>
+					GLCD_Draw_String(2,10,"SET TIME",BLACK);
+     e70:	2f ef       	ldi	r18, 0xFF	; 255
+     e72:	4d e6       	ldi	r20, 0x6D	; 109
+     e74:	51 e0       	ldi	r21, 0x01	; 1
+     e76:	6a e0       	ldi	r22, 0x0A	; 10
+     e78:	82 e0       	ldi	r24, 0x02	; 2
+     e7a:	0e 94 e6 09 	call	0x13cc	; 0x13cc <GLCD_Draw_String>
+					GLCD_Draw_String(2,19,"VIEW SCHEDULE",BLACK);
+     e7e:	2f ef       	ldi	r18, 0xFF	; 255
+     e80:	46 e7       	ldi	r20, 0x76	; 118
+     e82:	51 e0       	ldi	r21, 0x01	; 1
+     e84:	63 e1       	ldi	r22, 0x13	; 19
+     e86:	82 e0       	ldi	r24, 0x02	; 2
+     e88:	0e 94 e6 09 	call	0x13cc	; 0x13cc <GLCD_Draw_String>
+ 					GLCD_Draw_String(2,29,"HOME",BLACK);
+     e8c:	2f ef       	ldi	r18, 0xFF	; 255
+     e8e:	44 e8       	ldi	r20, 0x84	; 132
+     e90:	51 e0       	ldi	r21, 0x01	; 1
+     e92:	6d e1       	ldi	r22, 0x1D	; 29
+     e94:	82 e0       	ldi	r24, 0x02	; 2
+     e96:	0e 94 e6 09 	call	0x13cc	; 0x13cc <GLCD_Draw_String>
+     e9a:	02 c0       	rjmp	.+4      	; 0xea0 <draw_menu+0x64>
+	// 				GLCD_Draw_String(2,39,wifi,BLACK);
+				}
+			break;
+			case POPUP:
+				pop_up_window();
+     e9c:	0e 94 c9 06 	call	0xd92	; 0xd92 <pop_up_window>
+			break;
+			default:break;
+		}
+		draw_pointer(TRUE);
+     ea0:	8f ef       	ldi	r24, 0xFF	; 255
+     ea2:	0e 94 35 06 	call	0xc6a	; 0xc6a <draw_pointer>
+     ea6:	08 95       	ret
+
+00000ea8 <main>:
+#include "Functions.h"
+
+volatile int r=0;
+int main(void)
+{
+	GLCD_Init();	
+     ea8:	0e 94 d1 08 	call	0x11a2	; 0x11a2 <GLCD_Init>
+    SPI_Init();
+     eac:	0e 94 67 05 	call	0xace	; 0xace <SPI_Init>
+    while (1) 
+    {
+// 		pointer=2;
+// 		STATE =MENU;
+// 		event = SET_TIME;		
+		switch (STATE)
+     eb0:	80 91 8f 01 	lds	r24, 0x018F
+     eb4:	84 33       	cpi	r24, 0x34	; 52
+     eb6:	81 f0       	breq	.+32     	; 0xed8 <main+0x30>
+     eb8:	28 f4       	brcc	.+10     	; 0xec4 <main+0x1c>
+     eba:	82 33       	cpi	r24, 0x32	; 50
+     ebc:	c1 f0       	breq	.+48     	; 0xeee <main+0x46>
+     ebe:	83 33       	cpi	r24, 0x33	; 51
+     ec0:	c9 f0       	breq	.+50     	; 0xef4 <main+0x4c>
+     ec2:	1a c0       	rjmp	.+52     	; 0xef8 <main+0x50>
+     ec4:	87 33       	cpi	r24, 0x37	; 55
+     ec6:	59 f0       	breq	.+22     	; 0xede <main+0x36>
+     ec8:	88 33       	cpi	r24, 0x38	; 56
+     eca:	19 f0       	breq	.+6      	; 0xed2 <main+0x2a>
+     ecc:	85 33       	cpi	r24, 0x35	; 53
+     ece:	a1 f4       	brne	.+40     	; 0xef8 <main+0x50>
+     ed0:	0b c0       	rjmp	.+22     	; 0xee8 <main+0x40>
+		{
+			case HOMESCREEN: clock_display(); break;
+     ed2:	0e 94 75 05 	call	0xaea	; 0xaea <clock_display>
+     ed6:	10 c0       	rjmp	.+32     	; 0xef8 <main+0x50>
+			case MENU: 	draw_menu(); break;
+     ed8:	0e 94 1e 07 	call	0xe3c	; 0xe3c <draw_menu>
+     edc:	0d c0       	rjmp	.+26     	; 0xef8 <main+0x50>
+			case VIEW_SCHEDULE: draw_frame(); drawSchedule(); break;
+     ede:	0e 94 15 06 	call	0xc2a	; 0xc2a <draw_frame>
+     ee2:	0e 94 55 06 	call	0xcaa	; 0xcaa <drawSchedule>
+     ee6:	08 c0       	rjmp	.+16     	; 0xef8 <main+0x50>
+			case POPUP: pop_up_window(); break;
+     ee8:	0e 94 c9 06 	call	0xd92	; 0xd92 <pop_up_window>
+     eec:	05 c0       	rjmp	.+10     	; 0xef8 <main+0x50>
+			case clock: clock_display(); break;
+     eee:	0e 94 75 05 	call	0xaea	; 0xaea <clock_display>
+     ef2:	02 c0       	rjmp	.+4      	; 0xef8 <main+0x50>
+			case splash: draw_splash();  break;
+     ef4:	0e 94 10 06 	call	0xc20	; 0xc20 <draw_splash>
+		}
+		//draw_pointer(TRUE);
+		//GLCD_Draw_Char(0,1,key,BLACK);		
+		GLCD_Render();
+     ef8:	0e 94 c6 0a 	call	0x158c	; 0x158c <GLCD_Render>
+    }
+     efc:	d9 cf       	rjmp	.-78     	; 0xeb0 <main+0x8>
+
+00000efe <__vector_17>:
+}
+ISR(SPI_STC_vect)
+{
+     efe:	1f 92       	push	r1
+     f00:	0f 92       	push	r0
+     f02:	0f b6       	in	r0, 0x3f	; 63
+     f04:	0f 92       	push	r0
+     f06:	11 24       	eor	r1, r1
+     f08:	2f 93       	push	r18
+     f0a:	8f 93       	push	r24
+     f0c:	9f 93       	push	r25
+     f0e:	af 93       	push	r26
+     f10:	bf 93       	push	r27
+     f12:	ef 93       	push	r30
+     f14:	ff 93       	push	r31
+	char received = SPDR;
+     f16:	2e b5       	in	r18, 0x2e	; 46
+	
+	if (waiting == ON)
+     f18:	80 91 91 01 	lds	r24, 0x0191
+     f1c:	81 30       	cpi	r24, 0x01	; 1
+     f1e:	09 f0       	breq	.+2      	; 0xf22 <__vector_17+0x24>
+     f20:	6d c0       	rjmp	.+218    	; 0xffc <__vector_17+0xfe>
+	{
+		switch (waiter)
+     f22:	e0 91 92 01 	lds	r30, 0x0192
+     f26:	8e 2f       	mov	r24, r30
+     f28:	90 e0       	ldi	r25, 0x00	; 0
+     f2a:	fc 01       	movw	r30, r24
+     f2c:	e1 56       	subi	r30, 0x61	; 97
+     f2e:	f1 09       	sbc	r31, r1
+     f30:	e3 31       	cpi	r30, 0x13	; 19
+     f32:	f1 05       	cpc	r31, r1
+     f34:	08 f0       	brcs	.+2      	; 0xf38 <__vector_17+0x3a>
+     f36:	ba c0       	rjmp	.+372    	; 0x10ac <__vector_17+0x1ae>
+     f38:	ec 5c       	subi	r30, 0xCC	; 204
+     f3a:	ff 4f       	sbci	r31, 0xFF	; 255
+     f3c:	0c 94 0c 0b 	jmp	0x1618	; 0x1618 <__tablejump2__>
+		{
+			case rtc_hour : hour =received; waiting =OFF; break;
+     f40:	20 93 8d 01 	sts	0x018D, r18
+     f44:	10 92 91 01 	sts	0x0191, r1
+     f48:	b1 c0       	rjmp	.+354    	; 0x10ac <__vector_17+0x1ae>
+			case rtc_min : 	min =received;	waiting =OFF; break;
+     f4a:	20 93 8c 01 	sts	0x018C, r18
+     f4e:	10 92 91 01 	sts	0x0191, r1
+     f52:	ac c0       	rjmp	.+344    	; 0x10ac <__vector_17+0x1ae>
+			case rtc_sec : 	sec =received; 	waiting =OFF; break;
+     f54:	20 93 8b 01 	sts	0x018B, r18
+     f58:	10 92 91 01 	sts	0x0191, r1
+     f5c:	a7 c0       	rjmp	.+334    	; 0x10ac <__vector_17+0x1ae>
+			case rtc_ampm : ampm =received; waiting =OFF; break;
+     f5e:	20 93 8a 01 	sts	0x018A, r18
+     f62:	10 92 91 01 	sts	0x0191, r1
+     f66:	a2 c0       	rjmp	.+324    	; 0x10ac <__vector_17+0x1ae>
+			case set_hour1: hour1 = received; waiting =OFF; break;
+     f68:	20 93 3f 01 	sts	0x013F, r18
+     f6c:	10 92 91 01 	sts	0x0191, r1
+     f70:	9d c0       	rjmp	.+314    	; 0x10ac <__vector_17+0x1ae>
+			case set_hour2: hour2 = received; waiting =OFF; break;
+     f72:	20 93 3e 01 	sts	0x013E, r18
+     f76:	10 92 91 01 	sts	0x0191, r1
+     f7a:	98 c0       	rjmp	.+304    	; 0x10ac <__vector_17+0x1ae>
+			case set_min1: min1 = received; waiting =OFF; break;
+     f7c:	20 93 3d 01 	sts	0x013D, r18
+     f80:	10 92 91 01 	sts	0x0191, r1
+     f84:	93 c0       	rjmp	.+294    	; 0x10ac <__vector_17+0x1ae>
+			case set_min2: min2 = received; waiting =OFF; break;      
+     f86:	20 93 3c 01 	sts	0x013C, r18
+     f8a:	10 92 91 01 	sts	0x0191, r1
+     f8e:	8e c0       	rjmp	.+284    	; 0x10ac <__vector_17+0x1ae>
+      
+			case menu_flag:
+				if (received == UP)	{ if(pointer>0) {pointer--;}} 
+     f90:	25 37       	cpi	r18, 0x75	; 117
+     f92:	59 f4       	brne	.+22     	; 0xfaa <__vector_17+0xac>
+     f94:	80 91 90 01 	lds	r24, 0x0190
+     f98:	88 23       	and	r24, r24
+     f9a:	09 f4       	brne	.+2      	; 0xf9e <__vector_17+0xa0>
+     f9c:	87 c0       	rjmp	.+270    	; 0x10ac <__vector_17+0x1ae>
+     f9e:	80 91 90 01 	lds	r24, 0x0190
+     fa2:	81 50       	subi	r24, 0x01	; 1
+     fa4:	80 93 90 01 	sts	0x0190, r24
+     fa8:	81 c0       	rjmp	.+258    	; 0x10ac <__vector_17+0x1ae>
+				else if (received == DOWN){ if(pointer<2) {pointer++;}}
+     faa:	26 37       	cpi	r18, 0x76	; 118
+     fac:	59 f4       	brne	.+22     	; 0xfc4 <__vector_17+0xc6>
+     fae:	80 91 90 01 	lds	r24, 0x0190
+     fb2:	82 30       	cpi	r24, 0x02	; 2
+     fb4:	08 f0       	brcs	.+2      	; 0xfb8 <__vector_17+0xba>
+     fb6:	7a c0       	rjmp	.+244    	; 0x10ac <__vector_17+0x1ae>
+     fb8:	80 91 90 01 	lds	r24, 0x0190
+     fbc:	8f 5f       	subi	r24, 0xFF	; 255
+     fbe:	80 93 90 01 	sts	0x0190, r24
+     fc2:	74 c0       	rjmp	.+232    	; 0x10ac <__vector_17+0x1ae>
+				else if (received == SELECT)
+     fc4:	2b 36       	cpi	r18, 0x6B	; 107
+     fc6:	09 f0       	breq	.+2      	; 0xfca <__vector_17+0xcc>
+     fc8:	71 c0       	rjmp	.+226    	; 0x10ac <__vector_17+0x1ae>
+				{
+					switch(pointer)
+     fca:	80 91 90 01 	lds	r24, 0x0190
+     fce:	81 30       	cpi	r24, 0x01	; 1
+     fd0:	59 f0       	breq	.+22     	; 0xfe8 <__vector_17+0xea>
+     fd2:	18 f0       	brcs	.+6      	; 0xfda <__vector_17+0xdc>
+     fd4:	82 30       	cpi	r24, 0x02	; 2
+     fd6:	61 f0       	breq	.+24     	; 0xff0 <__vector_17+0xf2>
+     fd8:	0e c0       	rjmp	.+28     	; 0xff6 <__vector_17+0xf8>
+					{
+						case 0: STATE = POPUP; event = SET_TIME; break;
+     fda:	85 e3       	ldi	r24, 0x35	; 53
+     fdc:	80 93 8f 01 	sts	0x018F, r24
+     fe0:	86 e3       	ldi	r24, 0x36	; 54
+     fe2:	80 93 8e 01 	sts	0x018E, r24
+     fe6:	07 c0       	rjmp	.+14     	; 0xff6 <__vector_17+0xf8>
+						case 1: STATE = VIEW_SCHEDULE; 	break;
+     fe8:	87 e3       	ldi	r24, 0x37	; 55
+     fea:	80 93 8f 01 	sts	0x018F, r24
+     fee:	03 c0       	rjmp	.+6      	; 0xff6 <__vector_17+0xf8>
+						case 2: STATE = HOMESCREEN; 	break;      
+     ff0:	88 e3       	ldi	r24, 0x38	; 56
+     ff2:	80 93 8f 01 	sts	0x018F, r24
+					} 
+					waiting = OFF;        
+     ff6:	10 92 91 01 	sts	0x0191, r1
+     ffa:	58 c0       	rjmp	.+176    	; 0x10ac <__vector_17+0x1ae>
+				}
+			break;
+		}	
+	} else{	//New interrupt
+		switch (received)
+     ffc:	82 2f       	mov	r24, r18
+     ffe:	90 e0       	ldi	r25, 0x00	; 0
+    1000:	fc 01       	movw	r30, r24
+    1002:	e1 56       	subi	r30, 0x61	; 97
+    1004:	f1 09       	sbc	r31, r1
+    1006:	e3 31       	cpi	r30, 0x13	; 19
+    1008:	f1 05       	cpc	r31, r1
+    100a:	08 f0       	brcs	.+2      	; 0x100e <__vector_17+0x110>
+    100c:	4d c0       	rjmp	.+154    	; 0x10a8 <__vector_17+0x1aa>
+    100e:	e9 5b       	subi	r30, 0xB9	; 185
+    1010:	ff 4f       	sbci	r31, 0xFF	; 255
+    1012:	0c 94 0c 0b 	jmp	0x1618	; 0x1618 <__tablejump2__>
+		{
+			case rtc_hour:	waiting=ON;	waiter =rtc_hour; break;
+    1016:	81 e0       	ldi	r24, 0x01	; 1
+    1018:	80 93 91 01 	sts	0x0191, r24
+    101c:	88 e6       	ldi	r24, 0x68	; 104
+    101e:	80 93 92 01 	sts	0x0192, r24
+    1022:	42 c0       	rjmp	.+132    	; 0x10a8 <__vector_17+0x1aa>
+ 			case rtc_min:	waiting=ON;	waiter =rtc_min;  break;
+    1024:	81 e0       	ldi	r24, 0x01	; 1
+    1026:	80 93 91 01 	sts	0x0191, r24
+    102a:	8d e6       	ldi	r24, 0x6D	; 109
+    102c:	80 93 92 01 	sts	0x0192, r24
+    1030:	3b c0       	rjmp	.+118    	; 0x10a8 <__vector_17+0x1aa>
+			case rtc_sec:	waiting=ON;	waiter =rtc_sec;  break;
+    1032:	81 e0       	ldi	r24, 0x01	; 1
+    1034:	80 93 91 01 	sts	0x0191, r24
+    1038:	83 e7       	ldi	r24, 0x73	; 115
+    103a:	80 93 92 01 	sts	0x0192, r24
+    103e:	34 c0       	rjmp	.+104    	; 0x10a8 <__vector_17+0x1aa>
+			case rtc_ampm:	waiting=ON;	waiter =rtc_ampm; break;
+    1040:	81 e0       	ldi	r24, 0x01	; 1
+    1042:	80 93 91 01 	sts	0x0191, r24
+    1046:	80 e7       	ldi	r24, 0x70	; 112
+    1048:	80 93 92 01 	sts	0x0192, r24
+    104c:	2d c0       	rjmp	.+90     	; 0x10a8 <__vector_17+0x1aa>
+			case splash_flag: STATE = splash;	break;
+    104e:	83 e3       	ldi	r24, 0x33	; 51
+    1050:	80 93 8f 01 	sts	0x018F, r24
+    1054:	29 c0       	rjmp	.+82     	; 0x10a8 <__vector_17+0x1aa>
+			case clock_flag:  STATE = clock; 	break;
+    1056:	82 e3       	ldi	r24, 0x32	; 50
+    1058:	80 93 8f 01 	sts	0x018F, r24
+    105c:	25 c0       	rjmp	.+74     	; 0x10a8 <__vector_17+0x1aa>
+			case menu_flag:   STATE = MENU;	waiting= ON; waiter = menu_flag; break;
+    105e:	84 e3       	ldi	r24, 0x34	; 52
+    1060:	80 93 8f 01 	sts	0x018F, r24
+    1064:	81 e0       	ldi	r24, 0x01	; 1
+    1066:	80 93 91 01 	sts	0x0191, r24
+    106a:	81 e6       	ldi	r24, 0x61	; 97
+    106c:	80 93 92 01 	sts	0x0192, r24
+    1070:	1b c0       	rjmp	.+54     	; 0x10a8 <__vector_17+0x1aa>
+			case set_hour1: waiting = ON; waiter = set_hour1; break;
+    1072:	81 e0       	ldi	r24, 0x01	; 1
+    1074:	80 93 91 01 	sts	0x0191, r24
+    1078:	85 e6       	ldi	r24, 0x65	; 101
+    107a:	80 93 92 01 	sts	0x0192, r24
+    107e:	14 c0       	rjmp	.+40     	; 0x10a8 <__vector_17+0x1aa>
+			case set_hour2: waiting = ON; waiter = set_hour2; break;
+    1080:	81 e0       	ldi	r24, 0x01	; 1
+    1082:	80 93 91 01 	sts	0x0191, r24
+    1086:	86 e6       	ldi	r24, 0x66	; 102
+    1088:	80 93 92 01 	sts	0x0192, r24
+    108c:	0d c0       	rjmp	.+26     	; 0x10a8 <__vector_17+0x1aa>
+			case set_min1: waiting = ON; waiter = set_min1; break;
+    108e:	81 e0       	ldi	r24, 0x01	; 1
+    1090:	80 93 91 01 	sts	0x0191, r24
+    1094:	87 e6       	ldi	r24, 0x67	; 103
+    1096:	80 93 92 01 	sts	0x0192, r24
+    109a:	06 c0       	rjmp	.+12     	; 0x10a8 <__vector_17+0x1aa>
+			case set_min2: waiting = ON; waiter = set_min2; break;
+    109c:	81 e0       	ldi	r24, 0x01	; 1
+    109e:	80 93 91 01 	sts	0x0191, r24
+    10a2:	89 e6       	ldi	r24, 0x69	; 105
+    10a4:	80 93 92 01 	sts	0x0192, r24
+			default:			 		
+			break;
+		}
+		key=received;	
+    10a8:	20 93 93 01 	sts	0x0193, r18
+	}
+    10ac:	ff 91       	pop	r31
+    10ae:	ef 91       	pop	r30
+    10b0:	bf 91       	pop	r27
+    10b2:	af 91       	pop	r26
+    10b4:	9f 91       	pop	r25
+    10b6:	8f 91       	pop	r24
+    10b8:	2f 91       	pop	r18
+    10ba:	0f 90       	pop	r0
+    10bc:	0f be       	out	0x3f, r0	; 63
+    10be:	0f 90       	pop	r0
+    10c0:	1f 90       	pop	r1
+    10c2:	18 95       	reti
+
+000010c4 <GLCD_checkBusy>:
+	E_LOW;	
+}
+
+void GLCD_checkBusy()
+{
+	DATA_IN();
+    10c4:	8a b1       	in	r24, 0x0a	; 10
+    10c6:	1a b8       	out	0x0a, r1	; 10
+	RS_LOW;	//Instruction
+    10c8:	40 98       	cbi	0x08, 0	; 8
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+    10ca:	8f e3       	ldi	r24, 0x3F	; 63
+    10cc:	91 e0       	ldi	r25, 0x01	; 1
+    10ce:	01 97       	sbiw	r24, 0x01	; 1
+    10d0:	f1 f7       	brne	.-4      	; 0x10ce <GLCD_checkBusy+0xa>
+    10d2:	00 c0       	rjmp	.+0      	; 0x10d4 <GLCD_checkBusy+0x10>
+    10d4:	00 00       	nop
+	RW_HIGH; //Read mode
+    10d6:	41 9a       	sbi	0x08, 1	; 8
+    10d8:	8f e3       	ldi	r24, 0x3F	; 63
+    10da:	91 e0       	ldi	r25, 0x01	; 1
+    10dc:	01 97       	sbiw	r24, 0x01	; 1
+    10de:	f1 f7       	brne	.-4      	; 0x10dc <GLCD_checkBusy+0x18>
+    10e0:	00 c0       	rjmp	.+0      	; 0x10e2 <GLCD_checkBusy+0x1e>
+    10e2:	00 00       	nop
+			lowbyte = DATA_GET(); _delay_us(5);
+			E_LOW;
+		} while (highbyte & BUSY_FLAG);
+	#else
+		uint8_t temp;
+		toggle_E;
+    10e4:	42 9a       	sbi	0x08, 2	; 8
+    10e6:	8f e3       	ldi	r24, 0x3F	; 63
+    10e8:	91 e0       	ldi	r25, 0x01	; 1
+    10ea:	01 97       	sbiw	r24, 0x01	; 1
+    10ec:	f1 f7       	brne	.-4      	; 0x10ea <GLCD_checkBusy+0x26>
+    10ee:	00 c0       	rjmp	.+0      	; 0x10f0 <GLCD_checkBusy+0x2c>
+    10f0:	00 00       	nop
+    10f2:	00 00       	nop
+    10f4:	42 98       	cbi	0x08, 2	; 8
+    10f6:	8f e3       	ldi	r24, 0x3F	; 63
+    10f8:	91 e0       	ldi	r25, 0x01	; 1
+    10fa:	01 97       	sbiw	r24, 0x01	; 1
+    10fc:	f1 f7       	brne	.-4      	; 0x10fa <GLCD_checkBusy+0x36>
+    10fe:	00 c0       	rjmp	.+0      	; 0x1100 <GLCD_checkBusy+0x3c>
+    1100:	00 00       	nop
+		do
+		{
+			temp = DATA_GET();
+    1102:	89 b1       	in	r24, 0x09	; 9
+		}while((temp & 0x7F)== BUSY_FLAG); // 
+	#endif
+
+	DATA_PORT_OUT();
+    1104:	8a b1       	in	r24, 0x0a	; 10
+    1106:	8f ef       	ldi	r24, 0xFF	; 255
+    1108:	8a b9       	out	0x0a, r24	; 10
+	RS_LOW;
+    110a:	40 98       	cbi	0x08, 0	; 8
+    110c:	8f e3       	ldi	r24, 0x3F	; 63
+    110e:	91 e0       	ldi	r25, 0x01	; 1
+    1110:	01 97       	sbiw	r24, 0x01	; 1
+    1112:	f1 f7       	brne	.-4      	; 0x1110 <GLCD_checkBusy+0x4c>
+    1114:	00 c0       	rjmp	.+0      	; 0x1116 <GLCD_checkBusy+0x52>
+    1116:	00 00       	nop
+	RW_LOW;
+    1118:	41 98       	cbi	0x08, 1	; 8
+    111a:	8f e3       	ldi	r24, 0x3F	; 63
+    111c:	91 e0       	ldi	r25, 0x01	; 1
+    111e:	01 97       	sbiw	r24, 0x01	; 1
+    1120:	f1 f7       	brne	.-4      	; 0x111e <GLCD_checkBusy+0x5a>
+    1122:	00 c0       	rjmp	.+0      	; 0x1124 <GLCD_checkBusy+0x60>
+    1124:	00 00       	nop
+    1126:	08 95       	ret
+
+00001128 <GLCD_Write>:
+	
+	GLCD_enable(ON);	
+}
+
+void GLCD_Write(unsigned char type, unsigned char data)
+{
+    1128:	cf 93       	push	r28
+    112a:	df 93       	push	r29
+    112c:	d8 2f       	mov	r29, r24
+    112e:	c6 2f       	mov	r28, r22
+	GLCD_checkBusy();	
+    1130:	0e 94 62 08 	call	0x10c4	; 0x10c4 <GLCD_checkBusy>
+	if (type == DATA)
+    1134:	d1 30       	cpi	r29, 0x01	; 1
+    1136:	41 f4       	brne	.+16     	; 0x1148 <GLCD_Write+0x20>
+	{
+		RS_HIGH;
+    1138:	40 9a       	sbi	0x08, 0	; 8
+    113a:	8f e3       	ldi	r24, 0x3F	; 63
+    113c:	91 e0       	ldi	r25, 0x01	; 1
+    113e:	01 97       	sbiw	r24, 0x01	; 1
+    1140:	f1 f7       	brne	.-4      	; 0x113e <GLCD_Write+0x16>
+    1142:	00 c0       	rjmp	.+0      	; 0x1144 <GLCD_Write+0x1c>
+    1144:	00 00       	nop
+    1146:	07 c0       	rjmp	.+14     	; 0x1156 <GLCD_Write+0x2e>
+	}
+	else
+	{
+		RS_LOW;
+    1148:	40 98       	cbi	0x08, 0	; 8
+    114a:	8f e3       	ldi	r24, 0x3F	; 63
+    114c:	91 e0       	ldi	r25, 0x01	; 1
+    114e:	01 97       	sbiw	r24, 0x01	; 1
+    1150:	f1 f7       	brne	.-4      	; 0x114e <GLCD_Write+0x26>
+    1152:	00 c0       	rjmp	.+0      	; 0x1154 <GLCD_Write+0x2c>
+    1154:	00 00       	nop
+	}
+	RW_LOW;
+    1156:	41 98       	cbi	0x08, 1	; 8
+    1158:	8f e3       	ldi	r24, 0x3F	; 63
+    115a:	91 e0       	ldi	r25, 0x01	; 1
+    115c:	01 97       	sbiw	r24, 0x01	; 1
+    115e:	f1 f7       	brne	.-4      	; 0x115c <GLCD_Write+0x34>
+    1160:	00 c0       	rjmp	.+0      	; 0x1162 <GLCD_Write+0x3a>
+    1162:	00 00       	nop
+	
+	#ifdef GLCD_4bit	
+		Write_2Nibbles(data);
+	#else
+		DATA_PORT = data;
+    1164:	cb b9       	out	0x0b, r28	; 11
+		toggle_E;
+    1166:	42 9a       	sbi	0x08, 2	; 8
+    1168:	8f e3       	ldi	r24, 0x3F	; 63
+    116a:	91 e0       	ldi	r25, 0x01	; 1
+    116c:	01 97       	sbiw	r24, 0x01	; 1
+    116e:	f1 f7       	brne	.-4      	; 0x116c <GLCD_Write+0x44>
+    1170:	00 c0       	rjmp	.+0      	; 0x1172 <GLCD_Write+0x4a>
+    1172:	00 00       	nop
+    1174:	00 00       	nop
+    1176:	42 98       	cbi	0x08, 2	; 8
+    1178:	8f e3       	ldi	r24, 0x3F	; 63
+    117a:	91 e0       	ldi	r25, 0x01	; 1
+    117c:	01 97       	sbiw	r24, 0x01	; 1
+    117e:	f1 f7       	brne	.-4      	; 0x117c <GLCD_Write+0x54>
+    1180:	00 c0       	rjmp	.+0      	; 0x1182 <GLCD_Write+0x5a>
+    1182:	00 00       	nop
+	#endif	
+}
+    1184:	df 91       	pop	r29
+    1186:	cf 91       	pop	r28
+    1188:	08 95       	ret
+
+0000118a <GLCD_enable>:
+	GLCD_Write(DATA,*string++);
+}
+
+void GLCD_enable(unsigned char on_off)
+{
+	if(on_off)
+    118a:	88 23       	and	r24, r24
+    118c:	29 f0       	breq	.+10     	; 0x1198 <GLCD_enable+0xe>
+	{
+		GLCD_Write(COMMAND,GRAPHIC_ON);
+    118e:	66 e3       	ldi	r22, 0x36	; 54
+    1190:	80 e0       	ldi	r24, 0x00	; 0
+    1192:	0e 94 94 08 	call	0x1128	; 0x1128 <GLCD_Write>
+    1196:	08 95       	ret
+	}
+	else
+	{
+		GLCD_Write(COMMAND,GRAPHIC_OFF);
+    1198:	64 e3       	ldi	r22, 0x34	; 52
+    119a:	80 e0       	ldi	r24, 0x00	; 0
+    119c:	0e 94 94 08 	call	0x1128	; 0x1128 <GLCD_Write>
+    11a0:	08 95       	ret
+
+000011a2 <GLCD_Init>:
+#include "font5x7.h"
+
+
+void GLCD_Init(void)
+{
+	DATA_PORT_OUT();    // set data port for output
+    11a2:	8a b1       	in	r24, 0x0a	; 10
+    11a4:	8f ef       	ldi	r24, 0xFF	; 255
+    11a6:	8a b9       	out	0x0a, r24	; 10
+	COMMAND_OUT();
+    11a8:	87 b1       	in	r24, 0x07	; 7
+    11aa:	8f 60       	ori	r24, 0x0F	; 15
+    11ac:	87 b9       	out	0x07, r24	; 7
+	E_LOW;
+    11ae:	42 98       	cbi	0x08, 2	; 8
+    11b0:	8f e3       	ldi	r24, 0x3F	; 63
+    11b2:	91 e0       	ldi	r25, 0x01	; 1
+    11b4:	01 97       	sbiw	r24, 0x01	; 1
+    11b6:	f1 f7       	brne	.-4      	; 0x11b4 <GLCD_Init+0x12>
+    11b8:	00 c0       	rjmp	.+0      	; 0x11ba <GLCD_Init+0x18>
+    11ba:	00 00       	nop
+	RS_LOW;
+    11bc:	40 98       	cbi	0x08, 0	; 8
+    11be:	8f e3       	ldi	r24, 0x3F	; 63
+    11c0:	91 e0       	ldi	r25, 0x01	; 1
+    11c2:	01 97       	sbiw	r24, 0x01	; 1
+    11c4:	f1 f7       	brne	.-4      	; 0x11c2 <GLCD_Init+0x20>
+    11c6:	00 c0       	rjmp	.+0      	; 0x11c8 <GLCD_Init+0x26>
+    11c8:	00 00       	nop
+	RW_LOW;
+    11ca:	41 98       	cbi	0x08, 1	; 8
+    11cc:	8f e3       	ldi	r24, 0x3F	; 63
+    11ce:	91 e0       	ldi	r25, 0x01	; 1
+    11d0:	01 97       	sbiw	r24, 0x01	; 1
+    11d2:	f1 f7       	brne	.-4      	; 0x11d0 <GLCD_Init+0x2e>
+    11d4:	00 c0       	rjmp	.+0      	; 0x11d6 <GLCD_Init+0x34>
+    11d6:	00 00       	nop
+	/* Switch display toParallel mode */
+	//COMMAND_PORT |= PSB;
+	/* Reset display */
+	COMMAND_PORT &= ~RST;
+    11d8:	43 98       	cbi	0x08, 3	; 8
+    11da:	95 e0       	ldi	r25, 0x05	; 5
+    11dc:	9a 95       	dec	r25
+    11de:	f1 f7       	brne	.-4      	; 0x11dc <GLCD_Init+0x3a>
+    11e0:	00 00       	nop
+	_delay_us(1);
+	COMMAND_PORT |= RST;
+    11e2:	43 9a       	sbi	0x08, 3	; 8
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+    11e4:	2f ef       	ldi	r18, 0xFF	; 255
+    11e6:	83 ef       	ldi	r24, 0xF3	; 243
+    11e8:	91 e0       	ldi	r25, 0x01	; 1
+    11ea:	21 50       	subi	r18, 0x01	; 1
+    11ec:	80 40       	sbci	r24, 0x00	; 0
+    11ee:	90 40       	sbci	r25, 0x00	; 0
+    11f0:	e1 f7       	brne	.-8      	; 0x11ea <GLCD_Init+0x48>
+    11f2:	00 c0       	rjmp	.+0      	; 0x11f4 <GLCD_Init+0x52>
+    11f4:	00 00       	nop
+	
+	_delay_ms(40);
+	#ifdef GLCD_4bit
+		GLCD_Write(COMMAND,FUNCTION|FUNCTION_4BIT);
+	#else
+		GLCD_Write(COMMAND,FUNCTION|FUNCTION_8BIT);
+    11f6:	60 e3       	ldi	r22, 0x30	; 48
+    11f8:	80 e0       	ldi	r24, 0x00	; 0
+    11fa:	0e 94 94 08 	call	0x1128	; 0x1128 <GLCD_Write>
+	#endif
+	GLCD_Write(COMMAND,DISPLAY|DISPLAY_ON); 
+    11fe:	6c e0       	ldi	r22, 0x0C	; 12
+    1200:	80 e0       	ldi	r24, 0x00	; 0
+    1202:	0e 94 94 08 	call	0x1128	; 0x1128 <GLCD_Write>
+	GLCD_Write(COMMAND,CLEAR);
+    1206:	61 e0       	ldi	r22, 0x01	; 1
+    1208:	80 e0       	ldi	r24, 0x00	; 0
+    120a:	0e 94 94 08 	call	0x1128	; 0x1128 <GLCD_Write>
+	GLCD_Write(COMMAND,0x06);
+    120e:	66 e0       	ldi	r22, 0x06	; 6
+    1210:	80 e0       	ldi	r24, 0x00	; 0
+    1212:	0e 94 94 08 	call	0x1128	; 0x1128 <GLCD_Write>
+	GLCD_Write(COMMAND,HOME);
+    1216:	62 e0       	ldi	r22, 0x02	; 2
+    1218:	80 e0       	ldi	r24, 0x00	; 0
+    121a:	0e 94 94 08 	call	0x1128	; 0x1128 <GLCD_Write>
+	
+	GLCD_enable(ON);	
+    121e:	81 e0       	ldi	r24, 0x01	; 1
+    1220:	0e 94 c5 08 	call	0x118a	; 0x118a <GLCD_enable>
+    1224:	08 95       	ret
+
+00001226 <GLCD_ScreenGraphics>:
+		
+	}
+}
+
+void GLCD_ScreenGraphics(const unsigned char* graphic)
+{
+    1226:	0f 93       	push	r16
+    1228:	1f 93       	push	r17
+    122a:	cf 93       	push	r28
+    122c:	df 93       	push	r29
+	unsigned char x, y;
+	for (y = 0; y < 64; y++)
+	{
+		for (x = 0; x < 16; x++)
+		{
+			Buffer[x][y] = pgm_read_byte(&(graphic[x+y*16]));
+    122e:	40 e0       	ldi	r20, 0x00	; 0
+    1230:	50 e0       	ldi	r21, 0x00	; 0
+    1232:	c0 e0       	ldi	r28, 0x00	; 0
+    1234:	d0 e0       	ldi	r29, 0x00	; 0
+    1236:	00 e0       	ldi	r16, 0x00	; 0
+    1238:	10 e0       	ldi	r17, 0x00	; 0
+    123a:	20 c0       	rjmp	.+64     	; 0x127c <GLCD_ScreenGraphics+0x56>
+    123c:	f9 01       	movw	r30, r18
+    123e:	e4 0f       	add	r30, r20
+    1240:	f5 1f       	adc	r31, r21
+    1242:	e8 0f       	add	r30, r24
+    1244:	f9 1f       	adc	r31, r25
+    1246:	e4 91       	lpm	r30, Z
+    1248:	d9 01       	movw	r26, r18
+    124a:	00 24       	eor	r0, r0
+    124c:	b6 95       	lsr	r27
+    124e:	a7 95       	ror	r26
+    1250:	07 94       	ror	r0
+    1252:	b6 95       	lsr	r27
+    1254:	a7 95       	ror	r26
+    1256:	07 94       	ror	r0
+    1258:	ba 2f       	mov	r27, r26
+    125a:	a0 2d       	mov	r26, r0
+    125c:	a6 0f       	add	r26, r22
+    125e:	b7 1f       	adc	r27, r23
+    1260:	ac 56       	subi	r26, 0x6C	; 108
+    1262:	be 4f       	sbci	r27, 0xFE	; 254
+    1264:	ec 93       	st	X, r30
+    1266:	2f 5f       	subi	r18, 0xFF	; 255
+    1268:	3f 4f       	sbci	r19, 0xFF	; 255
+void GLCD_ScreenGraphics(const unsigned char* graphic)
+{
+	unsigned char x, y;
+	for (y = 0; y < 64; y++)
+	{
+		for (x = 0; x < 16; x++)
+    126a:	20 31       	cpi	r18, 0x10	; 16
+    126c:	31 05       	cpc	r19, r1
+    126e:	31 f7       	brne	.-52     	; 0x123c <GLCD_ScreenGraphics+0x16>
+    1270:	21 96       	adiw	r28, 0x01	; 1
+    1272:	40 5f       	subi	r20, 0xF0	; 240
+    1274:	5f 4f       	sbci	r21, 0xFF	; 255
+}
+
+void GLCD_ScreenGraphics(const unsigned char* graphic)
+{
+	unsigned char x, y;
+	for (y = 0; y < 64; y++)
+    1276:	c0 34       	cpi	r28, 0x40	; 64
+    1278:	d1 05       	cpc	r29, r1
+    127a:	21 f0       	breq	.+8      	; 0x1284 <GLCD_ScreenGraphics+0x5e>
+	{
+		for (x = 0; x < 16; x++)
+		{
+			Buffer[x][y] = pgm_read_byte(&(graphic[x+y*16]));
+    127c:	be 01       	movw	r22, r28
+    127e:	20 2f       	mov	r18, r16
+    1280:	31 2f       	mov	r19, r17
+    1282:	dc cf       	rjmp	.-72     	; 0x123c <GLCD_ScreenGraphics+0x16>
+		}
+	}
+}
+    1284:	df 91       	pop	r29
+    1286:	cf 91       	pop	r28
+    1288:	1f 91       	pop	r17
+    128a:	0f 91       	pop	r16
+    128c:	08 95       	ret
+
+0000128e <GLCD_GOTO_XY>:
+
+void GLCD_GOTO_XY(unsigned char x, unsigned char y)
+{
+    128e:	cf 93       	push	r28
+    1290:	c8 2f       	mov	r28, r24
+		if(y < 32)
+    1292:	60 32       	cpi	r22, 0x20	; 32
+    1294:	50 f4       	brcc	.+20     	; 0x12aa <GLCD_GOTO_XY+0x1c>
+		{										
+				GLCD_Write(COMMAND,0x80 | y);
+    1296:	60 68       	ori	r22, 0x80	; 128
+    1298:	80 e0       	ldi	r24, 0x00	; 0
+    129a:	0e 94 94 08 	call	0x1128	; 0x1128 <GLCD_Write>
+				GLCD_Write(COMMAND,0x80 | x);
+    129e:	6c 2f       	mov	r22, r28
+    12a0:	60 68       	ori	r22, 0x80	; 128
+    12a2:	80 e0       	ldi	r24, 0x00	; 0
+    12a4:	0e 94 94 08 	call	0x1128	; 0x1128 <GLCD_Write>
+    12a8:	0a c0       	rjmp	.+20     	; 0x12be <GLCD_GOTO_XY+0x30>
+		}
+		else
+		{
+				GLCD_Write(COMMAND,0x80 | (y-32));
+    12aa:	60 52       	subi	r22, 0x20	; 32
+    12ac:	60 68       	ori	r22, 0x80	; 128
+    12ae:	80 e0       	ldi	r24, 0x00	; 0
+    12b0:	0e 94 94 08 	call	0x1128	; 0x1128 <GLCD_Write>
+				GLCD_Write(COMMAND,0x88 | x);
+    12b4:	6c 2f       	mov	r22, r28
+    12b6:	68 68       	ori	r22, 0x88	; 136
+    12b8:	80 e0       	ldi	r24, 0x00	; 0
+    12ba:	0e 94 94 08 	call	0x1128	; 0x1128 <GLCD_Write>
+		}		
+}
+    12be:	cf 91       	pop	r28
+    12c0:	08 95       	ret
+
+000012c2 <GLCD_Draw_Char>:
+		count++;
+	}
+}
+
+void GLCD_Draw_Char(unsigned char x,unsigned char y, char character,unsigned char color)
+{
+    12c2:	9f 92       	push	r9
+    12c4:	af 92       	push	r10
+    12c6:	bf 92       	push	r11
+    12c8:	cf 92       	push	r12
+    12ca:	df 92       	push	r13
+    12cc:	ef 92       	push	r14
+    12ce:	ff 92       	push	r15
+    12d0:	0f 93       	push	r16
+    12d2:	1f 93       	push	r17
+    12d4:	cf 93       	push	r28
+    12d6:	df 93       	push	r29
+    12d8:	00 d0       	rcall	.+0      	; 0x12da <GLCD_Draw_Char+0x18>
+    12da:	00 d0       	rcall	.+0      	; 0x12dc <GLCD_Draw_Char+0x1a>
+    12dc:	1f 92       	push	r1
+    12de:	cd b7       	in	r28, 0x3d	; 61
+    12e0:	de b7       	in	r29, 0x3e	; 62
+	unsigned char row;
+	unsigned char colInd;	
+	unsigned char colList[5];
+	
+	colList[4] = pgm_read_byte(&(font5x7[(character-START_CHAR)][0]));
+    12e2:	50 e0       	ldi	r21, 0x00	; 0
+    12e4:	40 52       	subi	r20, 0x20	; 32
+    12e6:	51 09       	sbc	r21, r1
+    12e8:	fa 01       	movw	r30, r20
+    12ea:	ee 0f       	add	r30, r30
+    12ec:	ff 1f       	adc	r31, r31
+    12ee:	ee 0f       	add	r30, r30
+    12f0:	ff 1f       	adc	r31, r31
+    12f2:	4e 0f       	add	r20, r30
+    12f4:	5f 1f       	adc	r21, r31
+    12f6:	fa 01       	movw	r30, r20
+    12f8:	ec 54       	subi	r30, 0x4C	; 76
+    12fa:	f7 4f       	sbci	r31, 0xF7	; 247
+    12fc:	e4 91       	lpm	r30, Z
+    12fe:	ed 83       	std	Y+5, r30	; 0x05
+	colList[3] = pgm_read_byte(&(font5x7[(character-START_CHAR)][1]));
+    1300:	fa 01       	movw	r30, r20
+    1302:	eb 54       	subi	r30, 0x4B	; 75
+    1304:	f7 4f       	sbci	r31, 0xF7	; 247
+    1306:	e4 91       	lpm	r30, Z
+    1308:	ec 83       	std	Y+4, r30	; 0x04
+	colList[2] = pgm_read_byte(&(font5x7[(character-START_CHAR)][2]));
+    130a:	fa 01       	movw	r30, r20
+    130c:	ea 54       	subi	r30, 0x4A	; 74
+    130e:	f7 4f       	sbci	r31, 0xF7	; 247
+    1310:	e4 91       	lpm	r30, Z
+    1312:	eb 83       	std	Y+3, r30	; 0x03
+	colList[1] = pgm_read_byte(&(font5x7[(character-START_CHAR)][3]));
+    1314:	fa 01       	movw	r30, r20
+    1316:	e9 54       	subi	r30, 0x49	; 73
+    1318:	f7 4f       	sbci	r31, 0xF7	; 247
+    131a:	e4 91       	lpm	r30, Z
+    131c:	ea 83       	std	Y+2, r30	; 0x02
+	colList[0] = pgm_read_byte(&(font5x7[(character-START_CHAR)][4]));
+    131e:	fa 01       	movw	r30, r20
+    1320:	e8 54       	subi	r30, 0x48	; 72
+    1322:	f7 4f       	sbci	r31, 0xF7	; 247
+    1324:	44 91       	lpm	r20, Z
+    1326:	49 83       	std	Y+1, r20	; 0x01
+    1328:	00 e0       	ldi	r16, 0x00	; 0
+    132a:	10 e0       	ldi	r17, 0x00	; 0
+    132c:	ee 24       	eor	r14, r14
+    132e:	e3 94       	inc	r14
+    1330:	f1 2c       	mov	r15, r1
+	for (row=0;row<8;row++)
+	{			
+		unsigned char dataA = 0x00;
+		for (colInd=0;colInd<5;colInd++)
+		{
+			if (colList[colInd] & (1 << row))
+    1332:	0f 2e       	mov	r0, r31
+    1334:	f3 e0       	ldi	r31, 0x03	; 3
+    1336:	9f 2e       	mov	r9, r31
+    1338:	f0 2d       	mov	r31, r0
+    133a:	a1 2c       	mov	r10, r1
+    133c:	b1 2c       	mov	r11, r1
+    133e:	c6 2e       	mov	r12, r22
+    1340:	d1 2c       	mov	r13, r1
+				dataA = dataA | (1 << (colInd+3));
+			}
+		}
+		if(color == BLACK){}
+		else{dataA ^= 0xFF;}
+		Buffer[x][row+y] = dataA;					
+    1342:	90 e4       	ldi	r25, 0x40	; 64
+    1344:	89 9f       	mul	r24, r25
+    1346:	b0 01       	movw	r22, r0
+    1348:	11 24       	eor	r1, r1
+    134a:	22 c0       	rjmp	.+68     	; 0x1390 <GLCD_Draw_Char+0xce>
+	for (row=0;row<8;row++)
+	{			
+		unsigned char dataA = 0x00;
+		for (colInd=0;colInd<5;colInd++)
+		{
+			if (colList[colInd] & (1 << row))
+    134c:	4d 91       	ld	r20, X+
+    134e:	50 e0       	ldi	r21, 0x00	; 0
+    1350:	48 23       	and	r20, r24
+    1352:	59 23       	and	r21, r25
+    1354:	45 2b       	or	r20, r21
+    1356:	41 f0       	breq	.+16     	; 0x1368 <GLCD_Draw_Char+0xa6>
+			{
+				dataA = dataA | (1 << (colInd+3));
+    1358:	a7 01       	movw	r20, r14
+    135a:	0e 2e       	mov	r0, r30
+    135c:	02 c0       	rjmp	.+4      	; 0x1362 <GLCD_Draw_Char+0xa0>
+    135e:	44 0f       	add	r20, r20
+    1360:	55 1f       	adc	r21, r21
+    1362:	0a 94       	dec	r0
+    1364:	e2 f7       	brpl	.-8      	; 0x135e <GLCD_Draw_Char+0x9c>
+    1366:	34 2b       	or	r19, r20
+    1368:	31 96       	adiw	r30, 0x01	; 1
+		colList[0] = pgm_read_byte(&(font_6x8[(character-START_CHAR)][7]));
+		*/
+	for (row=0;row<8;row++)
+	{			
+		unsigned char dataA = 0x00;
+		for (colInd=0;colInd<5;colInd++)
+    136a:	e8 30       	cpi	r30, 0x08	; 8
+    136c:	f1 05       	cpc	r31, r1
+    136e:	71 f7       	brne	.-36     	; 0x134c <GLCD_Draw_Char+0x8a>
+			if (colList[colInd] & (1 << row))
+			{
+				dataA = dataA | (1 << (colInd+3));
+			}
+		}
+		if(color == BLACK){}
+    1370:	2f 3f       	cpi	r18, 0xFF	; 255
+    1372:	09 f0       	breq	.+2      	; 0x1376 <GLCD_Draw_Char+0xb4>
+		else{dataA ^= 0xFF;}
+    1374:	30 95       	com	r19
+    1376:	f8 01       	movw	r30, r16
+    1378:	ec 0d       	add	r30, r12
+    137a:	fd 1d       	adc	r31, r13
+		Buffer[x][row+y] = dataA;					
+    137c:	e6 0f       	add	r30, r22
+    137e:	f7 1f       	adc	r31, r23
+    1380:	ec 56       	subi	r30, 0x6C	; 108
+    1382:	fe 4f       	sbci	r31, 0xFE	; 254
+    1384:	30 83       	st	Z, r19
+    1386:	0f 5f       	subi	r16, 0xFF	; 255
+    1388:	1f 4f       	sbci	r17, 0xFF	; 255
+		colList[3] = pgm_read_byte(&(font_6x8[(character-START_CHAR)][4]));
+		colList[2] = pgm_read_byte(&(font_6x8[(character-START_CHAR)][5]));
+		colList[1] = pgm_read_byte(&(font_6x8[(character-START_CHAR)][6]));
+		colList[0] = pgm_read_byte(&(font_6x8[(character-START_CHAR)][7]));
+		*/
+	for (row=0;row<8;row++)
+    138a:	08 30       	cpi	r16, 0x08	; 8
+    138c:	11 05       	cpc	r17, r1
+    138e:	69 f0       	breq	.+26     	; 0x13aa <GLCD_Draw_Char+0xe8>
+    1390:	c7 01       	movw	r24, r14
+    1392:	00 2e       	mov	r0, r16
+    1394:	02 c0       	rjmp	.+4      	; 0x139a <GLCD_Draw_Char+0xd8>
+    1396:	88 0f       	add	r24, r24
+    1398:	99 1f       	adc	r25, r25
+    139a:	0a 94       	dec	r0
+    139c:	e2 f7       	brpl	.-8      	; 0x1396 <GLCD_Draw_Char+0xd4>
+    139e:	de 01       	movw	r26, r28
+    13a0:	11 96       	adiw	r26, 0x01	; 1
+	{			
+		unsigned char dataA = 0x00;
+		for (colInd=0;colInd<5;colInd++)
+		{
+			if (colList[colInd] & (1 << row))
+    13a2:	e9 2d       	mov	r30, r9
+    13a4:	fa 2d       	mov	r31, r10
+    13a6:	3b 2d       	mov	r19, r11
+    13a8:	d1 cf       	rjmp	.-94     	; 0x134c <GLCD_Draw_Char+0x8a>
+		}
+		if(color == BLACK){}
+		else{dataA ^= 0xFF;}
+		Buffer[x][row+y] = dataA;					
+	}
+}
+    13aa:	0f 90       	pop	r0
+    13ac:	0f 90       	pop	r0
+    13ae:	0f 90       	pop	r0
+    13b0:	0f 90       	pop	r0
+    13b2:	0f 90       	pop	r0
+    13b4:	df 91       	pop	r29
+    13b6:	cf 91       	pop	r28
+    13b8:	1f 91       	pop	r17
+    13ba:	0f 91       	pop	r16
+    13bc:	ff 90       	pop	r15
+    13be:	ef 90       	pop	r14
+    13c0:	df 90       	pop	r13
+    13c2:	cf 90       	pop	r12
+    13c4:	bf 90       	pop	r11
+    13c6:	af 90       	pop	r10
+    13c8:	9f 90       	pop	r9
+    13ca:	08 95       	ret
+
+000013cc <GLCD_Draw_String>:
+
+void GLCD_Draw_String(unsigned char x,unsigned char y, const char *str,unsigned char color)
+{
+    13cc:	ef 92       	push	r14
+    13ce:	ff 92       	push	r15
+    13d0:	0f 93       	push	r16
+    13d2:	1f 93       	push	r17
+    13d4:	cf 93       	push	r28
+    13d6:	df 93       	push	r29
+    13d8:	d8 2f       	mov	r29, r24
+    13da:	f6 2e       	mov	r15, r22
+    13dc:	e2 2e       	mov	r14, r18
+	unsigned char length = strlen(str);
+    13de:	fa 01       	movw	r30, r20
+    13e0:	01 90       	ld	r0, Z+
+    13e2:	00 20       	and	r0, r0
+    13e4:	e9 f7       	brne	.-6      	; 0x13e0 <GLCD_Draw_String+0x14>
+    13e6:	31 97       	sbiw	r30, 0x01	; 1
+    13e8:	ce 2f       	mov	r28, r30
+    13ea:	c4 1b       	sub	r28, r20
+	
+	for( ;  length ; length -- )
+    13ec:	61 f0       	breq	.+24     	; 0x1406 <GLCD_Draw_String+0x3a>
+    13ee:	8a 01       	movw	r16, r20
+	{GLCD_Draw_Char(x,y,*(str++),color);x++;}
+    13f0:	f8 01       	movw	r30, r16
+    13f2:	41 91       	ld	r20, Z+
+    13f4:	8f 01       	movw	r16, r30
+    13f6:	2e 2d       	mov	r18, r14
+    13f8:	6f 2d       	mov	r22, r15
+    13fa:	8d 2f       	mov	r24, r29
+    13fc:	0e 94 61 09 	call	0x12c2	; 0x12c2 <GLCD_Draw_Char>
+    1400:	df 5f       	subi	r29, 0xFF	; 255
+
+void GLCD_Draw_String(unsigned char x,unsigned char y, const char *str,unsigned char color)
+{
+	unsigned char length = strlen(str);
+	
+	for( ;  length ; length -- )
+    1402:	c1 50       	subi	r28, 0x01	; 1
+    1404:	a9 f7       	brne	.-22     	; 0x13f0 <GLCD_Draw_String+0x24>
+	{GLCD_Draw_Char(x,y,*(str++),color);x++;}
+		
+	return;
+}
+    1406:	df 91       	pop	r29
+    1408:	cf 91       	pop	r28
+    140a:	1f 91       	pop	r17
+    140c:	0f 91       	pop	r16
+    140e:	ff 90       	pop	r15
+    1410:	ef 90       	pop	r14
+    1412:	08 95       	ret
+
+00001414 <GLCD_ClearBuffer>:
+
+void GLCD_ClearBuffer(unsigned char color)
+{
+    1414:	40 e0       	ldi	r20, 0x00	; 0
+    1416:	50 e0       	ldi	r21, 0x00	; 0
+    1418:	70 e0       	ldi	r23, 0x00	; 0
+    141a:	60 e0       	ldi	r22, 0x00	; 0
+	{		
+		for(x = 0; x < 16; x++)
+		{
+			if (color)
+			{
+				Buffer[x][y]= BLACK;
+    141c:	9f ef       	ldi	r25, 0xFF	; 255
+    141e:	2b c0       	rjmp	.+86     	; 0x1476 <GLCD_ClearBuffer+0x62>
+	unsigned char x, y;
+	for(y = 0; y < 64; y++)
+	{		
+		for(x = 0; x < 16; x++)
+		{
+			if (color)
+    1420:	88 23       	and	r24, r24
+    1422:	81 f0       	breq	.+32     	; 0x1444 <GLCD_ClearBuffer+0x30>
+			{
+				Buffer[x][y]= BLACK;
+    1424:	f9 01       	movw	r30, r18
+    1426:	00 24       	eor	r0, r0
+    1428:	f6 95       	lsr	r31
+    142a:	e7 95       	ror	r30
+    142c:	07 94       	ror	r0
+    142e:	f6 95       	lsr	r31
+    1430:	e7 95       	ror	r30
+    1432:	07 94       	ror	r0
+    1434:	fe 2f       	mov	r31, r30
+    1436:	e0 2d       	mov	r30, r0
+    1438:	e4 0f       	add	r30, r20
+    143a:	f5 1f       	adc	r31, r21
+    143c:	ec 56       	subi	r30, 0x6C	; 108
+    143e:	fe 4f       	sbci	r31, 0xFE	; 254
+    1440:	90 83       	st	Z, r25
+    1442:	0f c0       	rjmp	.+30     	; 0x1462 <GLCD_ClearBuffer+0x4e>
+			} 
+			else
+			{
+				Buffer[x][y]= WHITE;
+    1444:	f9 01       	movw	r30, r18
+    1446:	00 24       	eor	r0, r0
+    1448:	f6 95       	lsr	r31
+    144a:	e7 95       	ror	r30
+    144c:	07 94       	ror	r0
+    144e:	f6 95       	lsr	r31
+    1450:	e7 95       	ror	r30
+    1452:	07 94       	ror	r0
+    1454:	fe 2f       	mov	r31, r30
+    1456:	e0 2d       	mov	r30, r0
+    1458:	e4 0f       	add	r30, r20
+    145a:	f5 1f       	adc	r31, r21
+    145c:	ec 56       	subi	r30, 0x6C	; 108
+    145e:	fe 4f       	sbci	r31, 0xFE	; 254
+    1460:	10 82       	st	Z, r1
+    1462:	2f 5f       	subi	r18, 0xFF	; 255
+    1464:	3f 4f       	sbci	r19, 0xFF	; 255
+void GLCD_ClearBuffer(unsigned char color)
+{
+	unsigned char x, y;
+	for(y = 0; y < 64; y++)
+	{		
+		for(x = 0; x < 16; x++)
+    1466:	20 31       	cpi	r18, 0x10	; 16
+    1468:	31 05       	cpc	r19, r1
+    146a:	d1 f6       	brne	.-76     	; 0x1420 <GLCD_ClearBuffer+0xc>
+    146c:	4f 5f       	subi	r20, 0xFF	; 255
+    146e:	5f 4f       	sbci	r21, 0xFF	; 255
+}
+
+void GLCD_ClearBuffer(unsigned char color)
+{
+	unsigned char x, y;
+	for(y = 0; y < 64; y++)
+    1470:	40 34       	cpi	r20, 0x40	; 64
+    1472:	51 05       	cpc	r21, r1
+    1474:	19 f0       	breq	.+6      	; 0x147c <GLCD_ClearBuffer+0x68>
+		
+	return;
+}
+
+void GLCD_ClearBuffer(unsigned char color)
+{
+    1476:	27 2f       	mov	r18, r23
+    1478:	36 2f       	mov	r19, r22
+    147a:	d2 cf       	rjmp	.-92     	; 0x1420 <GLCD_ClearBuffer+0xc>
+    147c:	08 95       	ret
+
+0000147e <GLCD_Clear_Row>:
+	}
+}
+
+void GLCD_Clear_Row(unsigned char y, unsigned char color)
+{
+	for (unsigned char i=y; i<(y+8); i++)
+    147e:	48 2f       	mov	r20, r24
+    1480:	50 e0       	ldi	r21, 0x00	; 0
+    1482:	da 01       	movw	r26, r20
+    1484:	18 96       	adiw	r26, 0x08	; 8
+    1486:	4a 17       	cp	r20, r26
+    1488:	5b 07       	cpc	r21, r27
+    148a:	e4 f0       	brlt	.+56     	; 0x14c4 <GLCD_Clear_Row+0x46>
+    148c:	08 95       	ret
+	{
+		for(unsigned char x = 0; x<16; x++)
+		{Buffer[x][i] = color;}		
+    148e:	f9 01       	movw	r30, r18
+    1490:	00 24       	eor	r0, r0
+    1492:	f6 95       	lsr	r31
+    1494:	e7 95       	ror	r30
+    1496:	07 94       	ror	r0
+    1498:	f6 95       	lsr	r31
+    149a:	e7 95       	ror	r30
+    149c:	07 94       	ror	r0
+    149e:	fe 2f       	mov	r31, r30
+    14a0:	e0 2d       	mov	r30, r0
+    14a2:	e4 0f       	add	r30, r20
+    14a4:	f5 1f       	adc	r31, r21
+    14a6:	ec 56       	subi	r30, 0x6C	; 108
+    14a8:	fe 4f       	sbci	r31, 0xFE	; 254
+    14aa:	60 83       	st	Z, r22
+    14ac:	2f 5f       	subi	r18, 0xFF	; 255
+    14ae:	3f 4f       	sbci	r19, 0xFF	; 255
+
+void GLCD_Clear_Row(unsigned char y, unsigned char color)
+{
+	for (unsigned char i=y; i<(y+8); i++)
+	{
+		for(unsigned char x = 0; x<16; x++)
+    14b0:	20 31       	cpi	r18, 0x10	; 16
+    14b2:	31 05       	cpc	r19, r1
+    14b4:	61 f7       	brne	.-40     	; 0x148e <GLCD_Clear_Row+0x10>
+	}
+}
+
+void GLCD_Clear_Row(unsigned char y, unsigned char color)
+{
+	for (unsigned char i=y; i<(y+8); i++)
+    14b6:	8f 5f       	subi	r24, 0xFF	; 255
+    14b8:	48 2f       	mov	r20, r24
+    14ba:	50 e0       	ldi	r21, 0x00	; 0
+    14bc:	4a 17       	cp	r20, r26
+    14be:	5b 07       	cpc	r21, r27
+    14c0:	1c f0       	brlt	.+6      	; 0x14c8 <GLCD_Clear_Row+0x4a>
+    14c2:	08 95       	ret
+		}
+	}
+}
+
+void GLCD_Clear_Row(unsigned char y, unsigned char color)
+{
+    14c4:	70 e0       	ldi	r23, 0x00	; 0
+    14c6:	90 e0       	ldi	r25, 0x00	; 0
+    14c8:	27 2f       	mov	r18, r23
+    14ca:	39 2f       	mov	r19, r25
+    14cc:	e0 cf       	rjmp	.-64     	; 0x148e <GLCD_Clear_Row+0x10>
+
+000014ce <GLCD_Draw_Pixel>:
+	return;
+}
+
+void GLCD_Draw_Pixel(unsigned char x, unsigned char y, unsigned char colour)
+{
+	unsigned char dot = 1<<(7-x%8);
+    14ce:	28 2f       	mov	r18, r24
+    14d0:	30 e0       	ldi	r19, 0x00	; 0
+    14d2:	20 95       	com	r18
+    14d4:	30 95       	com	r19
+    14d6:	27 70       	andi	r18, 0x07	; 7
+    14d8:	33 27       	eor	r19, r19
+    14da:	e1 e0       	ldi	r30, 0x01	; 1
+    14dc:	f0 e0       	ldi	r31, 0x00	; 0
+    14de:	df 01       	movw	r26, r30
+    14e0:	02 c0       	rjmp	.+4      	; 0x14e6 <GLCD_Draw_Pixel+0x18>
+    14e2:	aa 0f       	add	r26, r26
+    14e4:	bb 1f       	adc	r27, r27
+    14e6:	2a 95       	dec	r18
+    14e8:	e2 f7       	brpl	.-8      	; 0x14e2 <GLCD_Draw_Pixel+0x14>
+    14ea:	9d 01       	movw	r18, r26
+	x = x/8;
+    14ec:	86 95       	lsr	r24
+    14ee:	86 95       	lsr	r24
+    14f0:	86 95       	lsr	r24
+	if (colour == BLACK){Buffer[x][y]|=dot;	} 
+    14f2:	4f 3f       	cpi	r20, 0xFF	; 255
+    14f4:	61 f4       	brne	.+24     	; 0x150e <GLCD_Draw_Pixel+0x40>
+    14f6:	b0 e4       	ldi	r27, 0x40	; 64
+    14f8:	8b 9f       	mul	r24, r27
+    14fa:	f0 01       	movw	r30, r0
+    14fc:	11 24       	eor	r1, r1
+    14fe:	e6 0f       	add	r30, r22
+    1500:	f1 1d       	adc	r31, r1
+    1502:	ec 56       	subi	r30, 0x6C	; 108
+    1504:	fe 4f       	sbci	r31, 0xFE	; 254
+    1506:	80 81       	ld	r24, Z
+    1508:	28 2b       	or	r18, r24
+    150a:	20 83       	st	Z, r18
+    150c:	08 95       	ret
+	else { Buffer[x][y]&=~dot;}
+    150e:	90 e4       	ldi	r25, 0x40	; 64
+    1510:	89 9f       	mul	r24, r25
+    1512:	f0 01       	movw	r30, r0
+    1514:	11 24       	eor	r1, r1
+    1516:	e6 0f       	add	r30, r22
+    1518:	f1 1d       	adc	r31, r1
+    151a:	ec 56       	subi	r30, 0x6C	; 108
+    151c:	fe 4f       	sbci	r31, 0xFE	; 254
+    151e:	80 81       	ld	r24, Z
+    1520:	20 95       	com	r18
+    1522:	28 23       	and	r18, r24
+    1524:	20 83       	st	Z, r18
+    1526:	08 95       	ret
+
+00001528 <GLCD_Draw_HorizLine>:
+	
+	return;
+}
+
+void GLCD_Draw_HorizLine(unsigned char x1, unsigned char x2, unsigned char y, unsigned char color)
+{
+    1528:	0f 93       	push	r16
+    152a:	1f 93       	push	r17
+    152c:	cf 93       	push	r28
+    152e:	df 93       	push	r29
+    1530:	c8 2f       	mov	r28, r24
+    1532:	d6 2f       	mov	r29, r22
+    1534:	14 2f       	mov	r17, r20
+    1536:	02 2f       	mov	r16, r18
+	unsigned char i;
+	/* Swap X */
+	if (x1 > x2) {
+    1538:	68 17       	cp	r22, r24
+    153a:	10 f4       	brcc	.+4      	; 0x1540 <GLCD_Draw_HorizLine+0x18>
+		i = x1;
+		x1 = x2;
+    153c:	c6 2f       	mov	r28, r22
+		x2 = i;
+    153e:	d8 2f       	mov	r29, r24
+	}
+	for (i = x1; i <= x2; i++)
+	GLCD_Draw_Pixel(i, y, color);
+    1540:	40 2f       	mov	r20, r16
+    1542:	61 2f       	mov	r22, r17
+    1544:	8c 2f       	mov	r24, r28
+    1546:	0e 94 67 0a 	call	0x14ce	; 0x14ce <GLCD_Draw_Pixel>
+	if (x1 > x2) {
+		i = x1;
+		x1 = x2;
+		x2 = i;
+	}
+	for (i = x1; i <= x2; i++)
+    154a:	cf 5f       	subi	r28, 0xFF	; 255
+    154c:	dc 17       	cp	r29, r28
+    154e:	c0 f7       	brcc	.-16     	; 0x1540 <GLCD_Draw_HorizLine+0x18>
+	GLCD_Draw_Pixel(i, y, color);
+
+	return;
+}
+    1550:	df 91       	pop	r29
+    1552:	cf 91       	pop	r28
+    1554:	1f 91       	pop	r17
+    1556:	0f 91       	pop	r16
+    1558:	08 95       	ret
+
+0000155a <GLCD_Draw_VertcLine>:
+
+void GLCD_Draw_VertcLine(unsigned char x, unsigned char y1, unsigned char y2, unsigned char color)
+{
+    155a:	0f 93       	push	r16
+    155c:	1f 93       	push	r17
+    155e:	cf 93       	push	r28
+    1560:	df 93       	push	r29
+    1562:	18 2f       	mov	r17, r24
+    1564:	c6 2f       	mov	r28, r22
+    1566:	d4 2f       	mov	r29, r20
+    1568:	02 2f       	mov	r16, r18
+	unsigned char i;
+	/* Swap Y */
+	if (y1 > y2)
+    156a:	46 17       	cp	r20, r22
+    156c:	10 f4       	brcc	.+4      	; 0x1572 <GLCD_Draw_VertcLine+0x18>
+	{
+		i = y1;
+		y1 = y2;
+    156e:	c4 2f       	mov	r28, r20
+		y2 = i;
+    1570:	d6 2f       	mov	r29, r22
+	}
+	for (i = y1; i <= y2; i++)
+	GLCD_Draw_Pixel(x, i, color);
+    1572:	40 2f       	mov	r20, r16
+    1574:	6c 2f       	mov	r22, r28
+    1576:	81 2f       	mov	r24, r17
+    1578:	0e 94 67 0a 	call	0x14ce	; 0x14ce <GLCD_Draw_Pixel>
+	{
+		i = y1;
+		y1 = y2;
+		y2 = i;
+	}
+	for (i = y1; i <= y2; i++)
+    157c:	cf 5f       	subi	r28, 0xFF	; 255
+    157e:	dc 17       	cp	r29, r28
+    1580:	c0 f7       	brcc	.-16     	; 0x1572 <GLCD_Draw_VertcLine+0x18>
+	GLCD_Draw_Pixel(x, i, color);
+	return;
+}
+    1582:	df 91       	pop	r29
+    1584:	cf 91       	pop	r28
+    1586:	1f 91       	pop	r17
+    1588:	0f 91       	pop	r16
+    158a:	08 95       	ret
+
+0000158c <GLCD_Render>:
+	}
+	return;
+}
+
+void GLCD_Render()
+{
+    158c:	bf 92       	push	r11
+    158e:	cf 92       	push	r12
+    1590:	df 92       	push	r13
+    1592:	ef 92       	push	r14
+    1594:	ff 92       	push	r15
+    1596:	0f 93       	push	r16
+    1598:	1f 93       	push	r17
+    159a:	cf 93       	push	r28
+    159c:	df 93       	push	r29
+    159e:	00 e0       	ldi	r16, 0x00	; 0
+    15a0:	10 e0       	ldi	r17, 0x00	; 0
+	unsigned char x = 0, y = 0, side = 0;
+	
+	for(;y<64; y++)
+	{
+		GLCD_GOTO_XY(x,y);		
+    15a2:	b1 2c       	mov	r11, r1
+    15a4:	c1 2c       	mov	r12, r1
+		for(;x<16; x++)
+		{
+			if(y>63 && side == 0){GLCD_GOTO_XY(x,y); side=1;}
+    15a6:	ee 24       	eor	r14, r14
+    15a8:	e3 94       	inc	r14
+    15aa:	f0 2e       	mov	r15, r16
+{
+	unsigned char x = 0, y = 0, side = 0;
+	
+	for(;y<64; y++)
+	{
+		GLCD_GOTO_XY(x,y);		
+    15ac:	60 2f       	mov	r22, r16
+    15ae:	80 e0       	ldi	r24, 0x00	; 0
+    15b0:	0e 94 47 09 	call	0x128e	; 0x128e <GLCD_GOTO_XY>
+    15b4:	cb 2d       	mov	r28, r11
+    15b6:	dc 2d       	mov	r29, r12
+    15b8:	d1 2c       	mov	r13, r1
+    15ba:	8c 2f       	mov	r24, r28
+		for(;x<16; x++)
+		{
+			if(y>63 && side == 0){GLCD_GOTO_XY(x,y); side=1;}
+    15bc:	9f e3       	ldi	r25, 0x3F	; 63
+    15be:	9f 15       	cp	r25, r15
+    15c0:	30 f4       	brcc	.+12     	; 0x15ce <GLCD_Render+0x42>
+    15c2:	d1 10       	cpse	r13, r1
+    15c4:	04 c0       	rjmp	.+8      	; 0x15ce <GLCD_Render+0x42>
+    15c6:	6f 2d       	mov	r22, r15
+    15c8:	0e 94 47 09 	call	0x128e	; 0x128e <GLCD_GOTO_XY>
+    15cc:	de 2c       	mov	r13, r14
+
+			GLCD_Write(DATA,Buffer[x][y]);
+    15ce:	fe 01       	movw	r30, r28
+    15d0:	00 24       	eor	r0, r0
+    15d2:	f6 95       	lsr	r31
+    15d4:	e7 95       	ror	r30
+    15d6:	07 94       	ror	r0
+    15d8:	f6 95       	lsr	r31
+    15da:	e7 95       	ror	r30
+    15dc:	07 94       	ror	r0
+    15de:	fe 2f       	mov	r31, r30
+    15e0:	e0 2d       	mov	r30, r0
+    15e2:	e0 0f       	add	r30, r16
+    15e4:	f1 1f       	adc	r31, r17
+    15e6:	ec 56       	subi	r30, 0x6C	; 108
+    15e8:	fe 4f       	sbci	r31, 0xFE	; 254
+    15ea:	60 81       	ld	r22, Z
+    15ec:	8e 2d       	mov	r24, r14
+    15ee:	0e 94 94 08 	call	0x1128	; 0x1128 <GLCD_Write>
+    15f2:	21 96       	adiw	r28, 0x01	; 1
+	unsigned char x = 0, y = 0, side = 0;
+	
+	for(;y<64; y++)
+	{
+		GLCD_GOTO_XY(x,y);		
+		for(;x<16; x++)
+    15f4:	c0 31       	cpi	r28, 0x10	; 16
+    15f6:	d1 05       	cpc	r29, r1
+    15f8:	01 f7       	brne	.-64     	; 0x15ba <GLCD_Render+0x2e>
+    15fa:	0f 5f       	subi	r16, 0xFF	; 255
+    15fc:	1f 4f       	sbci	r17, 0xFF	; 255
+
+void GLCD_Render()
+{
+	unsigned char x = 0, y = 0, side = 0;
+	
+	for(;y<64; y++)
+    15fe:	00 34       	cpi	r16, 0x40	; 64
+    1600:	11 05       	cpc	r17, r1
+    1602:	99 f6       	brne	.-90     	; 0x15aa <GLCD_Render+0x1e>
+			//GLCD_Write(DATA,Buffer[x+1][y]);
+		}
+		x=side = 0;
+	}
+	return;
+}
+    1604:	df 91       	pop	r29
+    1606:	cf 91       	pop	r28
+    1608:	1f 91       	pop	r17
+    160a:	0f 91       	pop	r16
+    160c:	ff 90       	pop	r15
+    160e:	ef 90       	pop	r14
+    1610:	df 90       	pop	r13
+    1612:	cf 90       	pop	r12
+    1614:	bf 90       	pop	r11
+    1616:	08 95       	ret
+
+00001618 <__tablejump2__>:
+    1618:	ee 0f       	add	r30, r30
+    161a:	ff 1f       	adc	r31, r31
+    161c:	05 90       	lpm	r0, Z+
+    161e:	f4 91       	lpm	r31, Z
+    1620:	e0 2d       	mov	r30, r0
+    1622:	09 94       	ijmp
+
+00001624 <__itoa_ncheck>:
+    1624:	bb 27       	eor	r27, r27
+    1626:	4a 30       	cpi	r20, 0x0A	; 10
+    1628:	31 f4       	brne	.+12     	; 0x1636 <__itoa_ncheck+0x12>
+    162a:	99 23       	and	r25, r25
+    162c:	22 f4       	brpl	.+8      	; 0x1636 <__itoa_ncheck+0x12>
+    162e:	bd e2       	ldi	r27, 0x2D	; 45
+    1630:	90 95       	com	r25
+    1632:	81 95       	neg	r24
+    1634:	9f 4f       	sbci	r25, 0xFF	; 255
+    1636:	0c 94 1e 0b 	jmp	0x163c	; 0x163c <__utoa_common>
+
+0000163a <__utoa_ncheck>:
+    163a:	bb 27       	eor	r27, r27
+
+0000163c <__utoa_common>:
+    163c:	fb 01       	movw	r30, r22
+    163e:	55 27       	eor	r21, r21
+    1640:	aa 27       	eor	r26, r26
+    1642:	88 0f       	add	r24, r24
+    1644:	99 1f       	adc	r25, r25
+    1646:	aa 1f       	adc	r26, r26
+    1648:	a4 17       	cp	r26, r20
+    164a:	10 f0       	brcs	.+4      	; 0x1650 <__utoa_common+0x14>
+    164c:	a4 1b       	sub	r26, r20
+    164e:	83 95       	inc	r24
+    1650:	50 51       	subi	r21, 0x10	; 16
+    1652:	b9 f7       	brne	.-18     	; 0x1642 <__utoa_common+0x6>
+    1654:	a0 5d       	subi	r26, 0xD0	; 208
+    1656:	aa 33       	cpi	r26, 0x3A	; 58
+    1658:	08 f0       	brcs	.+2      	; 0x165c <__utoa_common+0x20>
+    165a:	a9 5d       	subi	r26, 0xD9	; 217
+    165c:	a1 93       	st	Z+, r26
+    165e:	00 97       	sbiw	r24, 0x00	; 0
+    1660:	79 f7       	brne	.-34     	; 0x1640 <__utoa_common+0x4>
+    1662:	b1 11       	cpse	r27, r1
+    1664:	b1 93       	st	Z+, r27
+    1666:	11 92       	st	Z+, r1
+    1668:	cb 01       	movw	r24, r22
+    166a:	0c 94 37 0b 	jmp	0x166e	; 0x166e <strrev>
+
+0000166e <strrev>:
+    166e:	dc 01       	movw	r26, r24
+    1670:	fc 01       	movw	r30, r24
+    1672:	67 2f       	mov	r22, r23
+    1674:	71 91       	ld	r23, Z+
+    1676:	77 23       	and	r23, r23
+    1678:	e1 f7       	brne	.-8      	; 0x1672 <strrev+0x4>
+    167a:	32 97       	sbiw	r30, 0x02	; 2
+    167c:	04 c0       	rjmp	.+8      	; 0x1686 <strrev+0x18>
+    167e:	7c 91       	ld	r23, X
+    1680:	6d 93       	st	X+, r22
+    1682:	70 83       	st	Z, r23
+    1684:	62 91       	ld	r22, -Z
+    1686:	ae 17       	cp	r26, r30
+    1688:	bf 07       	cpc	r27, r31
+    168a:	c8 f3       	brcs	.-14     	; 0x167e <strrev+0x10>
+    168c:	08 95       	ret
+
+0000168e <_exit>:
+    168e:	f8 94       	cli
+
+00001690 <__stop_program>:
+    1690:	ff cf       	rjmp	.-2      	; 0x1690 <__stop_program>
